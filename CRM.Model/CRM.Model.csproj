@@ -49,17 +49,16 @@
     <Compile Include="DbModels\Position.cs" />
     <Compile Include="DbModels\Product.cs" />
     <Compile Include="DbModels\Product_Of_Request.cs" />
-    <Compile Include="DbModels\Product_Of_Shipment.cs" />
     <Compile Include="DbModels\Product_Type.cs" />
-    <Compile Include="Enums.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DbModels\Provider.cs" />
     <Compile Include="DbModels\Provider_Product.cs" />
     <Compile Include="DbModels\Request.cs" />
     <Compile Include="DbModels\Shipment.cs" />
     <Compile Include="DbModels\Stock.cs" />
     <Compile Include="DbModels\Supply.cs" />
-    <Compile Include="DbModels\User.cs" />
+    <Compile Include="DbModels\Users.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -4,13 +4,22 @@ namespace CRM.Model.DbModels
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
-    public partial class User
+    public partial class Users
     {
+        [Key]
         public int ID_Users { get; set; }
-        public int ID_Employee { get; set; }
+
+        [Required]
+        [StringLength(50)]
         public string UserLogin { get; set; }
+
+        [Required]
+        [StringLength(50)]
         public string UserPassword { get; set; }
-        public virtual Employee Employee { get; set; }
+
+        [StringLength(50)]
+        public string UserStatus { get; set; }
     }
 }

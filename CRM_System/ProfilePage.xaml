@@ -1,0 +1,89 @@
+﻿<Page x:Class="CRM_System.ProfilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CRM_System"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProfilePage">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="175"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Century Gothic"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15" Width="175" Height="30" BorderThickness="1">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0, 0.5" MappingMode="RelativeToBoundingBox" StartPoint="1, 0.5">
+                                    <GradientStop Color="#FFCEA345" Offset="1.0"/>
+                                    <GradientStop Color="#FFCEB46F" Offset="0.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                            </ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Image Width="400" Grid.Column="0" Grid.RowSpan="7" Stretch="UniformToFill" HorizontalAlignment="Center" Margin="5">
+            <Image.Source>
+                <Binding Path="Photo">
+                    <Binding.TargetNullValue>
+                        <ImageSource>Resources/NoPhoto.png</ImageSource>
+                    </Binding.TargetNullValue>
+                </Binding>
+            </Image.Source>
+        </Image>
+        <Button Grid.Row="7" Content="Изменить фото"/>
+        <TextBlock Text="Название предприятия:" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock Text="Фамилия:" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock Text="Имя:" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock Text="Отчество:" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock Text="Номер телефона:" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock Text="Адрес:" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock Text="Статус:" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock Text="Договор" Grid.Column="1" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" FontFamily="Century Gothic"/>
+        
+        <!--Будут заполняться из бд-->
+        <TextBlock Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock Grid.Column="2" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock  Grid.Column="2" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
+        <Button Grid.Column="2" Grid.Row="7"/> <!--если в бд есть договор, то в кнопке будет написано "Открыть договор", если нет, то добавить-->
+        <StackPanel Grid.ColumnSpan="3" Grid.Row="8" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="205,0">
+            <Button Content="Редактировать"/>
+            <Button Content="Удалить"/>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbModels\Client.cs" />
+    <Compile Include="DbModels\CRM_Model.cs" />
     <Compile Include="DbModels\Employee.cs" />
     <Compile Include="DbModels\Position.cs" />
     <Compile Include="DbModels\Product.cs" />
@@ -56,7 +57,7 @@
     <Compile Include="DbModels\Shipment.cs" />
     <Compile Include="DbModels\Stock.cs" />
     <Compile Include="DbModels\Supply.cs" />
-    <Compile Include="DbModels\User.cs" />
+    <Compile Include="DbModels\Users.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

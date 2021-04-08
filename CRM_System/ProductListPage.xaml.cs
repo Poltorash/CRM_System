@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace CRM_System
 {
     /// <summary>
-    /// Логика взаимодействия для ClientPage.xaml
+    /// Логика взаимодействия для ProductListPage.xaml
     /// </summary>
-    public partial class ClientPage : Page
+    public partial class ProductListPage : Page
     {
-        public ClientPage()
+        public ProductListPage()
         {
             InitializeComponent();
         }

@@ -7,7 +7,7 @@ namespace CRM.Model.DbModels
     public class Employee
     {      
         public int EmployeeID { get; set; }
-        public int ID_Position { get; set; }
+        public int PositionID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Patronymic { get; set; }

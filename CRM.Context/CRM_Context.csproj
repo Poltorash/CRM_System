@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CRM_Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,7 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CRM.Model\CRM_Model.csproj">
-      <Project>{40d96444-3ff1-428b-86a7-687fafdb9c53}</Project>
+      <Project>{40D96444-3FF1-428B-86A7-687FAFDB9C53}</Project>
       <Name>CRM_Model</Name>
     </ProjectReference>
   </ItemGroup>

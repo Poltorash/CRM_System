@@ -18,18 +18,18 @@
         {
         }
 
-        public virtual DbSet<Client> Client { get; set; }
-        public virtual DbSet<Employee> Employee { get; set; }
-        public virtual DbSet<Position> Position { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<Product_Type> Product_Type { get; set; }
-        public virtual DbSet<Provider> Provider { get; set; }
-        public virtual DbSet<Provider_Product> Provider_Product { get; set; }
-        public virtual DbSet<Request> Request { get; set; }
-        public virtual DbSet<Shipment> Shipment { get; set; }
-        public virtual DbSet<Stock> Stock { get; set; }
-        public virtual DbSet<Supply> Supply { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Client> Clients { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Position> Positions { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Product_Type> Product_Types { get; set; }
+        public virtual DbSet<Provider> Providers { get; set; }
+        public virtual DbSet<Provider_Product> Provider_Products { get; set; }
+        public virtual DbSet<Request> Requests { get; set; }
+        public virtual DbSet<Shipment> Shipments { get; set; }
+        public virtual DbSet<Stock> Stocks { get; set; }
+        public virtual DbSet<Supply> Supplys { get; set; }
+        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Product_Of_Request> Product_Of_Request { get; set; }
 
         public string AddClient(string title, string lastName, string firstName, string patronymic, string phone, string addressCompany, string clientStatus, string contractPath, string photo) 
@@ -63,7 +63,7 @@
                     FirstName = firstName,
                     Patronymic = patronymic,
                     Phone = phone,
-                    ID_Position = ID_position
+                    PositionID = ID_position
                 };
                 Employees.Add(employee);
                 Positions.FirstOrDefault(i=>i.PositionID == ID_position).Employee.Add(employee);
@@ -74,8 +74,8 @@
         }
         public string AddPosition(string title, double salary)
         {
-            try
-            {
+            //try
+            //{
                Positions.Add(new Position()
                 {
                    Title=title,
@@ -83,8 +83,8 @@
                 });
                 SaveChanges();
                 return "Запись добавлена!";
-            }
-            catch (Exception ex) { return ex.Message; }
+            //}
+            //catch (Exception ex) { return ex.Message; }
         }
         public string AddProduct(string title, double price, string photo, int ID_productType)
         {
@@ -95,7 +95,7 @@
                     Title = title,
                     Price = price,
                     Photo = photo,
-                    ID_ProductType = ID_productType
+                    Product_TypeID = ID_productType
                 };
                 Products.Add(product);
                 Product_Types.FirstOrDefault(i => i.Product_TypeID == ID_productType).Product.Add(product);

@@ -7,10 +7,11 @@ namespace CRM.Model.DbModels
 
     public class Product_Of_Request
     {
-        public int ID_Request { get; set; }
-        public int ID_Product { get; set; }
+        public int Product_Of_RequestID { get; set; }
         public int Quantity { get; set; }
-        public double Price { get; set; }
+        public double Sum { get; set; }
+        public int ProductID { get; set; }
+        public int RequestID { get; set; }
         public virtual Product Product { get; set; }
         public virtual Request Request { get; set; }
     }

@@ -60,7 +60,7 @@
             <Button x:Name="ButtonImage" Content="Добавить фото" Click="Button_Click"/>
         </StackPanel>
         <StackPanel Grid.ColumnSpan="3" Grid.Row="7" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="205,0">
-            <Button Content="Добавить продукцию"/>
+            <Button Content="Добавить продукцию" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </Page>

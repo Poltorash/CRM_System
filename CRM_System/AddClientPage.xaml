@@ -70,7 +70,7 @@
         <Image x:Name="I_PhotoC" Grid.Column="3" Grid.Row="2" Grid.RowSpan="4"/>
         <Button x:Name="ButtonImage" Grid.Column="3" Grid.Row="6" Content="Добавить фото" Click="Button_Click"/>
         <StackPanel Grid.ColumnSpan="3" Grid.Row="7" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="205,0">
-            <Button Content="Добавить договор"/>
+            <Button Content="Добавить договор" Click="Button_Click"/>
             <Button Content="Добавить клиента"/>
         </StackPanel>
     </Grid>

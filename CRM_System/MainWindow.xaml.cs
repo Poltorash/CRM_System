@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CRM.Context;
 
 namespace CRM_System
 {
@@ -22,12 +23,15 @@ namespace CRM_System
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
 
         private void Btn_Registration_Click(object sender, RoutedEventArgs e)
         {
-            
+            using (var db = new CRM_Model())
+            {
+              MessageBox.Show(db.AddPosition("", 0));
+            }
         }
     }
 }

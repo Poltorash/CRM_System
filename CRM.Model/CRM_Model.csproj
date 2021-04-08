@@ -56,7 +56,7 @@
     <Compile Include="DbModels\Shipment.cs" />
     <Compile Include="DbModels\Stock.cs" />
     <Compile Include="DbModels\Supply.cs" />
-    <Compile Include="DbModels\Users.cs" />
+    <Compile Include="DbModels\User.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

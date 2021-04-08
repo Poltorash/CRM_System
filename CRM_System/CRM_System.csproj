@@ -35,7 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -115,6 +122,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -130,13 +138,9 @@
     <Resource Include="Resources\background_Image.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CRM.Context\CRM.Context.csproj">
+    <ProjectReference Include="..\CRM.Context\CRM_Context.csproj">
       <Project>{7abbdbe4-6c2e-495b-8a56-d99288867f88}</Project>
-      <Name>CRM.Context</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CRM.Model\CRM.Model.csproj">
-      <Project>{40d96444-3ff1-428b-86a7-687fafdb9c53}</Project>
-      <Name>CRM.Model</Name>
+      <Name>CRM_Context</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

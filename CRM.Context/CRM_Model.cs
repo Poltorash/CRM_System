@@ -1,217 +1,128 @@
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Linq;
-
-namespace CRM.Model.DbModels
+﻿namespace CRM.Context
 {
-    public partial class CRM_Model : DbContext
+    using CRM.Model.DbModels;
+    using System;
+    using System.Data.Entity;
+    using System.Linq;
+
+    public class CRM_Model : DbContext
     {
+        // Контекст настроен для использования строки подключения "CRM_Model" из файла конфигурации  
+        // приложения (App.config или Web.config). По умолчанию эта строка подключения указывает на базу данных 
+        // "CRM.Context.CRM_Model" в экземпляре LocalDb. 
+        // 
+        // Если требуется выбрать другую базу данных или поставщик базы данных, измените строку подключения "CRM_Model" 
+        // в файле конфигурации приложения.
         public CRM_Model()
             : base("name=CRM_Model")
         {
         }
 
-        public virtual DbSet<Client> Client { get; set; }
-        public virtual DbSet<Employee> Employee { get; set; }
-        public virtual DbSet<Position> Position { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<Product_Type> Product_Type { get; set; }
-        public virtual DbSet<Provider> Provider { get; set; }
-        public virtual DbSet<Provider_Product> Provider_Product { get; set; }
-        public virtual DbSet<Request> Request { get; set; }
-        public virtual DbSet<Shipment> Shipment { get; set; }
-        public virtual DbSet<Stock> Stock { get; set; }
-        public virtual DbSet<Supply> Supply { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<Product_Of_Request> Product_Of_Request { get; set; }
+        public virtual DbSet<Client> Clients { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Position> Positions { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Product_Type> Product_Types { get; set; }
+        public virtual DbSet<Provider> Providesr { get; set; }
+        public virtual DbSet<Provider_Product> Provider_Products { get; set; }
+        public virtual DbSet<Request> Requests { get; set; }
+        public virtual DbSet<Shipment> Shipments { get; set; }
+        public virtual DbSet<Stock> Stocks { get; set; }
+        public virtual DbSet<Supply> Supplys { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        //public virtual DbSet<Product_Of_Request> Product_Of_Requests { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        public string AddClient(string title, string lastName, string firstName, string patronymic, string phone, string addressCompany, string clientStatus, string contractPath, string photo) 
         {
-            modelBuilder.Entity<Client>()
-                .Property(e => e.TitleCompany)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Client>()
-                .Property(e => e.LastName)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Client>()
-                .Property(e => e.FirstName)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Client>()
-                .Property(e => e.Patronymic)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Client>()
-                .Property(e => e.AddressCompany)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Client>()
-                .Property(e => e.ClientStatus)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Client>()
-                .Property(e => e.ContractPath)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Client>()
-                .Property(e => e.Photo)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Client>()
-                .HasMany(e => e.Request)
-                .WithRequired(e => e.Client)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Client>()
-                .HasMany(e => e.Shipment)
-                .WithRequired(e => e.Client)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Employee>()
-                .Property(e => e.LastName)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Employee>()
-                .Property(e => e.FirstName)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Employee>()
-                .Property(e => e.Patronymic)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Employee>()
-                .HasMany(e => e.Shipment)
-                .WithRequired(e => e.Employee)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Employee>()
-                .HasMany(e => e.Supply)
-                .WithRequired(e => e.Employee)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Position>()
-                .Property(e => e.Title)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Position>()
-                .HasMany(e => e.Employee)
-                .WithRequired(e => e.Position)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Product>()
-                .Property(e => e.Title)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Product>()
-                .Property(e => e.Photo)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Product>()
-                .HasMany(e => e.Product_Of_Request)
-                .WithRequired(e => e.Product)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Product>()
-                .HasMany(e => e.Stock)
-                .WithRequired(e => e.Product)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Product_Type>()
-                .Property(e => e.Title)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Product_Type>()
-                .HasMany(e => e.Product)
-                .WithRequired(e => e.Product_Type)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Provider>()
-                .Property(e => e.TitleCompany)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Provider>()
-                .Property(e => e.LastName)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Provider>()
-                .Property(e => e.FirstName)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Provider>()
-                .Property(e => e.Patronymic)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Provider>()
-                .Property(e => e.Photo)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Provider>()
-                .HasMany(e => e.Supply)
-                .WithRequired(e => e.Provider)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Provider_Product>()
-                .Property(e => e.Title)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Provider_Product>()
-                .HasMany(e => e.Supply)
-                .WithRequired(e => e.Provider_Product)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Request>()
-                .Property(e => e.StatusRequest)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Request>()
-                .HasMany(e => e.Product_Of_Request)
-                .WithRequired(e => e.Request)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Request>()
-                .HasMany(e => e.Shipment)
-                .WithRequired(e => e.Request)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Users>()
-                .Property(e => e.UserLogin)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Users>()
-                .Property(e => e.UserPassword)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Users>()
-                .Property(e => e.UserStatus)
-                .IsFixedLength()
-                .IsUnicode(false);
+            try
+            {
+                Clients.Add(new Client()
+                {
+                    TitleCompany = title,
+                    LastName = lastName,
+                    FirstName = firstName,
+                    Patronymic = patronymic,
+                    Phone = phone,
+                    AddressCompany = addressCompany,
+                    ClientStatus = clientStatus,
+                    ContractPath = contractPath,
+                    Photo = photo
+                });
+                SaveChanges();
+                return "Запись добавлена!";
+            }
+            catch(Exception ex) { return ex.Message; }
         }
+        public string AddEmployee(string lastName, string firstName, string patronymic, string phone, int ID_position)
+        {
+            try
+            {
+                Employee employee = new Employee()
+                {
+                    LastName = lastName,
+                    FirstName = firstName,
+                    Patronymic = patronymic,
+                    Phone = phone,
+                    ID_Position = ID_position
+                };
+                Employees.Add(employee);
+                Positions.FirstOrDefault(i=>i.PositionID == ID_position).Employee.Add(employee);
+                SaveChanges();
+                return "Запись добавлена!";
+            }
+            catch (Exception ex) { return ex.Message; }
+        }
+        public string AddPosition(string title, double salary)
+        {
+            try
+            {
+               Positions.Add(new Position()
+                {
+                   Title=title,
+                   Salary=salary
+                });
+                SaveChanges();
+                return "Запись добавлена!";
+            }
+            catch (Exception ex) { return ex.Message; }
+        }
+        public string AddProduct(string title, double price, string photo, int ID_productType)
+        {
+            try
+            {
+                Product product = new Product()
+                {
+                    Title = title,
+                    Price = price,
+                    Photo = photo,
+                    ID_ProductType = ID_productType
+                };
+                Products.Add(product);
+                Product_Types.FirstOrDefault(i => i.Product_TypeID == ID_productType).Product.Add(product);
+                SaveChanges();
+                return "Запись добавлена!";
+            }
+            catch (Exception ex) { return ex.Message; }
+        }
+        ////public string AddProduct_Of_Request(int ID_request, double price, int ID_product, int quantity)
+        //{
+        //    try
+        //    {
+        //        Product_Of_Request product_ = new Product_Of_Request()
+        //        {
+        //            ID_Product =ID_product,
+        //            Price = price,
+        //            ID_Request = ID_request,
+        //            Quantity = quantity
+        //        };
+        //        Product_Of_Requests.Add(product_);
+        //        Products.FirstOrDefault(i => i.ID_Product == ID_product).Product_Of_Request.Add(product_);
+        //        SaveChanges();
+        //        return "Запись добавлена!";
+        //    }
+        //    catch (Exception ex) { return ex.Message; }
+        //}
+
+
     }
 }

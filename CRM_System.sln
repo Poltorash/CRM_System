@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM_System", "CRM_System\CRM_System.csproj", "{3B9EBE97-18E6-452C-B411-36E63047D433}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.Context", "CRM.Context\CRM.Context.csproj", "{7ABBDBE4-6C2E-495B-8A56-D99288867F88}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM_Context", "CRM.Context\CRM_Context.csproj", "{7ABBDBE4-6C2E-495B-8A56-D99288867F88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.Model", "CRM.Model\CRM.Model.csproj", "{40D96444-3FF1-428B-86A7-687FAFDB9C53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM_Model", "CRM.Model\CRM_Model.csproj", "{40D96444-3FF1-428B-86A7-687FAFDB9C53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

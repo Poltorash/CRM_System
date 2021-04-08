@@ -23,6 +23,7 @@ namespace CRM.Model.DbModels
         public virtual DbSet<Shipment> Shipment { get; set; }
         public virtual DbSet<Stock> Stock { get; set; }
         public virtual DbSet<Supply> Supply { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Product_Of_Request> Product_Of_Request { get; set; }
 

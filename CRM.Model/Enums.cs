@@ -15,10 +15,13 @@ namespace CRM.Model
     }
     public enum StatusRequest 
     { 
-
+        Обработан,
+        Отправлен,
+        Выполнен
     }
     public enum UserStatus 
     {
-
+        Администратор,
+        Пользователь
     }
 }

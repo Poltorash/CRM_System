@@ -9,7 +9,7 @@ namespace CRM.Model.DbModels
     {        
         public int Provider_ProductID { get; set; }        
         public string Title { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
         public virtual ICollection<Supply> Supply { get; set; }
     }
 }

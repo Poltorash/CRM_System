@@ -11,6 +11,6 @@ namespace CRM.Model.DbModels
         public int UserID { get; set; }
         public string UserLogin { get; set; }
         public string UserPassword { get; set; }
-        public string UserStatus { get; set; }
+        public UserStatus UserStatus { get; set; }
     }
 }

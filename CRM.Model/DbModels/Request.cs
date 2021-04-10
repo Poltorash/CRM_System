@@ -9,7 +9,7 @@ namespace CRM.Model.DbModels
         public int RequestID { get; set; }
         public int ClientID { get; set; }      
         public DateTime DateRequest { get; set; }
-        public string StatusRequest { get; set; }
+        public StatusRequest StatusRequest { get; set; }
         public virtual Client Client { get; set; }
         public virtual ICollection<Product_Of_Request> Product_Of_Requests { get; set; }
         public virtual ICollection<Shipment> Shipment { get; set; }

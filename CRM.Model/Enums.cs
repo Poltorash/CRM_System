@@ -8,9 +8,17 @@ namespace CRM.Model
 {
     public enum Tag
     {
-        Постоянный_клиент,
-        Первый_заказ,
+        Заинтересованы,
+        Дегустация,    
         Договор,
-        Заинтересованы
+        Постоянный_клиент
+    }
+    public enum StatusRequest 
+    { 
+
+    }
+    public enum UserStatus 
+    {
+
     }
 }

@@ -15,7 +15,7 @@ namespace CRM.Model.DbModels
         public string Patronymic { get; set; }
         public string Phone { get; set; }
         public string AddressCompany { get; set; }
-        public string ClientStatus { get; set; }
+        public Tag ClientStatus { get; set; }
         public string ContractPath { get; set; }
         public string Photo { get; set; }
         public virtual ICollection<Request> Request { get; set; }

@@ -37,8 +37,9 @@
             <Button Content="Воронка продаж"/>
             <Button Content="Клиенты"/>
             <Button Content="Заявки"/>
-            <Button Content="Товары"/>
+            <Button Content="Товары" Click="Button_Click"/>
             <Button Content="Отчет"/>
         </StackPanel>
+        <Frame NavigationUIVisibility="Hidden" Name="MainFrame" Grid.Column="1"/>
     </Grid>
 </Window>

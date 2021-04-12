@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRM.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,25 @@ namespace CRM_System
     /// </summary>
     public partial class ClientListPage : Page
     {
-        public ClientListPage()
+        MenuWindow MenuWindow;
+        public ClientListPage(MenuWindow menuWindow)
         {
             InitializeComponent();
+            MenuWindow = menuWindow;
+            using (var db = new CRM_Model()) 
+            {
+                LVClients.ItemsSource = db.GetAllClient();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MenuWindow.MainFrame.Navigate(new AddClientPage(MenuWindow));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MenuWindow.MainFrame.Navigate(new AddClientPage(MenuWindow,Convert.ToInt32(LVClients.SelectedValue)));
         }
     }
 }

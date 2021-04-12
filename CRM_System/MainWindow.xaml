@@ -26,7 +26,6 @@
                                 </LinearGradientBrush>
                             </Border.Background>
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
-
                             </ContentPresenter>
                         </Border>
                     </ControlTemplate>

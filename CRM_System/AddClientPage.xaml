@@ -59,19 +59,19 @@
         <TextBlock Text="Номер телефона" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" Margin="42,19,41,19"/>
         <TextBlock Text="Адрес" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Margin="85,19"/>
         <TextBlock Text="Статус" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6" Margin="84,19"/>
-        <TextBox Grid.Column="1" VerticalAlignment="Center" Height="35" Margin="0,11"/>
-        <TextBox Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Height="30" Margin="0,13,0,14"/>
-        <TextBox Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Height="30" Margin="0,14"/>
-        <TextBox Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Height="30" Margin="0,14,0,13"/>
-        <TextBox Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Height="30" Margin="0,13,0,14"/>
-        <TextBox Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Height="30"  Margin="0,14,0,13"/>
+        <TextBox Name="TB_TitleC"  Grid.Column="1" VerticalAlignment="Center" Height="35" Margin="0,11"/>
+        <TextBox Name="TB_LastName" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Height="30" Margin="0,13,0,14"/>
+        <TextBox Name="TB_FirstName" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Height="30" Margin="0,14"/>
+        <TextBox Name="TB_Patronymic" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Height="30" Margin="0,14,0,13"/>
+        <TextBox Name="TB_Phone" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Height="30" Margin="0,13,0,14"/>
+        <TextBox Name="TB_Address" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Height="30"  Margin="0,14,0,13"/>
         <ComboBox Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" Height="30" Margin="0,13,0,14"/>
         <TextBlock Text="Фото" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center"/>
         <Image x:Name="I_PhotoC" Grid.Column="3" Grid.Row="2" Grid.RowSpan="4"/>
         <Button x:Name="ButtonImage" Grid.Column="3" Grid.Row="6" Content="Добавить фото" Click="Button_Click"/>
         <StackPanel Grid.ColumnSpan="3" Grid.Row="7" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="205,0">
-            <Button Content="Добавить договор" Click="Button_Click"/>
-            <Button Content="Добавить клиента"/>
+            <Button Content="Добавить договор" />
+            <Button Name="AddOrEditButtonC" Content="Добавить клиента" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </Page>

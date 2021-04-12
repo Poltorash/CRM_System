@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRM.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,30 @@ namespace CRM_System
     /// </summary>
     public partial class ProductListPage : Page
     {
-        public ProductListPage()
+        MenuWindow MenuWindow;
+        public ProductListPage(MenuWindow menuWindow)
         {
+            MenuWindow = menuWindow;
             InitializeComponent();
+            using (var db = new CRM_Model())
+            {
+                LVProduct.ItemsSource = db.GetAllProduct();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MenuWindow.MainFrame.Navigate(new AddProductPage());
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

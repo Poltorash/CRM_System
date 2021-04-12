@@ -48,7 +48,7 @@
                 <Image Source="Resources/Search2.png" Height="20" Width="20" HorizontalAlignment="Right"/>
             </StackPanel>
         </Border>
-        <ListView Grid.Row="1" Name="LVClients" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center">
+        <ListView SelectedValuePath="ClientID" Grid.Row="1" Name="LVClients" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"></WrapPanel>
@@ -81,7 +81,8 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Content="Добавить"/>
+            <Button Content="Добавить" Click="Button_Click"/>
+            <Button Content="Редактировать" Click="Button_Click_1"/>
         </StackPanel>
     </Grid>
 </Page>

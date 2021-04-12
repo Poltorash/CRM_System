@@ -185,6 +185,10 @@
       <Project>{7abbdbe4-6c2e-495b-8a56-d99288867f88}</Project>
       <Name>CRM_Context</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CRM.Model\CRM_Model.csproj">
+      <Project>{40D96444-3FF1-428B-86A7-687FAFDB9C53}</Project>
+      <Name>CRM_Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Search.png" />

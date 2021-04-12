@@ -22,6 +22,12 @@ namespace CRM_System
         public MenuWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new ClientListPage(this));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ProductListPage(this));
         }
     }
 }

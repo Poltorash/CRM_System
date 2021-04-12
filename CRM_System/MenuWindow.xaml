@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CRM_System"
         mc:Ignorable="d"
-        Title="MenuWindow" Height="450" Width="800">
+        Title="MenuWindow" Height="450" Width="800" Icon="Resources/Logo.ico">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Width" Value="150"/>
@@ -30,7 +30,7 @@
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Row="1" Background="#F1F4FB"/>
+        <Grid Background="#F1F4FB" Grid.RowSpan="2"/>
         <StackPanel Grid.RowSpan="2">
             <Image Source="Resources/logo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50"/>
             <Button Content="Аналитика"/>
@@ -40,6 +40,6 @@
             <Button Content="Товары" Click="Button_Click"/>
             <Button Content="Отчет"/>
         </StackPanel>
-        <Frame NavigationUIVisibility="Hidden" Name="MainFrame" Grid.Column="1"/>
+        <Frame NavigationUIVisibility="Hidden" Name="MainFrame" Grid.Column="1" Grid.RowSpan="2"/>
     </Grid>
 </Window>

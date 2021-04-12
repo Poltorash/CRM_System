@@ -35,6 +35,50 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="Century Gothic"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Width="auto" Height="30" Background="White" BorderThickness="1">
+                            <Border.BorderBrush>
+                                <LinearGradientBrush EndPoint="0, 0.5" MappingMode="RelativeToBoundingBox" StartPoint="1, 0.5">
+                                    <GradientStop Color="#FFCEA345" Offset="1.0"/>
+                                    <GradientStop Color="#FFCEB46F" Offset="0.0"/>
+                                </LinearGradientBrush>
+                            </Border.BorderBrush>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                            </ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="Century Gothic"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Border Width="auto" Height="30" Background="White" BorderThickness="1">
+                            <Border.BorderBrush>
+                                <LinearGradientBrush EndPoint="0, 0.5" MappingMode="RelativeToBoundingBox" StartPoint="1, 0.5">
+                                    <GradientStop Color="#FFCEA345" Offset="1.0"/>
+                                    <GradientStop Color="#FFCEB46F" Offset="0.0"/>
+                                </LinearGradientBrush>
+                            </Border.BorderBrush>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                            </ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -51,12 +95,12 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Клиент" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Text="Статус" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/> <!--думаю можно сделать перечисление возможных статусов в enums и сделать комбач-->
-        <TextBlock Text="Дата" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"/>
-        <TextBlock Text="Продукция" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3"/>
-        <TextBlock Text="Количесвто" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4"/>
-        <TextBlock Text="Сумма" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5"/> <!--это поле должно автоматически считаться-->
+        <TextBlock Text="Клиент:" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10"/>
+        <TextBlock Text="Статус:" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Margin="10"/> <!--думаю можно сделать перечисление возможных статусов в enums и сделать комбач-->
+        <TextBlock Text="Дата:" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2" Margin="10"/>
+        <TextBlock Text="Продукция:" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3" Margin="10"/>
+        <TextBlock Text="Количесвто:" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="4" Margin="10"/>
+        <TextBlock Text="Сумма:" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="5" Margin="10"/> <!--это поле должно автоматически считаться-->
         <ComboBox Grid.Column="1" VerticalAlignment="Center" Height="35"/>
         <TextBox Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Height="30"/>
         <DatePicker Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Height="30"/>

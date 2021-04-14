@@ -40,22 +40,6 @@
             <Setter Property="FontFamily" Value="Century Gothic"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Height" Value="30"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TextBox">
-                        <Border Width="auto" Height="30" Background="White" BorderThickness="1">
-                            <Border.BorderBrush>
-                                <LinearGradientBrush EndPoint="0, 0.5" MappingMode="RelativeToBoundingBox" StartPoint="1, 0.5">
-                                    <GradientStop Color="#FFCEA345" Offset="1.0"/>
-                                    <GradientStop Color="#FFCEB46F" Offset="0.0"/>
-                                </LinearGradientBrush>
-                            </Border.BorderBrush>
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
-                            </ContentPresenter>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
         </Style>
         <Style TargetType="ComboBox">
             <Setter Property="FontSize" Value="15"/>
@@ -101,12 +85,24 @@
         <TextBlock Text="Продукция:" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3" Margin="10"/>
         <TextBlock Text="Количесвто:" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="4" Margin="10"/>
         <TextBlock Text="Сумма:" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="5" Margin="10"/> <!--это поле должно автоматически считаться-->
-        <ComboBox Grid.Column="1" VerticalAlignment="Center" Height="35"/>
-        <TextBox Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Height="30"/>
-        <DatePicker Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Height="30"/>
-        <ComboBox Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Height="30"/>
-        <TextBox Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Height="30"/>
-        <TextBox Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Height="30"/>
+        <Border Grid.Column="1" Width="auto" Height="30" Background="White" VerticalAlignment="Center">
+            <ComboBox BorderThickness="1" BorderBrush="#FFCEA345"/>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="1" Width="auto" Height="30" Background="White" VerticalAlignment="Center">
+            <TextBox BorderThickness="1" BorderBrush="#FFCEA345"/>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="2" Width="auto" Height="30" Background="White" VerticalAlignment="Center">
+            <DatePicker BorderThickness="1" BorderBrush="#FFCEA345"/>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="3" Width="auto" Height="30" Background="White" VerticalAlignment="Center">
+            <ComboBox BorderThickness="1" BorderBrush="#FFCEA345"/>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="4" Width="auto" Height="30" Background="White" VerticalAlignment="Center">
+            <TextBox BorderThickness="1" BorderBrush="#FFCEA345"/>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="5" Width="auto" Height="30" Background="White" VerticalAlignment="Center">
+            <TextBox BorderThickness="1" BorderBrush="#FFCEA345"/>
+        </Border>
         <Button Grid.ColumnSpan="2" Grid.Row="6" Content="Добавить продукцию"/> <!--как на складе, тип нажимаешь, и еще товар добавляешь-->
         <StackPanel Grid.ColumnSpan="3" Grid.Row="7" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="205,0">
             <Button Content="Оформить заявку"/>

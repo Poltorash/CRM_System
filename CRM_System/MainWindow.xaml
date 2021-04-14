@@ -50,6 +50,6 @@
             </StackPanel>
         </Border>
         <Button x:Name="Btn_Registration" Foreground="White" Content="Зарегистрироваться" Grid.Row="2" HorizontalAlignment="Left" Click="Btn_Registration_Click"/>
-        <Button x:Name="Btn_Autorization" Foreground="White" Content="Войти" Grid.Row="2" HorizontalAlignment="Right"/>
+        <Button x:Name="Btn_Autorization" Foreground="White" Content="Войти" Grid.Row="2" HorizontalAlignment="Right" Click="Btn_Autorization_Click"/>
     </Grid>
 </Window>

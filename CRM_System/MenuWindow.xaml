@@ -33,11 +33,11 @@
         <Grid Background="#F1F4FB" Grid.RowSpan="2"/>
         <StackPanel Grid.RowSpan="2">
             <Image Source="Resources/logo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50"/>
-            <Button Content="Аналитика"/>
-            <Button Content="Воронка продаж"/>
+            <!--<Button Content="Аналитика"/> -->
+            <!--<Button Content="Воронка продаж"/>-->
             <Button Content="Клиенты"/>
-            <Button Content="Заявки"/>
             <Button Content="Товары" Click="Button_Click"/>
+            <Button Content="Заявки"/>
             <Button Content="Отчет"/>
         </StackPanel>
         <Frame NavigationUIVisibility="Hidden" Name="MainFrame" Grid.Column="1" Grid.RowSpan="2"/>

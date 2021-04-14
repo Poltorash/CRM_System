@@ -40,7 +40,7 @@
             <Setter Property="FontFamily" Value="Century Gothic"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Height" Value="30"/>
-            <Setter Property="Template">
+            <!--<Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
                         <Border Width="auto" Height="30" Background="White" BorderThickness="1">
@@ -55,7 +55,7 @@
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
-            </Setter>
+            </Setter>-->
         </Style>
         <Style TargetType="ComboBox">
             <Setter Property="FontSize" Value="15"/>
@@ -95,9 +95,15 @@
         <TextBlock Text="Название:" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10"/>
         <TextBlock Text="Тип продукта:" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Margin="10"/>
         <TextBlock Text="Цена:" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2" Margin="10"/>
-        <TextBox Grid.Column="1"/>
-        <TextBox Grid.Column="1" Grid.Row="2"/>
-        <ComboBox Grid.Column="1" Grid.Row="1"/>
+        <Border Grid.Column="1" Width="auto" Height="30" Background="White" VerticalAlignment="Center">
+            <TextBox BorderThickness="1" BorderBrush="#FFCEA345"/>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="2" Width="auto" Height="30" Background="White" VerticalAlignment="Center">
+            <TextBox BorderThickness="1" BorderBrush="#FFCEA345"/>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="1" Width="auto" Height="30" Background="White" VerticalAlignment="Center">
+            <ComboBox BorderThickness="1" BorderBrush="#FFCEA345"/>
+        </Border>
         <Border BorderBrush="#F1F4FB" Grid.Column="2" Grid.RowSpan="3" Margin="0 10 0 10" Width="Auto" Height="Auto" BorderThickness="2">
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Фото" FontSize="20" FontFamily="Century Gothic" HorizontalAlignment="Center" VerticalAlignment="Center"/>

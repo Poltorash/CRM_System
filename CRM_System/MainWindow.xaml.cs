@@ -30,5 +30,10 @@ namespace CRM_System
         {
 
         }
+
+        private void Btn_Autorization_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

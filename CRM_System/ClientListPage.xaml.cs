@@ -41,5 +41,10 @@ namespace CRM_System
         {
             MenuWindow.MainFrame.Navigate(new AddClientPage(MenuWindow,Convert.ToInt32(LVClients.SelectedValue)));
         }
+
+        private void LVClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

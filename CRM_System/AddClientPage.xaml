@@ -36,14 +36,17 @@
             </Setter>
         </Style>
         <Style TargetType="TextBox">
+            <Setter Property="Width" Value="auto"/>
+            <Setter Property="Height" Value="30"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="FontFamily" Value="Century Gothic"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Height" Value="30"/>
-            <Setter Property="Template">
+            <!--<Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
-                        <Border Width="auto" Height="30" Background="White" BorderThickness="1">
+                        <Border Width="auto" Height="30" BorderThickness="1">
                             <Border.BorderBrush>
                                 <LinearGradientBrush EndPoint="0, 0.5" MappingMode="RelativeToBoundingBox" StartPoint="1, 0.5">
                                     <GradientStop Color="#FFCEA345" Offset="1.0"/>
@@ -55,7 +58,7 @@
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
-            </Setter>
+            </Setter>-->
         </Style>
     </Page.Resources>
     <Grid>
@@ -79,22 +82,34 @@
         <TextBlock Text="Отчество:" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3" Margin="10"/>
         <TextBlock Text="Номер телефона:" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="4" Margin="10"/>
         <TextBlock Text="Адрес:" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="5" Margin="10"/>
-        <TextBox Name="TB_TitleC"  Grid.Column="1"/>
-        <TextBox Name="TB_LastName" Grid.Column="1" Grid.Row="1"/>
-        <TextBox Name="TB_FirstName" Grid.Column="1" Grid.Row="2"/>
-        <TextBox Name="TB_Patronymic" Grid.Column="1" Grid.Row="3"/>
-        <TextBox Name="TB_Phone" Grid.Column="1" Grid.Row="4"/>
-        <TextBox Name="TB_Address" Grid.Column="1" Grid.Row="5"/>
+        <Border  Grid.Column="1" Width="auto" Height="30" Background="White" VerticalAlignment="Center">
+            <TextBox Name="TB_TitleC" BorderThickness="1" BorderBrush="#FFCEA345"/>
+        </Border>
+        <Border Width="auto" Height="30" Background="White"  Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
+            <TextBox Name="TB_LastName" BorderThickness="1" BorderBrush="#FFCEA345"/>
+        </Border>
+        <Border Width="auto" Height="30" Background="White" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center">
+            <TextBox Name="TB_FirstName" BorderThickness="1" BorderBrush="#FFCEA345"/>
+        </Border>
+        <Border Width="auto" Height="30" Background="White" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center">
+            <TextBox Name="TB_Patronymic" BorderThickness="1" BorderBrush="#FFCEA345"/>
+        </Border>
+        <Border Width="auto" Height="30" Background="White" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center">
+            <TextBox Name="TB_Phone" BorderThickness="1" BorderBrush="#FFCEA345"/>
+        </Border>
+        <Border Width="auto" Height="30" Background="White" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center">
+        <TextBox Name="TB_Address" BorderThickness="1" BorderBrush="#FFCEA345"/>
+        </Border>
         <Border BorderBrush="#F1F4FB" Grid.Column="2" Grid.RowSpan="6" Margin="0 10 0 10" Width="Auto" Height="Auto" BorderThickness="2">
             <StackPanel Orientation="Vertical">
             <TextBlock Text="Фото" FontSize="20" FontFamily="Century Gothic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Image x:Name="I_PhotoC" Width="200" Height="270" Source="Resources/NoPhoto.png"/>
-            <Button x:Name="ButtonImage" Content="Добавить фото" Click="Button_Click"/>
+            <Button x:Name="ButtonImage" Content="Добавить фото" Click="ButtonImage_Click"/>
         </StackPanel>
         </Border>
         <StackPanel Grid.ColumnSpan="3" Grid.Row="7" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="400">
-            <Button Content="Добавить договор"/>
-            <Button Name="AddOrEditButtonC" Content="Добавить клиента" Click="Button_Click"/>
+            <Button x:Name="AddContract" Content="Добавить договор" Click="AddContract_Click"/>
+            <Button Name="AddOrEditButtonC" Content="Добавить клиента" Click="AddOrEditButtonC_Click"/>
         </StackPanel>
     </Grid>
 </Page>

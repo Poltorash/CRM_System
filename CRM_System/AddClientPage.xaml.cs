@@ -48,20 +48,30 @@ namespace CRM_System
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonImage_Click(object sender, RoutedEventArgs e)
         {
-            using (var db = new CRM_Model()) 
+
+        }
+
+        private void AddOrEditButtonC_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new CRM_Model())
             {
                 if (!Edit)
                 {
-                    MessageBox.Show(db.AddClient(TB_TitleC.Text, TB_LastName.Text, TB_FirstName.Text, TB_Patronymic.Text, TB_Phone.Text, TB_Address.Text, ""));                    
+                    MessageBox.Show(db.AddClient(TB_TitleC.Text, TB_LastName.Text, TB_FirstName.Text, TB_Patronymic.Text, TB_Phone.Text, TB_Address.Text, ""));
                 }
                 else
                 {
-                    MessageBox.Show(db.EditClient(ID,TB_TitleC.Text, TB_LastName.Text, TB_FirstName.Text, TB_Patronymic.Text, TB_Phone.Text,"", TB_Address.Text, ""));                   
+                    MessageBox.Show(db.EditClient(ID, TB_TitleC.Text, TB_LastName.Text, TB_FirstName.Text, TB_Patronymic.Text, TB_Phone.Text, "", TB_Address.Text, ""));
                 }
                 MenuWindow.MainFrame.Navigate(new ClientListPage(MenuWindow));
             }
+        }
+
+        private void AddContract_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

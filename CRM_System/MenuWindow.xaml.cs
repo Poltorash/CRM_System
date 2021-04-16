@@ -39,5 +39,10 @@ namespace CRM_System
         {
             MainFrame.Navigate(new RequestPage());
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ReportPage(this));
+        }
     }
 }

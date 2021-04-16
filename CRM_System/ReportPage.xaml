@@ -48,8 +48,6 @@
                 <Image Source="Resources/Search2.png" Height="20" Width="20" HorizontalAlignment="Right"/>
             </StackPanel>
         </Border>-->
-        <ListView SelectedValuePath="ClientID" Grid.Row="1" Name="LVClients" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" SelectionChanged="LVClients_SelectionChanged">
-        </Border>
         <ListView Grid.Row="1" Name="LVClients" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>

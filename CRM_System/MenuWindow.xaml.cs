@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRM.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace CRM_System
         {
             InitializeComponent();
             MainFrame.Navigate(new ClientListPage(this));
+            //using (var db = new CRM_Model())
+            //{
+                //db.AddProduct_Type("Квас");
+                //db.AddProduct_Type("Лимонад");
+                //db.AddProduct_Type("Вода");
+                //db.AddProduct_Type("Морс");
+            //}
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

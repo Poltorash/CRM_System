@@ -52,6 +52,6 @@
             <Button Content="Заявки" Click="Button_Click_2"/>
             <Button Content="Отчет" Click="Button_Click_3"/>
         </StackPanel>
-        <Frame NavigationUIVisibility="Hidden" Name="MainFrame" Grid.Column="1" Grid.RowSpan="3" ContentRendered="MainFrame_ContentRendered"/>
+        <Frame NavigationUIVisibility="Hidden" Name="MainFrame" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" ContentRendered="MainFrame_ContentRendered"/>
     </Grid>
 </Window>

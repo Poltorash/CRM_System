@@ -62,7 +62,7 @@
             <Setter Property="FontFamily" Value="Century Gothic"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Height" Value="30"/>
-            <Setter Property="Template">
+            <!--<Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ComboBox">
                         <Border Width="auto" Height="30" Background="White" BorderThickness="1">
@@ -77,7 +77,7 @@
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
-            </Setter>
+            </Setter>-->
         </Style>
     </Page.Resources>
     <Grid>

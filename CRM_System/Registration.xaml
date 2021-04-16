@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CRM_System"
         mc:Ignorable="d"
-        Title="Registration" Height="450" Width="800" Icon="Resources/Logo.ico">
+        Title="Registration" Height="450" Width="800" Icon="Resources/Logo.ico" WindowState="Maximized">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Width" Value="auto"/>
@@ -40,6 +40,9 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
+        <Button x:Name="BtnBack" HorizontalAlignment="Left" Style="{StaticResource ButtonBack}" Click="BtnBack_Click">
+            <Image Source="Resources/Back.png" HorizontalAlignment="Center"/>
+        </Button>
         <Image Source="Resources/logo.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Border Width="300" Height="200" Background="#F1F4FB" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="20" Grid.Row="1">
             <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">

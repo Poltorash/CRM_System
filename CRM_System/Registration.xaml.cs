@@ -45,5 +45,12 @@ namespace CRM_System
                 else MessageBox.Show("Есть пустые поля");
             }
         }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
     }
 }

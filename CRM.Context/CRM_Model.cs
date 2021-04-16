@@ -617,6 +617,7 @@
         public List<Client> GetAllClient() => Clients.ToList();
         public List<Request> GetAllRequest() => Requests.ToList();
 
+        public List<Request> GetRequests() => Requests.Where(r=>r.DateRequest < DateTime.Now.AddDays(-20)).ToList();
         public int Authorization(string login, string password) 
         {
             var user = Users.FirstOrDefault(u=>u.UserLogin == login && u.UserPassword == password);

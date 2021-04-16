@@ -56,5 +56,10 @@ namespace CRM_System
         {
             MainFrame.GoBack();
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ReportPage(this));
+        }
     }
 }

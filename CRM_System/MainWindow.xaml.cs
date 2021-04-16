@@ -28,12 +28,24 @@ namespace CRM_System
 
         private void Btn_Registration_Click(object sender, RoutedEventArgs e)
         {
-
+            Registration registration = new Registration();
+            registration.Show();
+            this.Close();
         }
 
         private void Btn_Autorization_Click(object sender, RoutedEventArgs e)
         {
-
+            using (var db = new CRM_Model()) 
+            {
+                int user = db.Authorization(TB_Login.Text,PasswordB.Password);
+                if (user != 0)
+                {
+                    MenuWindow menu = new MenuWindow();
+                    menu.Show();
+                    this.Close();
+                }
+                else MessageBox.Show("Неверный логин или пароль.");
+            }
         }
     }
 }

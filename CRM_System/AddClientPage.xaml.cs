@@ -1,4 +1,5 @@
 ﻿using CRM.Context;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace CRM_System
         MenuWindow MenuWindow;
         bool Edit = false;
         int ID = -1;
+        string FilePath;
         public AddClientPage(MenuWindow menuWindow)
         {
             InitializeComponent();
@@ -45,12 +47,32 @@ namespace CRM_System
                 TB_Patronymic.Text = item.Patronymic;
                 TB_Phone.Text = item.Phone;
                 TB_Address.Text = item.AddressCompany;
+                if (!db.StringIsEmpty(item.Photo))
+                {
+                    BitmapImage bm = new BitmapImage();
+                    bm.BeginInit();
+                    bm.UriSource = new Uri(item.Photo, UriKind.Relative);
+                    bm.CacheOption = BitmapCacheOption.OnLoad;
+                    bm.EndInit();
+                    I_PhotoC.Source = bm;
+                }
             }
         }
 
         private void ButtonImage_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files(*.png)|*.png|Image Files(*.JPG)|*.JPG|All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                FilePath = openFileDialog.FileName;
+            }        
+            BitmapImage bm = new BitmapImage();
+            bm.BeginInit();
+            bm.UriSource = new Uri(FilePath, UriKind.Relative);
+            bm.CacheOption = BitmapCacheOption.OnLoad;
+            bm.EndInit();
+            I_PhotoC.Source = bm;
         }
 
         private void AddOrEditButtonC_Click(object sender, RoutedEventArgs e)
@@ -59,11 +81,11 @@ namespace CRM_System
             {
                 if (!Edit)
                 {
-                    MessageBox.Show(db.AddClient(TB_TitleC.Text, TB_LastName.Text, TB_FirstName.Text, TB_Patronymic.Text, TB_Phone.Text, TB_Address.Text, ""));
+                    MessageBox.Show(db.AddClient(TB_TitleC.Text, TB_LastName.Text, TB_FirstName.Text, TB_Patronymic.Text, TB_Phone.Text, TB_Address.Text, FilePath));
                 }
                 else
                 {
-                    MessageBox.Show(db.EditClient(ID, TB_TitleC.Text, TB_LastName.Text, TB_FirstName.Text, TB_Patronymic.Text, TB_Phone.Text, "", TB_Address.Text, ""));
+                    MessageBox.Show(db.EditClient(ID, TB_TitleC.Text, TB_LastName.Text, TB_FirstName.Text, TB_Patronymic.Text, TB_Phone.Text, "", TB_Address.Text, FilePath));
                 }
                 MenuWindow.MainFrame.Navigate(new ClientListPage(MenuWindow));
             }

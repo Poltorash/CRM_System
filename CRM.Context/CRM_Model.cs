@@ -260,7 +260,7 @@
                     UserStatus=UserStatus.Пользователь
                 });
                 SaveChanges();
-                return "Запись добавлена!";
+                return "Регистрация прошла успешно!";
             }
             catch (Exception ex) { return ex.Message; }
         }
@@ -283,6 +283,18 @@
                 return "Запись отредактирована!";
             }
             catch (Exception ex) { return ex.Message; }
+        }
+        public string EditPhotoClient(int id,string photo) 
+        {
+            try
+            {
+                var item = Clients.FirstOrDefault(i => i.ClientID == id);              
+                item.Photo = photo;
+                SaveChanges();
+                return "Фото изменено!";
+            }
+            catch (Exception ex) { return ex.Message; }
+
         }
         public string EditEmployee(int id,string lastName, string firstName, string patronymic, string phone, int ID_position)
         {
@@ -603,5 +615,22 @@
         public Client GetClient(int id) => Clients.FirstOrDefault(i=>i.ClientID == id);
         public List<Product> GetAllProduct() => Products.ToList();
         public List<Client> GetAllClient() => Clients.ToList();
+        public List<Request> GetAllRequest() => Requests.ToList();
+
+        public int Authorization(string login, string password) 
+        {
+            var user = Users.FirstOrDefault(u=>u.UserLogin == login && u.UserPassword == password);
+            if (user != null) return user.UserID;
+            else return 0;
+        }
+        public bool StringIsEmpty(string text) 
+        {
+            if  (text == null) 
+                return true;
+            else if (text.Length < 1)
+                return true;
+            else 
+                return false;
+        }
     }
 }

@@ -39,7 +39,7 @@ namespace CRM_System
 
         private void LVClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            MenuWindow.MainFrame.Navigate(new ProfilePage(MenuWindow,Convert.ToInt32(LVClients.SelectedValue)));
         }
     }
 }

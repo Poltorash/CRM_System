@@ -29,5 +29,15 @@ namespace CRM_System
         {
             MainFrame.Navigate(new ProductListPage(this));
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ClientListPage(this));
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new RequestPage());
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CRM.Context;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +22,74 @@ namespace CRM_System
     /// </summary>
     public partial class ProfilePage : Page
     {
-        public ProfilePage()
+        int ID = 0;
+        MenuWindow MenuWindow;
+        string FilePath;
+        public ProfilePage(MenuWindow menu, int id)
         {
             InitializeComponent();
+            MenuWindow = menu;
+            ID = id;
+            using (var db = new CRM_Model())
+            {
+                var item = db.GetClient(ID);
+                TB_Title.Text = item.TitleCompany;
+                TB_LastName.Text = item.LastName;
+                TB_FirstName.Text = item.FirstName;
+                TB_Patronymic.Text = item.Patronymic;
+                TB_Phone.Text = item.Phone;
+                TB_Address.Text = item.AddressCompany;
+                TB_Status.Text = item.ClientStatus.ToString();
+                if (db.StringIsEmpty(item.ContractPath)) BT_Contract.Content = "Добавить договор";
+                if (!db.StringIsEmpty(item.Photo))
+                {
+                    BitmapImage bm = new BitmapImage();
+                    bm.BeginInit();
+                    bm.UriSource = new Uri(item.Photo, UriKind.Relative);
+                    bm.CacheOption = BitmapCacheOption.OnLoad;
+                    bm.EndInit();
+                    I_ProfilePhoto.Source = bm;
+                }
+            }
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            //MenuWindow.MainFrame.Navigate(new AddClientPage(MenuWindow, Convert.ToInt32(LVClients.SelectedValue)));
+            MenuWindow.MainFrame.Navigate(new AddClientPage(MenuWindow, ID));
+        }
+
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            using (var db = new CRM_Model())
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Image Files(*.png)|*.png|Image Files(*.JPG)|*.JPG|All files (*.*)|*.*";
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    FilePath = openFileDialog.FileName;
+                }
+                if (!db.StringIsEmpty(FilePath))
+                {
+                    BitmapImage bm = new BitmapImage();
+                    bm.BeginInit();
+                    bm.UriSource = new Uri(FilePath, UriKind.Relative);
+                    bm.CacheOption = BitmapCacheOption.OnLoad;
+                    bm.EndInit();
+                    I_ProfilePhoto.Source = bm;
+                    MessageBox.Show(db.EditPhotoClient(ID, FilePath));
+                }
+            }
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new CRM_Model())
+            {
+                MessageBox.Show(db.RemoveClient(ID));
+               MenuWindow.MainFrame.Navigate(new ClientListPage(MenuWindow));
+            }
+
         }
     }
 }

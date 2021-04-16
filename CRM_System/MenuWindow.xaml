@@ -35,9 +35,9 @@
             <Image Source="Resources/logo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50"/>
             <!--<Button Content="Аналитика"/> -->
             <!--<Button Content="Воронка продаж"/>-->
-            <Button Content="Клиенты"/>
+            <Button Content="Клиенты" Click="Button_Click_1"/>
             <Button Content="Товары" Click="Button_Click"/>
-            <Button Content="Заявки"/>
+            <Button Content="Заявки" Click="Button_Click_2"/>
             <Button Content="Отчет"/>
         </StackPanel>
         <Frame NavigationUIVisibility="Hidden" Name="MainFrame" Grid.Column="1" Grid.RowSpan="2"/>

@@ -52,6 +52,6 @@
                 <PasswordBox x:Name="PasswordB2"  Width="200" Height="20"/>
             </StackPanel>
         </Border>
-        <Button x:Name="Btn_Registration" Foreground="White" Content="Зарегистрироваться" Grid.Row="2" HorizontalAlignment="Center"/>
+        <Button x:Name="Btn_Registration" Foreground="White" Content="Зарегистрироваться" Grid.Row="2" HorizontalAlignment="Center" Click="Btn_Registration_Click"/>
     </Grid>
 </Window>

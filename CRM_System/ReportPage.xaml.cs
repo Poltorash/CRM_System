@@ -24,5 +24,15 @@ namespace CRM_System
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LVClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

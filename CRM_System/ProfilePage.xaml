@@ -54,7 +54,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Border Grid.Row="1" Grid.RowSpan="6" BorderThickness="1" BorderBrush="#FFCEB46F">
-            <Image HorizontalAlignment="Center" Margin="5">
+            <Image x:Name="I_ProfilePhoto" HorizontalAlignment="Center" Margin="5">
                     <Image.Source>
                         <Binding Path="Photo">
                             <Binding.TargetNullValue>
@@ -64,7 +64,7 @@
                     </Image.Source>
                 </Image>
         </Border>
-        <Button Grid.Row="7" Content="Изменить фото"/>
+        <Button Grid.Row="7" Content="Изменить фото" Click="Button_Click_1"/>
         <TextBlock Text="Название предприятия:" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" FontFamily="Century Gothic"/>
         <TextBlock Text="Фамилия:" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" FontFamily="Century Gothic"/>
         <TextBlock Text="Имя:" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" FontFamily="Century Gothic"/>
@@ -75,17 +75,17 @@
         <TextBlock Text="Договор" Grid.Column="1" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" FontFamily="Century Gothic"/>
         
         <!--Будут заполняться из бд-->
-        <TextBlock Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
-        <TextBlock Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
-        <TextBlock Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
-        <TextBlock Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
-        <TextBlock Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
-        <TextBlock Grid.Column="2" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
-        <TextBlock  Grid.Column="2" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
-        <Button Grid.Column="2" Grid.Row="7"/> <!--если в бд есть договор, то в кнопке будет написано "Открыть договор", если нет, то добавить-->
+        <TextBlock x:Name="TB_Title" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock x:Name="TB_LastName" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock x:Name="TB_FirstName" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock x:Name="TB_Patronymic" Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock x:Name="TB_Phone" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock x:Name="TB_Address" Grid.Column="2" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
+        <TextBlock x:Name="TB_Status" Grid.Column="2" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
+        <Button x:Name="BT_Contract" Grid.Column="2" Grid.Row="7" Content="Открыть договор"/> <!--если в бд есть договор, то в кнопке будет написано "Открыть договор", если нет, то добавить-->
         <StackPanel Grid.ColumnSpan="3" Grid.Row="8" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="205,0">
             <Button x:Name="BtnEdit" Content="Редактировать" Click="BtnEdit_Click"/>
-            <Button x:Name="BtnDelete" Content="Удалить"/>
+            <Button x:Name="BtnDelete" Content="Удалить" Click="BtnDelete_Click"/>
         </StackPanel>
     </Grid>
 </Page>

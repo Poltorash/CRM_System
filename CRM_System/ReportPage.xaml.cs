@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace CRM_System
 {
     /// <summary>
-    /// Логика взаимодействия для ProfilePage.xaml
+    /// Логика взаимодействия для ReportPage.xaml
     /// </summary>
-    public partial class ProfilePage : Page
+    public partial class ReportPage : Page
     {
-        public ProfilePage()
+        public ReportPage()
         {
             InitializeComponent();
-        }
-
-        private void BtnEdit_Click(object sender, RoutedEventArgs e)
-        {
-            //MenuWindow.MainFrame.Navigate(new AddClientPage(MenuWindow, Convert.ToInt32(LVClients.SelectedValue)));
         }
     }
 }

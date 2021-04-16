@@ -9,7 +9,7 @@
       Title="ProfilePage">
     <Page.Resources>
         <Style TargetType="Button">
-            <Setter Property="Width" Value="175"/>
+            <Setter Property="Width" Value="auto"/>
             <Setter Property="Height" Value="30"/>
             <Setter Property="Margin" Value="10"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -53,15 +53,17 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Image Width="400" Grid.Column="0" Grid.RowSpan="7" Stretch="UniformToFill" HorizontalAlignment="Center" Margin="5">
-            <Image.Source>
-                <Binding Path="Photo">
-                    <Binding.TargetNullValue>
-                        <ImageSource>Resources/NoPhoto.png</ImageSource>
-                    </Binding.TargetNullValue>
-                </Binding>
-            </Image.Source>
-        </Image>
+        <Border Grid.Row="1" Grid.RowSpan="6" BorderThickness="1" BorderBrush="#FFCEB46F">
+            <Image HorizontalAlignment="Center" Margin="5">
+                    <Image.Source>
+                        <Binding Path="Photo">
+                            <Binding.TargetNullValue>
+                                <ImageSource>Resources/NoPhoto.png</ImageSource>
+                            </Binding.TargetNullValue>
+                        </Binding>
+                    </Image.Source>
+                </Image>
+        </Border>
         <Button Grid.Row="7" Content="Изменить фото"/>
         <TextBlock Text="Название предприятия:" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" FontFamily="Century Gothic"/>
         <TextBlock Text="Фамилия:" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" FontFamily="Century Gothic"/>
@@ -82,8 +84,8 @@
         <TextBlock  Grid.Column="2" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
         <Button Grid.Column="2" Grid.Row="7"/> <!--если в бд есть договор, то в кнопке будет написано "Открыть договор", если нет, то добавить-->
         <StackPanel Grid.ColumnSpan="3" Grid.Row="8" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="205,0">
-            <Button Content="Редактировать"/>
-            <Button Content="Удалить"/>
+            <Button x:Name="BtnEdit" Content="Редактировать" Click="BtnEdit_Click"/>
+            <Button x:Name="BtnDelete" Content="Удалить"/>
         </StackPanel>
     </Grid>
 </Page>

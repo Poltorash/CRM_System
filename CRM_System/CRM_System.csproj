@@ -204,7 +204,9 @@
     <Resource Include="Resources\Search2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\NoPhoto.png" />
+    <Resource Include="Resources\NoPhoto.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\NoProduct.png" />

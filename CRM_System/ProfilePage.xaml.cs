@@ -40,16 +40,18 @@ namespace CRM_System
                 TB_Phone.Text = item.Phone;
                 TB_Address.Text = item.AddressCompany;
                 TB_Status.Text = item.ClientStatus.ToString();
-                if (db.StringIsEmpty(item.ContractPath)) BT_Contract.Content = "Добавить договор";
+                if (db.StringIsEmpty(item.ContractPath))
+                    BT_Contract.Content = "Добавить договор";
+                string dir = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM_System.exe", "");
+                BitmapImage bm = new BitmapImage();
+                bm.BeginInit();
                 if (!db.StringIsEmpty(item.Photo))
-                {
-                    BitmapImage bm = new BitmapImage();
-                    bm.BeginInit();
                     bm.UriSource = new Uri(item.Photo, UriKind.Relative);
-                    bm.CacheOption = BitmapCacheOption.OnLoad;
-                    bm.EndInit();
-                    I_ProfilePhoto.Source = bm;
-                }
+                else
+                    bm.UriSource = new Uri(dir + "NoPhoto.PNG", UriKind.Relative); ;
+                bm.CacheOption = BitmapCacheOption.OnLoad;
+                bm.EndInit();
+                I_ProfilePhoto.Source = bm;
             }
         }
 

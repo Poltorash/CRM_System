@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,15 +48,16 @@ namespace CRM_System
                 TB_Patronymic.Text = item.Patronymic;
                 TB_Phone.Text = item.Phone;
                 TB_Address.Text = item.AddressCompany;
-                if (!db.StringIsEmpty(item.Photo))
-                {
-                    BitmapImage bm = new BitmapImage();
-                    bm.BeginInit();
+                string dir = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM_System.exe", "");
+                BitmapImage bm = new BitmapImage();
+                bm.BeginInit();
+                if (!db.StringIsEmpty(item.Photo))                 
                     bm.UriSource = new Uri(item.Photo, UriKind.Relative);
-                    bm.CacheOption = BitmapCacheOption.OnLoad;
-                    bm.EndInit();
-                    I_PhotoC.Source = bm;
-                }
+                else 
+                    bm.UriSource = new Uri(dir+ "NoPhoto.PNG", UriKind.Relative); ;
+                bm.CacheOption = BitmapCacheOption.OnLoad;
+                bm.EndInit();
+                I_PhotoC.Source = bm;
             }
         }
 

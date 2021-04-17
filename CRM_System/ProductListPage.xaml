@@ -42,12 +42,12 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Border Margin="5" x:Name="SearchClient"  Width="200" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="20" Background="White" BorderBrush="#FFCEA345" BorderThickness="1">
+       <!--<Border Margin="5" x:Name="SearchClient"  Width="200" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="20" Background="White" BorderBrush="#FFCEA345" BorderThickness="1">
             <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBox x:Name="Search"  Background="White" BorderBrush="White" Width="160" Height="20"/>
                 <Image Source="Resources/Search2.png" Height="20" Width="20" HorizontalAlignment="Right"/>
             </StackPanel>
-        </Border>
+        </Border>-->
         <ListView Grid.Row="1" Name="LVProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>

@@ -62,7 +62,7 @@
             <Setter Property="FontFamily" Value="Century Gothic"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Height" Value="30"/>
-            <Setter Property="Template">
+            <!--<Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ComboBox">
                         <Border Width="auto" Height="30" Background="White" BorderThickness="1">
@@ -77,7 +77,7 @@
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
-            </Setter>
+            </Setter>-->
         </Style>
     </Page.Resources>
     <Grid>
@@ -102,13 +102,13 @@
             <TextBox BorderThickness="1" BorderBrush="#FFCEA345"/>
         </Border>
         <Border Grid.Column="1" Grid.Row="1" Width="auto" Height="30" Background="White" VerticalAlignment="Center">
-            <ComboBox BorderThickness="1" BorderBrush="#FFCEA345"/>
+            <ComboBox x:Name="Cb_Type" BorderThickness="1" BorderBrush="#FFCEA345"  SelectedItem="{Binding Path=Product_Type}" DisplayMemberPath="Title"/>
         </Border>
         <Border BorderBrush="#F1F4FB" Grid.Column="2" Grid.RowSpan="3" Margin="0 10 0 10" Width="Auto" Height="Auto" BorderThickness="2">
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Фото" FontSize="20" FontFamily="Century Gothic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Image x:Name="I_PhotoP" Width="200" Height="270" Source="Resources/NoProduct.png"/>
-                <Button x:Name="ButtonImage" Content="Добавить фото" Click="Button_Click"/>
+                <Button x:Name="ButtonImage" Content="Добавить фото" Click="ButtonImage_Click"/>
             </StackPanel>
         </Border>
         <StackPanel Grid.ColumnSpan="3" Grid.Row="7" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="205,0">

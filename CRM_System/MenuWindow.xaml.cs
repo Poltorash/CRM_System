@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRM.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace CRM_System
         {
             InitializeComponent();
             MainFrame.Navigate(new ClientListPage(this));
+            //using (var db = new CRM_Model())
+            //{
+                //db.AddProduct_Type("Квас");
+                //db.AddProduct_Type("Лимонад");
+                //db.AddProduct_Type("Вода");
+                //db.AddProduct_Type("Морс");
+            //}
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -38,6 +46,23 @@ namespace CRM_System
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new RequestPage());
+        }
+
+        private void MainFrame_ContentRendered(object sender, EventArgs e)
+        {
+            if (MainFrame.CanGoBack)
+            {
+                BtnBack.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                BtnBack.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.GoBack();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)

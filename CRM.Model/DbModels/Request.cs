@@ -7,7 +7,8 @@ namespace CRM.Model.DbModels
     public class Request
     {       
         public int RequestID { get; set; }
-        public int ClientID { get; set; }      
+        public int ClientID { get; set; }     
+        public double Sum { get; set; }
         public DateTime DateRequest { get; set; }
         public StatusRequest StatusRequest { get; set; }
         public virtual Client Client { get; set; }

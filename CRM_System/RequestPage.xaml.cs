@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRM.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,37 @@ namespace CRM_System
     /// </summary>
     public partial class RequestPage : Page
     {
-        public RequestPage()
+        MenuWindow MenuWindow;
+        public RequestPage(MenuWindow menu)
         {
             InitializeComponent();
+            MenuWindow = menu;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MenuWindow.MainFrame.Navigate(new AddRequestPage(MenuWindow));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            using (var db = new CRM_Model()) 
+            {
+                MessageBox.Show(db.EditRequestStatus(Convert.ToInt32(DGR_Request.SelectedValue)));;
+            }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            using (var db = new CRM_Model()) 
+            {
+                MessageBox.Show(db.RemoveRequest(Convert.ToInt32(DGR_Request.SelectedValue)));
+            }
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

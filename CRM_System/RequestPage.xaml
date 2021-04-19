@@ -41,7 +41,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <DataGrid>
+        <DataGrid x:Name="DGR_Request" AutoGenerateColumns="False" SelectedValuePath="RequestID"> 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Клиент" Binding="{Binding Path=Client.TitleCompany}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Статус" Binding="{Binding Path=StatusRequest}" Width="*"></DataGridTextColumn>
@@ -49,10 +49,10 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Content="Продукция в заявке"/>
-            <Button Content="Добавить"/>
-            <Button Content="Редактировать"/>
-            <Button Content="Удалить"/>
+            <Button Content="Продукция в заявке" Click="Button_Click_3"/>
+            <Button Content="Добавить" Click="Button_Click"/>
+            <Button Content="Редактировать статус заявки" Click="Button_Click_1"/>
+            <Button Content="Удалить" Click="Button_Click_2"/>
         </StackPanel>
     </Grid>
 </Page>

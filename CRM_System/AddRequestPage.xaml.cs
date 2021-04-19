@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRM.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,42 @@ namespace CRM_System
     /// </summary>
     public partial class AddRequestPage : Page
     {
-        public AddRequestPage()
+        MenuWindow MenuWindow;
+        List<RequestParams> Params;
+        public AddRequestPage(MenuWindow menu)
         {
             InitializeComponent();
+            MenuWindow = menu;
+            Params =new List<RequestParams>();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new CRM_Model())
+            {
+                Params.Add(new RequestParams()
+                {
+                    id = Convert.ToInt32(CB_Product.SelectedValue),
+                    quantity = Convert.ToInt32(TB_Quantity.Text),
+                    sum = db.Sum(Convert.ToInt32(CB_Product.SelectedValue), Convert.ToInt32(TB_Quantity.Text))
+                });    
+                MessageBox.Show("Продукция добавлена");
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            DateTime date;
+            int id;
+            string message;
+            using (var db = new CRM_Model())
+            {
+                date= Convert.ToDateTime(DP_Date.SelectedDate);
+                id= Convert.ToInt32(CB_Client.SelectedValue);
+                message = db.AddRequest(date, id);               
+                db.AddProduct_Of_Request(db.GetRequestIDInLast(),Params);
+            }
+            MessageBox.Show(message);
         }
     }
 }

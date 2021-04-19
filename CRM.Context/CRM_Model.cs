@@ -106,20 +106,23 @@
             }
             catch (Exception ex) { return ex.Message; }
         }
-        public string AddProduct_Of_Request(int ID_request, double sum, int ID_product, int quantity)
+        public string AddProduct_Of_Request(int ID_request, List<RequestParams> requests)
         {
             try
             {
-                Product_Of_Request product_ = new Product_Of_Request()
+                foreach (var request in requests)
                 {
-                    ProductID = ID_product,
-                    Sum = sum,
-                    RequestID = ID_request,
-                    Quantity = quantity
-                };
-                Product_Of_Requests.Add(product_);
-                Products.FirstOrDefault(i => i.ProductID == ID_product).Product_Of_Requests.Add(product_);
-                Requests.FirstOrDefault(i => i.RequestID == ID_request).Product_Of_Requests.Add(product_);
+                    Product_Of_Request product_ = new Product_Of_Request()
+                    {
+                        ProductID = request.id,
+                        Sum = request.sum,
+                        RequestID = ID_request,
+                        Quantity = request.quantity
+                    };
+                    Product_Of_Requests.Add(product_);
+                    Products.FirstOrDefault(i => i.ProductID == request.id).Product_Of_Requests.Add(product_);
+                    Requests.FirstOrDefault(i => i.RequestID == request.id).Product_Of_Requests.Add(product_);
+                }
                 SaveChanges();
                 return "Запись добавлена!";
             }
@@ -617,7 +620,13 @@
         public List<Client> GetAllClient() => Clients.ToList();
         public List<Request> GetAllRequest() => Requests.ToList();
 
+        public int GetRequestIDInLast() => Requests.LastOrDefault().RequestID;
         public List<Request> GetRequests() => Requests.Where(r=>r.DateRequest < DateTime.Now.AddDays(-20)).ToList();
+
+        public double Sum(int id, int quantity) 
+        {
+            return Products.FirstOrDefault(i => i.ProductID == id).Price * quantity;
+        }
         public int Authorization(string login, string password) 
         {
             var user = Users.FirstOrDefault(u=>u.UserLogin == login && u.UserPassword == password);

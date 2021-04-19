@@ -45,7 +45,7 @@ namespace CRM_System
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new RequestPage());
+            MainFrame.Navigate(new RequestPage(this));
         }
 
         private void MainFrame_ContentRendered(object sender, EventArgs e)

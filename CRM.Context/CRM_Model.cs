@@ -18,8 +18,18 @@
         public CRM_Model()
             : base("name=CRM_Model")
         {
+            if (Users.Count() == 0) 
+            {
+                Users.Add(new User() 
+                {
+                    UserLogin="admin",
+                    UserPassword="1",
+                    UserStatus=UserStatus.Администратор
+                });
+                SaveChanges();
+            }
         }
-
+        int ID = 0;
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Position> Positions { get; set; }
@@ -121,7 +131,7 @@
                     };
                     Product_Of_Requests.Add(product_);
                     Products.FirstOrDefault(i => i.ProductID == request.id).Product_Of_Requests.Add(product_);
-                    Requests.FirstOrDefault(i => i.RequestID == request.id).Product_Of_Requests.Add(product_);
+                    Requests.FirstOrDefault(i => i.RequestID == ID_request).Product_Of_Requests.Add(product_);
                 }
                 SaveChanges();
                 return "Запись добавлена!";
@@ -191,6 +201,7 @@
                 client.Request.Add(request);                
                 if (client.Request.Count == 10) client.ClientStatus = Tag.Постоянный_клиент;
                 SaveChanges();
+                ID = request.RequestID;
                 return "Запись добавлена!";
             }
             catch (Exception ex) { return ex.Message; }
@@ -618,15 +629,16 @@
         public Client GetClient(int id) => Clients.FirstOrDefault(i=>i.ClientID == id);
         public List<Product> GetAllProduct() => Products.ToList();
         public List<Client> GetAllClient() => Clients.ToList();
-        public List<Request> GetAllRequest() => Requests.ToList();
+        public List<Request> GetAllRequest() => Requests.Include(i=>i.Client).ToList();
 
-        public int GetRequestIDInLast() => Requests.LastOrDefault().RequestID;
-        public List<Request> GetRequests() => Requests.Where(r=>r.DateRequest < DateTime.Now.AddDays(-20)).ToList();
-
-        public double Sum(int id, int quantity) 
+        public int GetRequestIDInLast() => Requests.FirstOrDefault(i=>i.RequestID == ID).RequestID;
+        public List<Request> GetRequests()
         {
-            return Products.FirstOrDefault(i => i.ProductID == id).Price * quantity;
+            DateTime date = DateTime.Now.AddDays(-20);
+            return Requests.Where(r => r.DateRequest < date).Include(u=>u.Client).ToList();
         }
+        public List<Product_Of_Request> GetProducts(int id) => Product_Of_Requests.Where(i => i.RequestID == id).Include(i=>i.Request).Include(i=>i.Product).ToList();
+        public double Sum(int id, int quantity) => Products.FirstOrDefault(i => i.ProductID == id).Price * quantity;
         public int Authorization(string login, string password) 
         {
             var user = Users.FirstOrDefault(u=>u.UserLogin == login && u.UserPassword == password);

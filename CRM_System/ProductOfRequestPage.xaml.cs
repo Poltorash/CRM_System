@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRM.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,14 @@ namespace CRM_System
     /// </summary>
     public partial class ProductOfRequestPage : Page
     {
-        public ProductOfRequestPage()
+        public ProductOfRequestPage(int id)
         {
             InitializeComponent();
+            DGR_Request.ItemsSource = null;
+            using (var db = new CRM_Model()) 
+            {
+                DGR_Request.ItemsSource = db.GetProducts(id);
+            }
         }
     }
 }

@@ -48,7 +48,7 @@
                 <Image Source="Resources/Search2.png" Height="20" Width="20" HorizontalAlignment="Right"/>
             </StackPanel>
         </Border>-->
-        <ListView Grid.Row="1" Name="LVProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center">
+        <ListView Grid.Row="1" SelectedValuePath="ProductID" Name="LVProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"></WrapPanel>

@@ -22,22 +22,44 @@ namespace CRM_System
     /// </summary>
     public partial class AddProductPage : Page
     {
-        MenuWindow MenuWindow;
-        bool Edit = false;
+        MenuWindow MenuWindow;      
         int ID = -1;
         string FilePath;
-        public AddProductPage()
+        public AddProductPage(MenuWindow menu)
         {
             InitializeComponent();
+            MenuWindow = menu;
+            UpdateComboBox();
+        }
+
+        public AddProductPage(MenuWindow menu, int id)
+        {
+            InitializeComponent();
+            MenuWindow = menu;
+            ID = id;
+            UpdateComboBox();
+        }
+        private void UpdateComboBox() 
+        {
+            Cb_Type.ItemsSource = null;
             using (var db = new CRM_Model())
             {
                 Cb_Type.ItemsSource = db.Product_Types.ToList();
             }
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            string title = TB_Title.Text;
+            double price = Convert.ToDouble(TB_Price.Text);
+            int idType = Convert.ToInt32(Cb_Type.SelectedValue);
+            using (var db = new CRM_Model()) 
+            {
+                if (ID == -1)
+                    MessageBox.Show(db.AddProduct(title, price, FilePath,idType));
+                else
+                    MessageBox.Show(db.EditProduct(ID,title, price, FilePath, idType));                
+            }
+            MenuWindow.MainFrame.Navigate(new ProductListPage(MenuWindow));
         }
 
         private void ButtonImage_Click(object sender, RoutedEventArgs e)
@@ -52,6 +74,11 @@ namespace CRM_System
                 }
                 BitmapImage bm = new BitmapImage();
                 bm.BeginInit();
+                using (var db = new CRM_Model())
+                {
+                    if (db.StringIsEmpty(FilePath)) 
+                        FilePath = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM_System.exe", "NoProduct.PNG");
+                }
                 bm.UriSource = new Uri(FilePath, UriKind.Relative);
                 bm.CacheOption = BitmapCacheOption.OnLoad;
                 bm.EndInit();

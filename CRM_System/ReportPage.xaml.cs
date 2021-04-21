@@ -37,9 +37,5 @@ namespace CRM_System
 
         }
 
-        private void LVClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

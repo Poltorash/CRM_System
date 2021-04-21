@@ -26,8 +26,17 @@ namespace CRM_System
         {
             InitializeComponent();
             MenuWindow = menu;
+            UpdateDataGrid();
         }
 
+        private void UpdateDataGrid() 
+        {
+            DGR_Request.ItemsSource = null;
+            using (var db = new CRM_Model()) 
+            {
+                DGR_Request.ItemsSource = db.GetAllRequest();
+            }
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MenuWindow.MainFrame.Navigate(new AddRequestPage(MenuWindow));
@@ -37,7 +46,8 @@ namespace CRM_System
         {
             using (var db = new CRM_Model()) 
             {
-                MessageBox.Show(db.EditRequestStatus(Convert.ToInt32(DGR_Request.SelectedValue)));;
+                MessageBox.Show(db.EditRequestStatus(Convert.ToInt32(DGR_Request.SelectedValue)));
+                UpdateDataGrid();
             }
         }
 
@@ -46,12 +56,13 @@ namespace CRM_System
             using (var db = new CRM_Model()) 
             {
                 MessageBox.Show(db.RemoveRequest(Convert.ToInt32(DGR_Request.SelectedValue)));
+                UpdateDataGrid();
             }
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-
+            MenuWindow.MainFrame.Navigate(new ProductOfRequestPage(Convert.ToInt32(DGR_Request.SelectedValue)));
         }
     }
 }

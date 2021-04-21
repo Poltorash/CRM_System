@@ -72,10 +72,10 @@
                                 </Binding>
                             </Image.Source>
                         </Image>
-                        <TextBlock Text="{Binding Path=TitleCompany}" VerticalAlignment="Center" TextAlignment="Center" Width="300" TextWrapping="Wrap"
+                        <TextBlock Text="{Binding Path=Client.TitleCompany}" VerticalAlignment="Center" TextAlignment="Center" Width="300" TextWrapping="Wrap"
                                    HorizontalAlignment="Center" Margin="5 5" FontSize="26" Grid.Row="1" FontFamily="Century Gothic"></TextBlock>
-                        <TextBlock Text="{Binding Path=Phone}" Grid.Row="2" Margin="5 5 5 15" HorizontalAlignment="Center" FontSize="26" FontFamily="Century Gothic" FontWeight="Bold"></TextBlock>
-                        <TextBlock Text="{Binding Path=ClientStatus}" Grid.Row="3" FontSize="14" FontFamily="Century Gothic" HorizontalAlignment="Center"></TextBlock>
+                        <TextBlock Text="{Binding Path=Client.Phone}" Grid.Row="2" Margin="5 5 5 15" HorizontalAlignment="Center" FontSize="26" FontFamily="Century Gothic" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding Path=Client.ClientStatus}" Grid.Row="3" FontSize="14" FontFamily="Century Gothic" HorizontalAlignment="Center"></TextBlock>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

@@ -28,13 +28,18 @@ namespace CRM_System
             InitializeComponent();
             MenuWindow = menu;
             Params =new List<RequestParams>();
+            UpdateComboBox();
+        }
+        private void UpdateComboBox() 
+        {
+            CB_Client.ItemsSource = null;
+            CB_Product.ItemsSource = null;
             using (var db = new CRM_Model())
             {
                 CB_Client.ItemsSource = db.Clients.ToList();
                 CB_Product.ItemsSource = db.Products.ToList();
             }
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             using (var db = new CRM_Model())
@@ -62,6 +67,7 @@ namespace CRM_System
                 db.AddProduct_Of_Request(db.GetRequestIDInLast(),Params);
             }
             MessageBox.Show(message);
+            MenuWindow.MainFrame.Navigate(new RequestPage(MenuWindow));
         }
     }
 }

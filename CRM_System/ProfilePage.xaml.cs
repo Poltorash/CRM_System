@@ -71,16 +71,17 @@ namespace CRM_System
                 {
                     FilePath = openFileDialog.FileName;
                 }
-                if (!db.StringIsEmpty(FilePath))
-                {
-                    BitmapImage bm = new BitmapImage();
+                string dir = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM_System.exe", "");
+                BitmapImage bm = new BitmapImage();
                     bm.BeginInit();
-                    bm.UriSource = new Uri(FilePath, UriKind.Relative);
+                    if (!db.StringIsEmpty(FilePath))
+                        bm.UriSource = new Uri(FilePath, UriKind.Relative);
+                    else
+                        bm.UriSource = new Uri(dir + "NoPhoto.PNG", UriKind.Relative); ;
                     bm.CacheOption = BitmapCacheOption.OnLoad;
                     bm.EndInit();
                     I_ProfilePhoto.Source = bm;
                     MessageBox.Show(db.EditPhotoClient(ID, FilePath));
-                }
             }
         }
 

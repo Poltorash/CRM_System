@@ -28,6 +28,11 @@ namespace CRM_System
             InitializeComponent();
             MenuWindow = menu;
             Params =new List<RequestParams>();
+            using (var db = new CRM_Model())
+            {
+                CB_Client.ItemsSource = db.Clients.ToList();
+                CB_Product.ItemsSource = db.Products.ToList();
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

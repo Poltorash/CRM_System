@@ -63,18 +63,18 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                        <Image Width="400" Grid.Row="1" Stretch="UniformToFill" HorizontalAlignment="Center" Margin="5">
+                        <Image Width="300" Grid.Row="1" Stretch="UniformToFill" HorizontalAlignment="Center" Margin="5">
                             <Image.Source>
                                 <Binding Path="Photo">
                                     <Binding.TargetNullValue>
-                                        <ImageSource>Resources/NoPhoto.png</ImageSource>
+                                        <ImageSource>Resources/NoProduct.png</ImageSource>
                                     </Binding.TargetNullValue>
                                 </Binding>
                             </Image.Source>
                         </Image>
                         <TextBlock Text="{Binding Path=Title}" VerticalAlignment="Center" TextAlignment="Center" Width="300" TextWrapping="Wrap"
                                    HorizontalAlignment="Center" Margin="5 5" FontSize="26" Grid.Row="1" FontFamily="Century Gothic"></TextBlock>
-                        <TextBlock Text="{Binding Path=Price, StringFormat=(){0:N2} РУБ}" Grid.Row="2" Margin="5 5 5 15" HorizontalAlignment="Center" FontSize="26" FontFamily="Century Gothic" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding Path=Price, StringFormat={}{0:N2} РУБ}" Grid.Row="2" Margin="5 5 5 15" HorizontalAlignment="Center" FontSize="26" FontFamily="Century Gothic" FontWeight="Bold"></TextBlock>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

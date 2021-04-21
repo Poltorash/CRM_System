@@ -26,10 +26,14 @@ namespace CRM_System
             MainFrame.Navigate(new ClientListPage(this));
             //using (var db = new CRM_Model())
             //{
-                //db.AddProduct_Type("Квас");
-                //db.AddProduct_Type("Лимонад");
-                //db.AddProduct_Type("Вода");
-                //db.AddProduct_Type("Морс");
+            //db.AddProduct_Type("Квас");
+            //db.AddProduct_Type("Лимонад");
+            //db.AddProduct_Type("Вода");
+            //db.AddProduct_Type("Морс");
+            //}
+            //using (var db = new CRM_Model())
+            //{
+            //db.AddProduct("Традиционный",50,"",1);
             //}
         }
 

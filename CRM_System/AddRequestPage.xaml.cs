@@ -69,5 +69,15 @@ namespace CRM_System
             MessageBox.Show(message);
             MenuWindow.MainFrame.Navigate(new RequestPage(MenuWindow));
         }
+
+
+        private void TB_Quantity_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            using (var db = new CRM_Model())
+            {
+                TB_Result.Text = db.Sum(Convert.ToInt32(CB_Product.SelectedValue), Convert.ToInt32(TB_Quantity.Text)).ToString();
+            }
+          
+        }
     }
 }

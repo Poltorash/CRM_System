@@ -34,7 +34,10 @@ namespace CRM_System
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            using (var db = new CRM_Model())
+            {
+                MessageBox.Show(db.Report());
+            }
         }
 
     }

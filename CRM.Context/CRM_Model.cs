@@ -1,5 +1,6 @@
 ﻿namespace CRM.Context
 {
+    using ClosedXML.Excel;
     using CRM.Model;
     using CRM.Model.DbModels;
     using System;
@@ -653,6 +654,36 @@
                 return true;
             else 
                 return false;
+        }
+
+        public string Report() 
+        {
+            try
+            {
+                string dir = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM.Context.dll", "");
+                string fileName = $@"{dir}\выгрузка.xlsx";
+                var workbook = new XLWorkbook(fileName);
+                workbook.AddWorksheet();
+                var worksheet = workbook.Worksheet(1);
+                int row = 10;
+                DateTime date = DateTime.Now.AddDays(-20);
+                var report = Requests.Where(i=>i.DateRequest < date).Include(i => i.Client).ToList();
+                foreach (var order in report)
+                {
+                    worksheet.Cell("D" + row).Value = order.Client.TitleCompany;
+                    worksheet.Cell("E" + row).Value = order.Client.LastName;
+                    worksheet.Cell("F" + row).Value = order.Client.FirstName;
+                    worksheet.Cell("G" + row).Value = order.Client.Patronymic;
+                    worksheet.Cell("H" + row).Value = order.Client.Phone;
+                    row++;
+                }
+                worksheet.Columns().AdjustToContents();
+                System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"SkladApplication.dll", "");
+                fileName = $@"{dir}\Отчет\Отчет.xlsx";
+                workbook.SaveAs(fileName);
+                return "Отчет создался";
+            }
+            catch (Exception ex) { return ex.Message; }
         }
     }
 }

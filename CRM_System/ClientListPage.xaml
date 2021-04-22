@@ -72,9 +72,9 @@
                             </Image.Source>
                         </Image>
                         <TextBlock Text="{Binding Path=TitleCompany}" TextAlignment="Center" Width="390" TextWrapping="Wrap" VerticalAlignment="Center"
-                                   HorizontalAlignment="Center" Margin="5 5" FontSize="26" Grid.Row="0" FontFamily="Century Gothic"></TextBlock>
-                        <TextBlock Text="{Binding Path=Phone}" Grid.Row="2" Margin="5 5 5 15" HorizontalAlignment="Center" FontSize="26" FontFamily="Century Gothic"></TextBlock>
-                        <TextBlock Text="{Binding Path=ClientStatus}" Grid.Row="3" FontSize="14" FontFamily="Century Gothic" HorizontalAlignment="Center"></TextBlock>
+                                   HorizontalAlignment="Center" Margin="5 5" FontSize="26" Grid.Row="2" FontFamily="Century Gothic"></TextBlock>
+                        <TextBlock Text="{Binding Path=Phone}" Grid.Row="3" Margin="5 5 5 15" HorizontalAlignment="Center" FontSize="26" FontFamily="Century Gothic"></TextBlock>
+                        <TextBlock Text="{Binding Path=ClientStatus}" Grid.Row="5" FontSize="14" FontFamily="Century Gothic" HorizontalAlignment="Center"></TextBlock>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

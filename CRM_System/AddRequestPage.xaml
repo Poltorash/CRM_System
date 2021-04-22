@@ -90,7 +90,7 @@
             <DatePicker Name="DP_Date" BorderThickness="1" BorderBrush="#FFCEA345"/>
         </Border>
         <Border Grid.Column="1" Grid.Row="2" Width="auto" Height="30" Background="White" VerticalAlignment="Center">
-            <ComboBox Name="CB_Product" BorderThickness="1" BorderBrush="#FFCEA345" SelectedValuePath="ProductID" DisplayMemberPath="Title"/>
+            <ComboBox Name="CB_Product" BorderThickness="1" BorderBrush="#FFCEA345" SelectedValuePath="ProductID" DisplayMemberPath="Title" SelectionChanged="CB_Product_SelectionChanged"/>
         </Border>
         <Border Grid.Column="1" Grid.Row="3" Width="auto" Height="30" Background="White" VerticalAlignment="Center">
             <TextBox Name ="TB_Quantity" BorderThickness="1" BorderBrush="#FFCEA345" TextChanged="TB_Quantity_TextChanged"/>

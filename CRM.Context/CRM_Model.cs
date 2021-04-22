@@ -402,6 +402,7 @@
                 var status = Requests.FirstOrDefault(i => i.RequestID == id);
                 if (status.StatusRequest == StatusRequest.Выполнен) return "Заявка уже выполнена";
                 else status.StatusRequest++;
+                SaveChanges();
                 return "Статус изменен!";
             }
             catch (Exception ex) { return ex.Message; }

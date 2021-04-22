@@ -51,6 +51,8 @@ namespace CRM_System
                     sum = db.Sum(Convert.ToInt32(CB_Product.SelectedValue), Convert.ToInt32(TB_Quantity.Text))
                 });    
                 MessageBox.Show("Продукция добавлена");
+                TB_Quantity.Text = "";
+                CB_Product.SelectedItem = 0;
             }
         }
 
@@ -75,9 +77,19 @@ namespace CRM_System
         {
             using (var db = new CRM_Model())
             {
-                TB_Result.Text = db.Sum(Convert.ToInt32(CB_Product.SelectedValue), Convert.ToInt32(TB_Quantity.Text)).ToString();
+                if(!db.StringIsEmpty(CB_Product.SelectedValue.ToString()) && !db.StringIsEmpty(TB_Quantity.Text))
+                    TB_Result.Text = db.Sum(Convert.ToInt32(CB_Product.SelectedValue), Convert.ToInt32(TB_Quantity.Text)).ToString();
             }
           
+        }
+
+        private void CB_Product_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            using (var db = new CRM_Model())
+            {
+                if (!db.StringIsEmpty(CB_Product.SelectedValue.ToString()) && !db.StringIsEmpty(TB_Quantity.Text))
+                    TB_Result.Text = db.Sum(Convert.ToInt32(CB_Product.SelectedValue), Convert.ToInt32(TB_Quantity.Text)).ToString();
+            }
         }
     }
 }

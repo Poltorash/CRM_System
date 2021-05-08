@@ -79,8 +79,14 @@
     <Compile Include="AddRequestPage.xaml.cs">
       <DependentUpon>AddRequestPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChartsPage.xaml.cs">
+      <DependentUpon>ChartsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ClientListPage.xaml.cs">
       <DependentUpon>ClientListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FunnelPage.xaml.cs">
+      <DependentUpon>FunnelPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MenuWindow.xaml.cs">
       <DependentUpon>MenuWindow.xaml</DependentUpon>
@@ -115,7 +121,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ChartsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ClientListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FunnelPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

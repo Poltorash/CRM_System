@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CRM_System"
+        xmlns:local="clr-namespace:CRM_System" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MenuWindow" Height="450" Width="800" WindowState="Maximized" Icon="Resources/Logo.ico" ContentRendered="MainFrame_ContentRendered">
+        Title="MenuWindow" Height="450" Width="800" WindowState="Maximized" Icon="Resources/Logo.ico" ContentRendered="MainFrame_ContentRendered" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Width" Value="200"/>
@@ -24,19 +24,208 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontFamily" Value="Century Gothic"/>
         </Style>
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMain">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="109.75"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="GridMain">
+                <EasingDoubleKeyFrame x:Name="easingDoubleKeyFrame" KeyTime="0:0:0.5" Value="19.75"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listView">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="220"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="listView">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="GridMain">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.722"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="GridMain">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.903"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listViewItem">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listViewItem1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listViewItem2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listViewItem3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listViewItem4">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames x:Name="doubleAnimationUsingKeyFrames" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listViewItem5">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="storyboard" x:Key="CloseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMain">
+                <EasingDoubleKeyFrame KeyTime="0" Value="109.75"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="GridMain">
+                <EasingDoubleKeyFrame KeyTime="0" Value="19.75"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listView">
+                <EasingDoubleKeyFrame KeyTime="0" Value="220"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="listView">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="GridMain">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.722"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames x:Name="doubleAnimationUsingKeyFrames1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="GridMain">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.903"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="179*"/>
-            <RowDefinition Height="40"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid Background="#F1F4FB">
+        <StackPanel x:Name="GridMenu" Width="220" HorizontalAlignment="Left" Margin="-220 0 0 0">
+            <ListView x:Name="listView" Background="#F1F4FB" BorderBrush="#F1F4FB" RenderTransformOrigin="0.5,0.5">
+                <ListView.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </ListView.RenderTransform>
+                <ListViewItem x:Name="listViewItem" Height="60" RenderTransformOrigin="0.5,0.5">
+                    <ListViewItem.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ListViewItem.RenderTransform>
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <materialDesign:PackIcon Kind="Assessment" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
+                        <TextBlock Text="Аналитика" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="listViewItem1" Height="60" RenderTransformOrigin="0.5,0.5">
+                    <ListViewItem.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ListViewItem.RenderTransform>
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <materialDesign:PackIcon Kind="Psychology" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
+                        <TextBlock Text="Воронка продаж" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="listViewItem2" Height="60" RenderTransformOrigin="0.5,0.5">
+                    <ListViewItem.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ListViewItem.RenderTransform>
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <materialDesign:PackIcon Kind="People" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
+                        <TextBlock Text="Клиенты" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="listViewItem3" Height="60" RenderTransformOrigin="0.5,0.5">
+                    <ListViewItem.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ListViewItem.RenderTransform>
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <materialDesign:PackIcon Kind="Shopping" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
+                        <TextBlock Text="Товары" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="listViewItem4" Height="60" RenderTransformOrigin="0.5,0.5">
+                    <ListViewItem.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ListViewItem.RenderTransform>
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <materialDesign:PackIcon Kind="LocalShipping" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
+                        <TextBlock Text="Заявки" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="listViewItem5" Height="60" RenderTransformOrigin="0.5,0.5">
+                    <ListViewItem.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ListViewItem.RenderTransform>
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <materialDesign:PackIcon Kind="FileReport" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
+                        <TextBlock Text="Отчет" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
+                    </StackPanel>
+                </ListViewItem>
+            </ListView>
+        </StackPanel>
+        <Grid x:Name="GridMain" Background="White" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <Button x:Name="BtnOpenMenu" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left" Click="BtnOpenMenu_Click" Visibility="Collapsed">
+                <materialDesign:PackIcon Kind="Menu"/>
+            </Button>
+            <Button x:Name="BtnCloseMenu" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left" Click="BtnCloseMenu_Click">
+                <materialDesign:PackIcon Kind="Menu"/>
+            </Button>
+            <Frame NavigationUIVisibility="Hidden" Name="MainFrame" ContentRendered="MainFrame_ContentRendered" Margin="0 40 0 0"/>
+        </Grid>
+        <StackPanel VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Orientation="Horizontal" Grid.ColumnSpan="2">
+            <Button x:Name="BtnBack" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Hidden" Click="BtnBack_Click">
+                <materialDesign:PackIcon Kind="ArrowBack"/>
+            </Button>
+            <Button x:Name="BtnClose" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Click="BtnClose_Click">
+                <materialDesign:PackIcon Kind="Power"/>
+            </Button>
+        </StackPanel>
         <!--<Border Grid.RowSpan="2" Background="#F1F4FB" BorderThickness="1" BorderBrush="#FFCEB46F"></Border>-->
         <!--<Border Background="#F1F4FB" Grid.Column="1" BorderThickness="1" BorderBrush="#FFCEB46F"></Border>-->
+        <!--
         <Grid Grid.RowSpan="3" Background="#F1F4FB"/>
         <Grid Background="#F1F4FB" Grid.Column="1"/>
         <Grid Background="#F1F4FB" Grid.Row="2" Grid.Column="1"/>
@@ -45,13 +234,15 @@
         </Button>
         <StackPanel Grid.RowSpan="3">
             <Image Source="Resources/logo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50"/>
-            <!--<Button Content="Аналитика"/> -->
-            <!--<Button Content="Воронка продаж"/>-->
+            -->
+        <!--<Button Content="Аналитика"/> -->
+        <!--<Button Content="Воронка продаж"/>-->
+        <!--
             <Button Content="Клиенты" Click="Button_Click_1"/>
             <Button Content="Товары" Click="Button_Click"/>
             <Button Content="Заявки" Click="Button_Click_2"/>
             <Button Content="Отчет" Click="Button_Click_3"/>
         </StackPanel>
-        <Frame NavigationUIVisibility="Hidden" Name="MainFrame" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" ContentRendered="MainFrame_ContentRendered"/>
+        <Frame NavigationUIVisibility="Hidden" Name="MainFrame" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" ContentRendered="MainFrame_ContentRendered"/>-->
     </Grid>
 </Window>

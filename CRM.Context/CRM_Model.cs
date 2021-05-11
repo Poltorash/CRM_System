@@ -648,10 +648,11 @@
             Month = Month.AddMonths(-month);
             var last = Month.AddDays(-1);
             var first = Month.AddMonths(-1);
-            var returns = Requests.Where(i => i.DateRequest > first && i.DateRequest < last);
-            if (returns.Count() != 0)
-                    return Convert.ToDouble(returns.Sum(s => s.Sum));
-            else return -1;
+            var requests = Requests.Where(i => i.DateRequest >= first && i.DateRequest <= last).Distinct().ToList();
+            double sum = -1;
+            if (requests.Count() != 0)
+                sum = Convert.ToDouble(requests.Select(r => r.Product_Of_Requests.Sum(p => p.Sum)).Sum());
+            return sum;
         }
         public string Month(int month)
         {

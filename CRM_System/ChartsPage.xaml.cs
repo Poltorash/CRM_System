@@ -38,7 +38,7 @@ namespace CRM_System
                 var product = db.GetAllRequest();
                 for (int i = mass.Length - 1; i > 0; i--)
                 {
-                    var count = db.Count(i + 1);
+                    var count = db.Count(i - 1);
                     if (count != -1)
                         mass[i] = count;
                     else
@@ -47,8 +47,8 @@ namespace CRM_System
                 var key = new Dictionary<string, double>();
                 for (int i = 0; i < mass.Length; i++)
                 {
-                    if (db.Month(i + 1) != "")
-                        key.Add(db.Month(i + 1), mass[i]);
+                    if (db.Month(i) != "")
+                        key.Add(db.Month(i), mass[i]);
                 }
                 ((ColumnSeries)ColumnChart.Series[0]).ItemsSource = key;
             }

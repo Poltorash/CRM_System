@@ -23,7 +23,7 @@
         <DVC:Chart Grid.Column="0" Grid.Row="0" Canvas.Top="80" Canvas.Left="10" Name="ColumnChart" 
            Background="LightSteelBlue">
             <DVC:Chart.Series>
-                <DVC:ColumnSeries Title="Experience" 
+                <DVC:ColumnSeries Title="Оборот продаж" 
     	            IndependentValueBinding="{Binding Path=Key}"
     	            DependentValueBinding="{Binding Path=Value}">
                 </DVC:ColumnSeries>

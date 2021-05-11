@@ -641,6 +641,20 @@
         }
         public List<Product_Of_Request> GetProducts(int id) => Product_Of_Requests.Where(i => i.RequestID == id).Include(i=>i.Request).Include(i=>i.Product).ToList();
         public double Sum(int id, int quantity) => Products.FirstOrDefault(i => i.ProductID == id).Price * quantity;
+        public double Count(int month)
+        {
+            var today = DateTime.Now;
+            var Month = new DateTime(today.Year, today.Month - month, 1);
+            var last = Month.AddDays(-1);
+            var first = Month.AddMonths(-1);
+            return Requests.Where(i => i.DateRequest > first && i.DateRequest < last).Sum(s => s.Sum);
+        }
+        public string Month(int month)
+        {
+            var today = DateTime.Now;
+            var Month = today.AddMonths(-month);
+            return Month.ToString("MMMM");
+        }
         public int Authorization(string login, string password) 
         {
             var user = Users.FirstOrDefault(u=>u.UserLogin == login && u.UserPassword == password);

@@ -3,6 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+       xmlns:DV="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
       xmlns:local="clr-namespace:CRM_System"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -17,5 +19,25 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+
+        <DVC:Chart Grid.Column="0" Grid.Row="0" Canvas.Top="80" Canvas.Left="10" Name="ColumnChart" 
+           Background="LightSteelBlue">
+            <DVC:Chart.Series>
+                <DVC:ColumnSeries Title="Experience" 
+    	            IndependentValueBinding="{Binding Path=Key}"
+    	            DependentValueBinding="{Binding Path=Value}">
+                </DVC:ColumnSeries>
+            </DVC:Chart.Series>
+        </DVC:Chart>
+
+        <DVC:Chart Grid.Column="1" Grid.Row="0" Canvas.Top="80" Canvas.Left="10" Name="PieChart"
+           Background="LightSteelBlue">
+            <DVC:Chart.Series>
+                <DVC:PieSeries Title="Experience" 
+            IndependentValueBinding="{Binding Path=Key}"
+            DependentValueBinding="{Binding Path=Value}">
+                </DVC:PieSeries>
+            </DVC:Chart.Series>
+        </DVC:Chart>
     </Grid>
 </Page>

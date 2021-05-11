@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="MenuWindow" Height="450" Width="800" WindowStyle="None" WindowState="Maximized" Icon="Resources/Logo.ico" ContentRendered="MainFrame_ContentRendered" WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <Style TargetType="Button">
+        <!--<Style TargetType="Button">
             <Setter Property="Width" Value="200"/>
             <Setter Property="Height" Value="30"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -18,7 +18,7 @@
             <Setter Property="Background" Value="#F1F4FB"/>
             <Setter Property="BorderBrush" Value="#FFCEB46F"/>
             <Setter Property="Foreground" Value="#FFCEA345"/>
-        </Style>
+        </Style>-->
         <Style TargetType="TextBox">
             <Setter Property="Width" Value="150"/>
             <Setter Property="Height" Value="20"/>
@@ -38,27 +38,27 @@
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="listView">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listViewItem">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LVCharts">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listViewItem1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LVFunnel">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listViewItem2">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LVClients">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listViewItem3">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LVProduct">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listViewItem4">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LVRequest">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames x:Name="doubleAnimationUsingKeyFrames" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listViewItem5">
+            <DoubleAnimationUsingKeyFrames x:Name="doubleAnimationUsingKeyFrames" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LVReport">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
@@ -109,7 +109,7 @@
                         <TranslateTransform/>
                     </TransformGroup>
                 </ListView.RenderTransform>
-                <ListViewItem x:Name="listViewItem" Height="60" RenderTransformOrigin="0.5,0.5">
+                <ListViewItem x:Name="LVCharts" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVCharts_Selected">
                     <ListViewItem.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -123,7 +123,7 @@
                         <TextBlock Text="Аналитика" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem x:Name="listViewItem1" Height="60" RenderTransformOrigin="0.5,0.5">
+                <ListViewItem x:Name="LVFunnel" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVFunnel_Selected">
                     <ListViewItem.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -137,7 +137,7 @@
                         <TextBlock Text="Воронка продаж" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem x:Name="listViewItem2" Height="60" RenderTransformOrigin="0.5,0.5">
+                <ListViewItem x:Name="LVClients" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVClients_Selected">
                     <ListViewItem.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -151,7 +151,7 @@
                         <TextBlock Text="Клиенты" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem x:Name="listViewItem3" Height="60" RenderTransformOrigin="0.5,0.5">
+                <ListViewItem x:Name="LVProduct" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVProduct_Selected">
                     <ListViewItem.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -165,7 +165,7 @@
                         <TextBlock Text="Товары" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem x:Name="listViewItem4" Height="60" RenderTransformOrigin="0.5,0.5">
+                <ListViewItem x:Name="LVRequest" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVRequest_Selected">
                     <ListViewItem.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -179,7 +179,7 @@
                         <TextBlock Text="Заявки" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem x:Name="listViewItem5" Height="60" RenderTransformOrigin="0.5,0.5">
+                <ListViewItem x:Name="LVReport" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVReport_Selected">
                     <ListViewItem.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>

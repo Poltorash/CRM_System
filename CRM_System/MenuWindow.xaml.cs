@@ -37,21 +37,6 @@ namespace CRM_System
             //}
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new ProductListPage(this));
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new ClientListPage(this));
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new RequestPage(this));
-        }
-
         private void MainFrame_ContentRendered(object sender, EventArgs e)
         {
             if (MainFrame.CanGoBack)
@@ -69,11 +54,6 @@ namespace CRM_System
             MainFrame.GoBack();
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new ReportPage(this));
-        }
-
         private void BtnOpenMenu_Click(object sender, RoutedEventArgs e)
         {
             BtnOpenMenu.Visibility = Visibility.Collapsed;
@@ -89,6 +69,36 @@ namespace CRM_System
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void LVCharts_Selected(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ChartsPage());
+        }
+
+        private void LVFunnel_Selected(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new FunnelPage());
+        }
+
+        private void LVClients_Selected(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ClientListPage(this));
+        }
+
+        private void LVProduct_Selected(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ProductListPage(this));
+        }
+
+        private void LVRequest_Selected(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new RequestPage(this));
+        }
+
+        private void LVReport_Selected(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ReportPage(this));
         }
     }
 }

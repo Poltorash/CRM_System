@@ -36,15 +36,20 @@ namespace CRM_System
             {
                 double[] mass = new double[5];
                 var product = db.GetAllRequest();
-                for (int i = 0; i < mass.Length; i++) 
+                for (int i = mass.Length - 1; i > 0; i--)
                 {
-                    mass[i] = db.Count(i+1);
+                    var count = db.Count(i + 1);
+                    if (count != -1)
+                        mass[i] = count;
+                    else
+                        mass[i] = 0;
                 }
                 var key = new Dictionary<string, double>();
                 for (int i = 0; i < mass.Length; i++)
                 {
-                    key.Add(db.Month(i + 1), mass[i]);
-                }               
+                    if (db.Month(i + 1) != "")
+                        key.Add(db.Month(i + 1), mass[i]);
+                }
                 ((ColumnSeries)ColumnChart.Series[0]).ItemsSource = key;
             }
         }
@@ -54,11 +59,13 @@ namespace CRM_System
             {
                 double[] mass = new double[5];
                 var product = db.GetAllRequest();
-                for (int i = 0; i < mass.Length; i++)
+                for (int i = mass.Length -1 ; i > 0 ; i--)
                 {
                     var count = db.Count(i + 1);
-                    if(count != -1)
+                    if (count != -1)
                         mass[i] = count;
+                    else 
+                        mass[i] = 0;
                 }
                 var key = new Dictionary<string, double>();
                 for (int i = 0; i < mass.Length; i++)

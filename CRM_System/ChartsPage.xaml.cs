@@ -57,7 +57,7 @@ namespace CRM_System
                 for (int i = 0; i < mass.Length; i++)
                 {
                     var count = db.Count(i + 1);
-                    if(count != null)
+                    if(count != -1)
                         mass[i] = count;
                 }
                 var key = new Dictionary<string, double>();

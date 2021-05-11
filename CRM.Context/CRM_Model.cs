@@ -644,7 +644,8 @@
         public double Count(int month)
         {
             var today = DateTime.Now;
-            var Month = new DateTime(today.Year, today.Month - month, 1);
+            var Month = new DateTime(today.Year, today.Month , 1);
+            Month = Month.AddMonths(-month);
             var last = Month.AddDays(-1);
             var first = Month.AddMonths(-1);
             var returns = Requests.Where(i => i.DateRequest > first && i.DateRequest < last);

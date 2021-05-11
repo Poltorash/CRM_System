@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CRM_System" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:CRM_System"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MenuWindow" Height="450" Width="800" WindowState="Maximized" Icon="Resources/Logo.ico" ContentRendered="MainFrame_ContentRendered" WindowStartupLocation="CenterScreen">
+        Title="MenuWindow" Height="450" Width="800" WindowStyle="None" WindowState="Maximized" Icon="Resources/Logo.ico" ContentRendered="MainFrame_ContentRendered" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Width" Value="200"/>
@@ -26,22 +27,16 @@
         </Style>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMain">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="109.75"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="220"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="GridMain">
-                <EasingDoubleKeyFrame x:Name="easingDoubleKeyFrame" KeyTime="0:0:0.5" Value="19.75"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="30"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listView">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="220"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="listView">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="GridMain">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.722"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="GridMain">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.903"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listViewItem">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
@@ -96,8 +91,10 @@
         </Storyboard>
     </Window.Resources>
     <Window.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="BtnOpenMenu">
             <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="BtnCloseMenu">
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
     </Window.Triggers>
@@ -207,10 +204,10 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-            <Button x:Name="BtnOpenMenu" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left" Click="BtnOpenMenu_Click" Visibility="Collapsed">
+            <Button x:Name="BtnOpenMenu" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left" Click="BtnOpenMenu_Click">
                 <materialDesign:PackIcon Kind="Menu"/>
             </Button>
-            <Button x:Name="BtnCloseMenu" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left" Click="BtnCloseMenu_Click">
+            <Button x:Name="BtnCloseMenu" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left" Click="BtnCloseMenu_Click" Visibility="Collapsed">
                 <materialDesign:PackIcon Kind="Menu"/>
             </Button>
             <Frame NavigationUIVisibility="Hidden" Name="MainFrame" ContentRendered="MainFrame_ContentRendered" Margin="0 40 0 0"/>

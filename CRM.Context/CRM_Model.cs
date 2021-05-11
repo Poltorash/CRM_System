@@ -648,7 +648,7 @@
             var last = Month.AddDays(-1);
             var first = Month.AddMonths(-1);
             var returns = Requests.Where(i => i.DateRequest > first && i.DateRequest < last);
-            if (returns != null)
+            if (returns.Count() != 0)
                     return Convert.ToDouble(returns.Sum(s => s.Sum));
             else return -1;
         }

@@ -647,9 +647,9 @@
             var Month = new DateTime(today.Year, today.Month - month, 1);
             var last = Month.AddDays(-1);
             var first = Month.AddMonths(-1);
-            double? returns = Requests.Where(i => i.DateRequest > first && i.DateRequest < last).Sum(s => s.Sum);
+            var returns = Requests.Where(i => i.DateRequest > first && i.DateRequest < last);
             if (returns != null)
-                return Convert.ToDouble(returns);
+                    return Convert.ToDouble(returns.Sum(s => s.Sum));
             else return -1;
         }
         public string Month(int month)

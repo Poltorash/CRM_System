@@ -27,7 +27,7 @@ namespace CRM_System
             InitializeComponent();
 
             LoadColumnChartData();
-            LoadPieChartData();
+            //LoadPieChartData();
         }
 
         private void LoadColumnChartData()
@@ -51,29 +51,7 @@ namespace CRM_System
                         key.Add(db.Month(i), mass[i]);
                 }
                 ((ColumnSeries)ColumnChart.Series[0]).ItemsSource = key;
-            }
-        }
-        private void LoadPieChartData()
-        {
-            using (var db = new CRM_Model())
-            {
-                double[] mass = new double[5];
-                var product = db.GetAllRequest();
-                for (int i = mass.Length -1 ; i > 0 ; i--)
-                {
-                    var count = db.Count(i + 1);
-                    if (count != -1)
-                        mass[i] = count;
-                    else 
-                        mass[i] = 0;
-                }
-                var key = new Dictionary<string, double>();
-                for (int i = 0; i < mass.Length; i++)
-                {
-                    if(db.Month(i + 1) != "") 
-                        key.Add(db.Month(i + 1), mass[i]);
-                }
-              ((PieSeries)PieChart.Series[0]).ItemsSource = key;
+                ((PieSeries)PieChart.Series[0]).ItemsSource = key;
             }
         }
     }

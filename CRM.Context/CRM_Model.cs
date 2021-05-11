@@ -647,13 +647,21 @@
             var Month = new DateTime(today.Year, today.Month - month, 1);
             var last = Month.AddDays(-1);
             var first = Month.AddMonths(-1);
-            return Requests.Where(i => i.DateRequest > first && i.DateRequest < last).Sum(s => s.Sum);
+            var returns = Requests.Where(i => i.DateRequest > first && i.DateRequest < last).Sum(s => s.Sum);
+            if (returns != null)
+                return returns;
+            else return -1;
         }
         public string Month(int month)
         {
             var today = DateTime.Now;
             var Month = today.AddMonths(-month);
-            return Month.ToString("MMMM");
+            string returns = Month.ToString("MMMM");
+            if (returns != null)
+                return returns;
+            else
+                return "";
+
         }
         public int Authorization(string login, string password) 
         {

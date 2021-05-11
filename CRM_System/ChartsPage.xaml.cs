@@ -56,12 +56,15 @@ namespace CRM_System
                 var product = db.GetAllRequest();
                 for (int i = 0; i < mass.Length; i++)
                 {
-                    mass[i] = db.Count(i + 1);
+                    var count = db.Count(i + 1);
+                    if(count != null)
+                        mass[i] = count;
                 }
                 var key = new Dictionary<string, double>();
                 for (int i = 0; i < mass.Length; i++)
                 {
-                    key.Add(db.Month(i + 1), mass[i]);
+                    if(db.Month(i + 1) != "") 
+                        key.Add(db.Month(i + 1), mass[i]);
                 }
               ((PieSeries)PieChart.Series[0]).ItemsSource = key;
             }

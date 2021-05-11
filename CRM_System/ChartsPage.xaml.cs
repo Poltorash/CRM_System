@@ -63,7 +63,7 @@ namespace CRM_System
                 {
                     key.Add(db.Month(i + 1), mass[i]);
                 }
-              ((ColumnSeries)PieChart.Series[0]).ItemsSource = key;
+              ((PieSeries)PieChart.Series[0]).ItemsSource = key;
             }
         }
     }

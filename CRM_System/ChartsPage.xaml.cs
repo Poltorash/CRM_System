@@ -27,42 +27,131 @@ namespace CRM_System
             InitializeComponent();
 
             LoadColumnChartData();
-            //LoadPieChartData();
+            LoadPieChartData();
+            LoadLineChartData();
+            LoadColumnChartDataClient();
         }
 
         private void LoadColumnChartData()
         {
             using (var db = new CRM_Model())
             {
-                double[] mass = new double[5];
-                var product = db.GetAllRequest();
-                for (int i = mass.Length - 1; i > 0; i--)
+                var count = new List<SumInYearParam>();
+                for (int i = 12; i > 0; i--)
                 {
-                    var count = db.Count(i - 1);
-                    if (count != -1)
-                        mass[i] = count;
-                    else
-                        mass[i] = 0;
+                    count.Add(db.Count(i - 1));                  
                 }
                 var key = new Dictionary<string, double>();
-                for (int i = 0; i < mass.Length; i++)
-                {
-                    if (db.Month(i) != "")
-                        key.Add(db.Month(i), mass[i]);
+                foreach (var sum in count) 
+                {                  
+                    key.Add(sum.Month, sum.Sum);
                 }
-                ((ColumnSeries)ColumnChart.Series[0]).ItemsSource = key;
+                ((ColumnSeries)ColumnChart.Series[0]).ItemsSource = key;             
+            }
+        }
+        private void LoadPieChartData() 
+        {
+            using (var db = new CRM_Model())
+            {
+                var key = new Dictionary<string, double>();
+                foreach (var count in db.CountProductInMonth())
+                {
+                    key.Add(count.Title, count.Sum);
+                }
                 ((PieSeries)PieChart.Series[0]).ItemsSource = key;
             }
         }
+        private void LoadLineChartData()
+        {
+            using (var db = new CRM_Model())
+            {
+                var count = new List<TicketOrClientrParam>();
+                for (int i = 12; i > 0; i--)
+                {
+                    count.Add(db.CountTicket(i - 1));
+                }
+                var key = new Dictionary<string, double>();
+                foreach (var ticket in count)
+                {
+                    key.Add(ticket.Month, ticket.Quantity);
+                }
+               ((LineSeries)LineChart.Series[0]).ItemsSource = key;
+            }
+        }
+        private void LoadColumnChartDataClient()
+        {
+            using (var db = new CRM_Model())
+            {
+                var count = new List<TicketOrClientrParam>();
+                for (int i = 12; i > 0; i--)
+                {
+                    count.Add(db.CountClient(i - 1));
+                }
+                var key = new Dictionary<string, double>();
+                foreach (var ticket in count)
+                {
+                    key.Add(ticket.Month, ticket.Quantity);
+                }
+               ((ColumnSeries)ColumnChartClient.Series[0]).ItemsSource = key;
+            }
+        }
+
 
         private void BtnDone_Click(object sender, RoutedEventArgs e)
         {
+            using (var db = new CRM_Model())
+            {
+                var sumInYears = new List<SumInYearParam>();
+                var tickets = new List<TicketOrClientrParam>();
+                var clientrs = new List<TicketOrClientrParam>();
+                var CountProduct = new List<ProductCountsParam>();
 
+                var key = new Dictionary<string, double>();
+                var sumInYearkey = new Dictionary<string, double>();
+                var ticketkey = new Dictionary<string, double>();
+                var clientrkey = new Dictionary<string, double>();
+
+                DateTime first = (DateTime)DPDateStart.SelectedDate;
+                DateTime last = (DateTime)DPDateEnd.SelectedDate;
+
+                for (int i = first.Month; i <= last.Month; i++)
+                {
+                    sumInYears.Add(db.Count(i - 1));
+                    tickets.Add(db.CountTicket(i - 1));
+                    clientrs.Add(db.CountClient(i - 1));
+                    CountProduct = db.CountProductInMonth(i-1);
+                }
+
+                foreach (var column in sumInYears)
+                {
+                    sumInYearkey.Add(column.Month, column.Sum);
+                }
+                foreach (var pie in CountProduct)
+                {
+                    sumInYearkey.Add(pie.Title, pie.Sum);
+                }
+                foreach (var Line in tickets)
+                {
+                    ticketkey.Add(Line.Month, Line.Quantity);
+                }
+                foreach (var column in clientrs)
+                {
+                    clientrkey.Add(column.Month, column.Quantity);
+                }
+
+                ((ColumnSeries)ColumnChart.Series[0]).ItemsSource = sumInYearkey;
+                ((PieSeries)PieChart.Series[0]).ItemsSource = key;
+                ((LineSeries)LineChart.Series[0]).ItemsSource = ticketkey;
+                ((ColumnSeries)ColumnChartClient.Series[0]).ItemsSource = clientrkey;
+            }
         }
 
         private void BtnStandart_Click(object sender, RoutedEventArgs e)
         {
-
+            LoadColumnChartData();
+            LoadPieChartData();
+            LoadLineChartData();
+            LoadColumnChartDataClient();
         }
     }
 }

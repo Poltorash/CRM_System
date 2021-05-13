@@ -687,43 +687,11 @@
             }
             catch (Exception ex) { return ex.Message; }
         }
+
         public List<ProductCountsParam> CountProductInMonth()
         {
             DateTime today = DateTime.Now;
             var Month = new DateTime(today.Year, today.Month, 1);
-            var last = Month.AddDays(-1);
-            var first = Month.AddMonths(-1);
-            var requests = Requests.Where(i => i.DateRequest >= first && i.DateRequest <= last).Distinct().ToList();
-            var productRequests = new List<Product_Of_Request>();
-            var CountClient = new List<int>();
-            var count = new List<ProductCountsParam>();
-            if (requests.Count != 0)
-            {
-                foreach (var id in requests)
-                {
-                    productRequests = Product_Of_Requests.Where(i => i.RequestID == id.RequestID).ToList();
-                }
-                foreach (var cCP in productRequests)
-                {
-                    CountClient.Add(cCP.ProductID);
-                }
-                foreach (var counts in CountClient.Distinct().ToList())
-                {
-                    count.Add(new ProductCountsParam()
-                    {
-                        Sum = productRequests.Where(i => i.ProductID == counts).Sum(i => i.Quantity),
-                        Title = Products.FirstOrDefault(i => i.ProductID == counts).Title
-                    });
-                }
-            }
-            return count;
-        }
-
-        public List<ProductCountsParam> CountProductInMonth(int month)
-        {
-            DateTime today = DateTime.Now;
-            var Month = new DateTime(today.Year, today.Month, 1);
-            Month = Month.AddMonths(-month);
             var last = Month.AddDays(-1);
             var first = Month.AddMonths(-1);
             var requests = Requests.Where(i => i.DateRequest >= first && i.DateRequest <= last).Distinct().ToList();
@@ -801,6 +769,78 @@
             countClietn.Month = returns;
             countClietn.Quantity = quantity;
             return countClietn;
-        }      
+        }
+
+        public List<ProductCountsParam> CountProductInMonth(DateTime month)
+        {
+            var Month = month;
+            var nextMonth = Month.AddMonths(1);
+            var requests = Requests.Where(i => i.DateRequest >= Month && i.DateRequest <= nextMonth).Distinct().ToList();
+            var productRequests = new List<Product_Of_Request>();
+            var CountClient = new List<int>();
+            var count = new List<ProductCountsParam>();
+            if (requests.Count != 0)
+            {
+                foreach (var id in requests)
+                {
+                    productRequests = Product_Of_Requests.Where(i => i.RequestID == id.RequestID).ToList();
+                }
+                foreach (var cCP in productRequests)
+                {
+                    CountClient.Add(cCP.ProductID);
+                }
+                foreach (var counts in CountClient.Distinct().ToList())
+                {
+                    count.Add(new ProductCountsParam()
+                    {
+                        Sum = productRequests.Where(i => i.ProductID == counts).Sum(i => i.Quantity),
+                        Title = Products.FirstOrDefault(i => i.ProductID == counts).Title
+                    });
+                }
+            }
+            return count;
+        }
+        public TicketOrClientrParam CountTicket(DateTime month)
+        {
+            var Month = month;
+            var nextMonth = Month.AddMonths(1);
+            string returns = Month.ToString("MMMM");
+            var SumInYear = new TicketOrClientrParam();
+            var requests = Requests.Where(i => i.DateRequest >= Month && i.DateRequest <= nextMonth).Distinct().ToList();
+            int quantity = 0;
+            if (requests.Count() != 0)
+                quantity = requests.Count();
+            SumInYear.Month = returns;
+            SumInYear.Quantity = quantity;
+            return SumInYear;
+        }
+        public TicketOrClientrParam CountClient(DateTime month)
+        {
+            var Month = month;
+            var nextMonth = Month.AddMonths(1);
+            string returns = Month.ToString("MMMM");
+            var countClietn = new TicketOrClientrParam();
+            var clients = Clients.Where(i => i.RegistrationDate >= Month && i.RegistrationDate <= nextMonth);
+            int quantity = 0;
+            if (clients.Count() != 0)
+                quantity = clients.Count();
+            countClietn.Month = returns;
+            countClietn.Quantity = quantity;
+            return countClietn;
+        }
+        public SumInYearParam Count(DateTime month)
+        {
+            var Month = month;
+            var nextMonth = Month.AddMonths(1);
+            string returns = Month.ToString("MMMM");
+            var SumInYear = new SumInYearParam();
+            var requests = Requests.Where(i => i.DateRequest >= Month && i.DateRequest < nextMonth).Distinct().ToList();
+            double sum = 0;
+            if (requests.Count() != 0)
+                sum = Convert.ToDouble(requests.Select(r => r.Product_Of_Requests.Sum(p => p.Sum)).Sum());
+            SumInYear.Month = returns;
+            SumInYear.Sum = sum;
+            return SumInYear;
+        }
     }
 }

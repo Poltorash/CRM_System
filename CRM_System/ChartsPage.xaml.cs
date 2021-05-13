@@ -113,13 +113,13 @@ namespace CRM_System
 
                 DateTime first = (DateTime)DPDateStart.SelectedDate;
                 DateTime last = (DateTime)DPDateEnd.SelectedDate;
-
-                for (int i = first.Month; i <= last.Month; i++)
+                for (DateTime i = first; i <= last;)
                 {
-                    sumInYears.Add(db.Count(i - 1));
-                    tickets.Add(db.CountTicket(i - 1));
-                    clientrs.Add(db.CountClient(i - 1));
-                    CountProduct = db.CountProductInMonth(i-1);
+                    sumInYears.Add(db.Count(i));
+                    tickets.Add(db.CountTicket(i));
+                    clientrs.Add(db.CountClient(i));
+                    CountProduct = db.CountProductInMonth(i);
+                    i = i.AddMonths(1);
                 }
 
                 foreach (var column in sumInYears)

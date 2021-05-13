@@ -205,41 +205,20 @@
                 </TransformGroup>
             </Grid.RenderTransform>
             <Button x:Name="BtnOpenMenu" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left" Click="BtnOpenMenu_Click">
-                <materialDesign:PackIcon Kind="Menu"/>
+                <materialDesign:PackIcon Kind="Menu" Foreground="#FFCEA345"/>
             </Button>
             <Button x:Name="BtnCloseMenu" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left" Click="BtnCloseMenu_Click" Visibility="Collapsed">
-                <materialDesign:PackIcon Kind="Menu"/>
+                <materialDesign:PackIcon Kind="Menu" Foreground="#FFCEA345"/>
             </Button>
             <Frame NavigationUIVisibility="Hidden" Name="MainFrame" ContentRendered="MainFrame_ContentRendered" Margin="0 40 0 0"/>
         </Grid>
         <StackPanel VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Orientation="Horizontal" Grid.ColumnSpan="2">
             <Button x:Name="BtnBack" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Hidden" Click="BtnBack_Click">
-                <materialDesign:PackIcon Kind="ArrowBack"/>
+                <materialDesign:PackIcon Kind="ArrowBack" Foreground="#FFCEA345"/>
             </Button>
             <Button x:Name="BtnClose" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Click="BtnClose_Click">
-                <materialDesign:PackIcon Kind="Power"/>
+                <materialDesign:PackIcon Kind="Power" Foreground="#FFCEA345"/>
             </Button>
         </StackPanel>
-        <!--<Border Grid.RowSpan="2" Background="#F1F4FB" BorderThickness="1" BorderBrush="#FFCEB46F"></Border>-->
-        <!--<Border Background="#F1F4FB" Grid.Column="1" BorderThickness="1" BorderBrush="#FFCEB46F"></Border>-->
-        <!--
-        <Grid Grid.RowSpan="3" Background="#F1F4FB"/>
-        <Grid Background="#F1F4FB" Grid.Column="1"/>
-        <Grid Background="#F1F4FB" Grid.Row="2" Grid.Column="1"/>
-        <Button x:Name="BtnBack" HorizontalAlignment="Left" Style="{StaticResource ButtonBackMenu}" Grid.Column="1" Margin="10,2,0,3" Visibility="Hidden" Click="BtnBack_Click">
-            <Image Source="Resources/Back.png" HorizontalAlignment="Center"/>
-        </Button>
-        <StackPanel Grid.RowSpan="3">
-            <Image Source="Resources/logo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50"/>
-            -->
-        <!--<Button Content="Аналитика"/> -->
-        <!--<Button Content="Воронка продаж"/>-->
-        <!--
-            <Button Content="Клиенты" Click="Button_Click_1"/>
-            <Button Content="Товары" Click="Button_Click"/>
-            <Button Content="Заявки" Click="Button_Click_2"/>
-            <Button Content="Отчет" Click="Button_Click_3"/>
-        </StackPanel>
-        <Frame NavigationUIVisibility="Hidden" Name="MainFrame" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" ContentRendered="MainFrame_ContentRendered"/>-->
     </Grid>
 </Window>

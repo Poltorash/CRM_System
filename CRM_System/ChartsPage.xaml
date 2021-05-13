@@ -6,12 +6,27 @@
        xmlns:DV="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
       xmlns:local="clr-namespace:CRM_System"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ChartsPage">
+    <!--<Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Century Gothic"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#F1F4FB"/>
+            <Setter Property="BorderBrush" Value="#FFCEB46F"/>
+            <Setter Property="Foreground" Value="#FFCEA345"/>
+        </Style>
+    </Page.Resources>-->
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -20,8 +35,17 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <DVC:Chart Grid.Column="0" Grid.Row="0" Canvas.Top="80" Canvas.Left="10" Name="ColumnChart" 
-           Background="LightSteelBlue">
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <DatePicker Margin="10 0 10 0" Name="DPDateStart" Width="150" VerticalAlignment="Center"/>
+            <DatePicker Margin="10 0 10 0" Name="DPDateEnd" Width="150" VerticalAlignment="Center"/>
+            <Button  x:Name="BtnDone" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="10 0 10 0" VerticalAlignment="Center" Click="BtnDone_Click">
+                <materialDesign:PackIcon Kind="Done" Foreground="#FFCEA345"/>
+            </Button>
+            <Button x:Name="BtnStandart" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="10 0 10 0" VerticalAlignment="Center" Click="BtnStandart_Click">
+                <materialDesign:PackIcon Kind="Settings" Foreground="#FFCEA345"/>
+            </Button>
+        </StackPanel>
+        <DVC:Chart Grid.Column="0" Grid.Row="1" Name="ColumnChart" Background="#F1F4FB">
             <DVC:Chart.Series>
                 <DVC:ColumnSeries Title="Оборот продаж" 
     	            IndependentValueBinding="{Binding Path=Key}"
@@ -30,8 +54,7 @@
             </DVC:Chart.Series>
         </DVC:Chart>
 
-        <DVC:Chart Grid.Column="1" Grid.Row="0" Canvas.Top="80" Canvas.Left="10" Name="PieChart"
-           Background="LightSteelBlue">
+        <DVC:Chart Grid.Column="1" Grid.Row="1" Name="PieChart" Background="#F1F4FB">
             <DVC:Chart.Series>
                 <DVC:PieSeries Title="Experience" 
             IndependentValueBinding="{Binding Path=Key}"

@@ -54,5 +54,15 @@ namespace CRM_System
                 ((PieSeries)PieChart.Series[0]).ItemsSource = key;
             }
         }
+
+        private void BtnDone_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnStandart_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

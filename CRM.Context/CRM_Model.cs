@@ -692,9 +692,9 @@
         {
             DateTime today = DateTime.Now;
             var Month = new DateTime(today.Year, today.Month, 1);
-            var last = Month.AddDays(-1);
-            var first = Month.AddMonths(-1);
-            var requests = Requests.Where(i => i.DateRequest >= first && i.DateRequest <= last).Distinct().ToList();
+            var last = Month.AddMonths(1);
+            var first = Month;
+            var requests = Requests.Where(i => i.DateRequest >= first && i.DateRequest < last).Distinct().ToList();
             var productRequests = new List<Product_Of_Request>();
             var CountClient = new List<int>();
             var count = new List<ProductCountsParam>();
@@ -725,10 +725,10 @@
             var Month = new DateTime(today.Year, today.Month, 1);
             Month = Month.AddMonths(-month);
             string returns = Month.ToString("MMMM");
-            var last = Month.AddDays(-1);
-            var first = Month.AddMonths(-1);
+            var last = Month.AddMonths(1);
+            var first = Month;
             var SumInYear = new SumInYearParam();
-            var requests = Requests.Where(i => i.DateRequest >= first && i.DateRequest <= last).Distinct().ToList();
+            var requests = Requests.Where(i => i.DateRequest >= first && i.DateRequest < last).Distinct().ToList();
             double sum = 0;
             if (requests.Count() != 0)
                 sum = Convert.ToDouble(requests.Select(r => r.Product_Of_Requests.Sum(p => p.Sum)).Sum());
@@ -742,10 +742,10 @@
             var Month = new DateTime(today.Year, today.Month, 1);
             Month = Month.AddMonths(-month);
             string returns = Month.ToString("MMMM");
-            var last = Month.AddDays(-1);
-            var first = Month.AddMonths(-1);
+            var last = Month.AddMonths(1);
+            var first = Month;
             var SumInYear = new TicketOrClientrParam();
-            var requests = Requests.Where(i => i.DateRequest >= first && i.DateRequest <= last).Distinct().ToList();
+            var requests = Requests.Where(i => i.DateRequest >= first && i.DateRequest < last).Distinct().ToList();
             int quantity = 0;
             if (requests.Count() != 0)
                 quantity = requests.Count();
@@ -759,10 +759,10 @@
             var Month = new DateTime(today.Year, today.Month, 1);
             Month = Month.AddMonths(-month);
             string returns = Month.ToString("MMMM");
-            var last = Month.AddDays(-1);
-            var first = Month.AddMonths(-1);
+            var last = Month.AddMonths(1);
+            var first = Month;
             var countClietn = new TicketOrClientrParam();
-            var clients = Clients.Where(i => i.RegistrationDate >= first && i.RegistrationDate <= last);
+            var clients = Clients.Where(i => i.RegistrationDate >= first && i.RegistrationDate < last);
             int quantity = 0;
             if (clients.Count() != 0)
                 quantity = clients.Count();
@@ -775,7 +775,7 @@
         {
             var Month = month;
             var nextMonth = Month.AddMonths(1);
-            var requests = Requests.Where(i => i.DateRequest >= Month && i.DateRequest <= nextMonth).Distinct().ToList();
+            var requests = Requests.Where(i => i.DateRequest >= Month && i.DateRequest < nextMonth).Distinct().ToList();
             var productRequests = new List<Product_Of_Request>();
             var CountClient = new List<int>();
             var count = new List<ProductCountsParam>();
@@ -806,7 +806,7 @@
             var nextMonth = Month.AddMonths(1);
             string returns = Month.ToString("MMMM");
             var SumInYear = new TicketOrClientrParam();
-            var requests = Requests.Where(i => i.DateRequest >= Month && i.DateRequest <= nextMonth).Distinct().ToList();
+            var requests = Requests.Where(i => i.DateRequest >= Month && i.DateRequest < nextMonth).Distinct().ToList();
             int quantity = 0;
             if (requests.Count() != 0)
                 quantity = requests.Count();
@@ -820,7 +820,7 @@
             var nextMonth = Month.AddMonths(1);
             string returns = Month.ToString("MMMM");
             var countClietn = new TicketOrClientrParam();
-            var clients = Clients.Where(i => i.RegistrationDate >= Month && i.RegistrationDate <= nextMonth);
+            var clients = Clients.Where(i => i.RegistrationDate >= Month && i.RegistrationDate < nextMonth);
             int quantity = 0;
             if (clients.Count() != 0)
                 quantity = clients.Count();

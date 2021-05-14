@@ -39,7 +39,7 @@ namespace CRM_System
                 var count = new List<SumInYearParam>();
                 for (int i = 12; i > 0; i--)
                 {
-                    count.Add(db.Count(i - 1));                  
+                    count.Add(db.Count(i-1));                  
                 }
                 var key = new Dictionary<string, double>();
                 foreach (var sum in count) 
@@ -68,7 +68,7 @@ namespace CRM_System
                 var count = new List<TicketOrClientrParam>();
                 for (int i = 12; i > 0; i--)
                 {
-                    count.Add(db.CountTicket(i - 1));
+                    count.Add(db.CountClient(i-1));
                 }
                 var key = new Dictionary<string, double>();
                 foreach (var ticket in count)
@@ -85,7 +85,7 @@ namespace CRM_System
                 var count = new List<TicketOrClientrParam>();
                 for (int i = 12; i > 0; i--)
                 {
-                    count.Add(db.CountClient(i - 1));
+                    count.Add(db.CountTicket(i-1));
                 }
                 var key = new Dictionary<string, double>();
                 foreach (var ticket in count)

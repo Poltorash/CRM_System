@@ -47,7 +47,7 @@
         </StackPanel>
         <DVC:Chart Grid.Column="0" Grid.Row="1" Name="ColumnChart" Background="#F1F4FB">
             <DVC:Chart.Series>
-                <DVC:ColumnSeries Title="Оборот продаж" 
+                <DVC:ColumnSeries Title="Прибыль" 
     	            IndependentValueBinding="{Binding Path=Key}"
     	            DependentValueBinding="{Binding Path=Value}">
                 </DVC:ColumnSeries>
@@ -56,7 +56,7 @@
 
         <DVC:Chart Grid.Column="1" Grid.Row="1" Name="PieChart" Background="#F1F4FB">
             <DVC:Chart.Series>
-                <DVC:PieSeries Title="Experience" 
+                <DVC:PieSeries Title="Оборот продукции" 
             IndependentValueBinding="{Binding Path=Key}"
             DependentValueBinding="{Binding Path=Value}">
                 </DVC:PieSeries>
@@ -65,7 +65,7 @@
         <DVC:Chart Grid.Column="1" Grid.Row="2" Canvas.Top="80" Canvas.Left="10" Name="LineChart"
            Background="LightSteelBlue">
             <DVC:Chart.Series>
-                <DVC:LineSeries Title="Название поставь" 
+                <DVC:LineSeries Title="Новые клиенты" 
     		IndependentValueBinding="{Binding Path=Key}"
     		DependentValueBinding="{Binding Path=Value}">
                 </DVC:LineSeries>
@@ -73,7 +73,7 @@
         </DVC:Chart>
         <DVC:Chart Grid.Column="0" Grid.Row="2" Name="ColumnChartClient" Background="#F1F4FB">
             <DVC:Chart.Series>
-                <DVC:ColumnSeries Title="Название" 
+                <DVC:ColumnSeries Title="Оборот продаж" 
     	            IndependentValueBinding="{Binding Path=Key}"
     	            DependentValueBinding="{Binding Path=Value}">
                 </DVC:ColumnSeries>

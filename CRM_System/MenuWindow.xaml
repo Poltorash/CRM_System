@@ -42,10 +42,10 @@
                 <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LVFunnel">
+            <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LVFunnel">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
+            </DoubleAnimationUsingKeyFrames>-->
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LVClients">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
@@ -123,7 +123,7 @@
                         <TextBlock Text="Аналитика" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem x:Name="LVFunnel" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVFunnel_Selected">
+                <!--<ListViewItem x:Name="LVFunnel" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVFunnel_Selected">
                     <ListViewItem.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -136,7 +136,7 @@
                         <materialDesign:PackIcon Kind="Psychology" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
                         <TextBlock Text="Воронка продаж" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
                     </StackPanel>
-                </ListViewItem>
+                </ListViewItem>-->
                 <ListViewItem x:Name="LVClients" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVClients_Selected">
                     <ListViewItem.RenderTransform>
                         <TransformGroup>

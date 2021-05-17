@@ -702,19 +702,24 @@
             {
                 foreach (var id in requests)
                 {
-                    productRequests = Product_Of_Requests.Where(i => i.RequestID == id.RequestID).ToList();
+                    productRequests.AddRange(Product_Of_Requests.Where(i => i.RequestID == id.RequestID).ToList());
                 }
-                foreach (var cCP in productRequests)
+
+                foreach (var counts in productRequests.ToList())
                 {
-                    CountClient.Add(cCP.ProductID);
-                }
-                foreach (var counts in CountClient.Distinct().ToList())
-                {
-                    count.Add(new ProductCountsParam()
+                    var item = count.FirstOrDefault(i => i.Title == Products.FirstOrDefault(c => c.ProductID == counts.ProductID).Title);
+                    if (item != null)
                     {
-                        Sum = productRequests.Where(i => i.ProductID == counts).Sum(i => i.Quantity),
-                        Title = Products.FirstOrDefault(i => i.ProductID == counts).Title
-                    });
+                        item.Sum += Product_Of_Requests.Where(i => i.ProductID == Product_Of_Requests
+                        .FirstOrDefault(g => g.RequestID == counts.RequestID).ProductID)
+                        .Sum(i => i.Quantity);
+                    }
+                    else
+                        count.Add(new ProductCountsParam()
+                        {
+                            Sum = Product_Of_Requests.Where(i => i.ProductID == counts.ProductID).Sum(i => i.Quantity),
+                            Title = Products.FirstOrDefault(i => i.ProductID == counts.ProductID).Title
+                        });
                 }
             }
             return count;
@@ -771,11 +776,11 @@
             return countClietn;
         }
 
-        public List<ProductCountsParam> CountProductInMonth(DateTime month)
+        public List<ProductCountsParam> CountProductInMonth(DateTime first, DateTime last)
         {
-            var Month = month;
-            var nextMonth = Month.AddMonths(1);
-            var requests = Requests.Where(i => i.DateRequest >= Month && i.DateRequest < nextMonth).Distinct().ToList();
+            var Month = first;
+            var nextMonth = last;
+            var requests = Requests.Where(i => i.DateRequest >= Month && i.DateRequest <= nextMonth).ToList();
             var productRequests = new List<Product_Of_Request>();
             var CountClient = new List<int>();
             var count = new List<ProductCountsParam>();
@@ -783,19 +788,23 @@
             {
                 foreach (var id in requests)
                 {
-                    productRequests = Product_Of_Requests.Where(i => i.RequestID == id.RequestID).ToList();
+                    productRequests.AddRange(Product_Of_Requests.Where(i => i.RequestID == id.RequestID).ToList());
                 }
-                foreach (var cCP in productRequests)
+                foreach (var counts in productRequests.ToList())
                 {
-                    CountClient.Add(cCP.ProductID);
-                }
-                foreach (var counts in CountClient.Distinct().ToList())
-                {
-                    count.Add(new ProductCountsParam()
+                    var item = count.FirstOrDefault(i => i.Title == Products.FirstOrDefault(c => c.ProductID == counts.ProductID).Title);
+                    if (item != null)
                     {
-                        Sum = productRequests.Where(i => i.ProductID == counts).Sum(i => i.Quantity),
-                        Title = Products.FirstOrDefault(i => i.ProductID == counts).Title
-                    });
+                        item.Sum += Product_Of_Requests.Where(i => i.ProductID == Product_Of_Requests
+                        .FirstOrDefault(g => g.RequestID == counts.RequestID).ProductID)
+                        .Sum(i => i.Quantity);
+                    }
+                    else
+                        count.Add(new ProductCountsParam()
+                        {
+                            Sum = Product_Of_Requests.Where(i => i.ProductID == counts.ProductID).Sum(i => i.Quantity),
+                            Title = Products.FirstOrDefault(i => i.ProductID == counts.ProductID).Title
+                        });
                 }
             }
             return count;

@@ -111,24 +111,24 @@ namespace CRM_System
                 var ticketkey = new Dictionary<string, double>();
                 var clientrkey = new Dictionary<string, double>();
 
-                DateTime first = (DateTime)DPDateStart.SelectedDate;
+                DateTime first = (DateTime)DPDateStart.SelectedDate;             
                 DateTime last = (DateTime)DPDateEnd.SelectedDate;
+                CountProduct = db.CountProductInMonth(first,last);
                 for (DateTime i = first; i <= last;)
                 {
                     sumInYears.Add(db.Count(i));
                     tickets.Add(db.CountTicket(i));
                     clientrs.Add(db.CountClient(i));
-                    CountProduct = db.CountProductInMonth(i);
                     i = i.AddMonths(1);
                 }
-
+               
                 foreach (var column in sumInYears)
                 {
                     sumInYearkey.Add(column.Month, column.Sum);
                 }
                 foreach (var pie in CountProduct)
                 {
-                    sumInYearkey.Add(pie.Title, pie.Sum);
+                    key.Add(pie.Title, pie.Sum);
                 }
                 foreach (var Line in tickets)
                 {

@@ -5,9 +5,9 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <Style x:Key="ButtonBack" TargetType="Button">
-            <Setter Property="Width" Value="40"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Margin" Value="5"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontFamily" Value="Century Gothic"/>
             <Setter Property="FontSize" Value="15"/>
@@ -15,7 +15,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="30" Width="40" Height="40" BorderThickness="1">
+                        <Border CornerRadius="30" Width="25" Height="25" BorderThickness="1">
                             <Border.Background>
                                 <LinearGradientBrush EndPoint="0, 0.5" MappingMode="RelativeToBoundingBox" StartPoint="1, 0.5">
                                     <GradientStop Color="#FFCEA345" Offset="1.0"/>

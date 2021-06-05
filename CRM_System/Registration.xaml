@@ -34,14 +34,15 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid>
+    <Viewbox Stretch="Uniform" StretchDirection="Both">
+        <Grid  Height="550" Width="1050">
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Button x:Name="BtnBack" HorizontalAlignment="Left" Style="{StaticResource ButtonBack}" Click="BtnBack_Click">
-            <Image Source="Resources/Back.png" HorizontalAlignment="Center"/>
+            <Image Source="Resources/Back.png" HorizontalAlignment="Center" Width="20" Height="20"/>
         </Button>
         <Image Source="Resources/logo.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Border Width="300" Height="200" Background="#F1F4FB" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="20" Grid.Row="1">
@@ -57,4 +58,5 @@
         </Border>
         <Button x:Name="Btn_Registration" Foreground="White" Content="Зарегистрироваться" Grid.Row="2" HorizontalAlignment="Center" Click="Btn_Registration_Click"/>
     </Grid>
+    </Viewbox>
 </Window>

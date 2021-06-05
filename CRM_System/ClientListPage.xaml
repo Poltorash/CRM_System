@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CRM_System"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="900" d:DesignWidth="1600"
       Title="ClientListPage">
     <Page.Resources>
         <Style TargetType="Button">
@@ -37,50 +37,50 @@
         </Style>
     </Page.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="40"/>
-        </Grid.RowDefinitions>
-        <!--<Border Margin="5" x:Name="SearchClient"  Width="200" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="20" Background="White" BorderBrush="#FFCEA345" BorderThickness="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <!--<Border Margin="5" x:Name="SearchClient"  Width="200" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="20" Background="White" BorderBrush="#FFCEA345" BorderThickness="1">
             <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBox x:Name="Search"  Background="White" BorderBrush="White" Width="160" Height="20"/>
                 <Image Source="Resources/Search2.png" Height="20" Width="20" HorizontalAlignment="Right"/>
             </StackPanel>
         </Border>-->
-        <ListView SelectedValuePath="ClientID" Name="LVClients" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" SelectionChanged="LVClients_SelectionChanged">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"></WrapPanel>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Margin="20" Width="400">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="70"/>
-                            <RowDefinition Height="310"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-                        <Image Width="300" Grid.Row="1" Stretch="UniformToFill" HorizontalAlignment="Center" Margin="5">
-                            <Image.Source>
-                                <Binding Path="Photo">
-                                    <Binding.TargetNullValue>
-                                        <ImageSource>Resources/NoPhoto.png</ImageSource>
-                                    </Binding.TargetNullValue>
-                                </Binding>
-                            </Image.Source>
-                        </Image>
-                        <TextBlock Text="{Binding Path=TitleCompany}" TextAlignment="Center" Width="390" TextWrapping="Wrap" VerticalAlignment="Center"
-                                   HorizontalAlignment="Center" Margin="5 5" FontSize="26" Grid.Row="2" FontFamily="Century Gothic"></TextBlock>
-                        <TextBlock Text="{Binding Path=Phone}" Grid.Row="3" Margin="5 5 5 15" HorizontalAlignment="Center" FontSize="26" FontFamily="Century Gothic"></TextBlock>
-                        <TextBlock Text="{Binding Path=ClientStatus}" Grid.Row="5" FontSize="14" FontFamily="Century Gothic" HorizontalAlignment="Center"></TextBlock>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Content="Добавить" Click="Button_Click"/>
-        </StackPanel>
-    </Grid>
+            <ListView SelectedValuePath="ClientID" Name="LVClients" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" SelectionChanged="LVClients_SelectionChanged">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="20" Width="400">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="310"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Image Width="300" Grid.Row="1" Stretch="UniformToFill" HorizontalAlignment="Center" Margin="5">
+                                <Image.Source>
+                                    <Binding Path="Photo">
+                                        <Binding.TargetNullValue>
+                                            <ImageSource>Resources/NoPhoto.png</ImageSource>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
+                            <TextBlock Text="{Binding Path=TitleCompany}" TextAlignment="Center" Width="390" TextWrapping="Wrap" VerticalAlignment="Center"
+                                   HorizontalAlignment="Center" Margin="5 5" FontSize="26" FontFamily="Century Gothic"></TextBlock>
+                            <TextBlock Text="{Binding Path=Phone}" Grid.Row="2" Margin="5 5 5 15" HorizontalAlignment="Center" FontSize="26" FontFamily="Century Gothic"></TextBlock>
+                            <TextBlock Text="{Binding Path=ClientStatus}" Grid.Row="3" FontSize="14" FontFamily="Century Gothic" HorizontalAlignment="Center"></TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Content="Добавить" Click="Button_Click"/>
+            </StackPanel>
+        </Grid>
 </Page>

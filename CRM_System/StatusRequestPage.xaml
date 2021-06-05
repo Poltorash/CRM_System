@@ -1,0 +1,54 @@
+﻿<Page x:Class="CRM_System.StatusRequestPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CRM_System"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StatusRequestPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="В обработке" FontSize="26"/>
+            <TextBlock x:Name="TBlProcessedSum"  FontSize="20"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
+            <TextBlock Text="Отправлен" FontSize="26"/>
+            <TextBlock x:Name="TBlWaySum"  FontSize="20"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2">
+            <TextBlock Text="Выполнен" FontSize="26"/>
+            <TextBlock x:Name="TBlCompletedSum"  FontSize="20"/>
+        </StackPanel>
+        <DataGrid Grid.Row="1" x:Name="DGRProcessed">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Предприятие" Width="*" Binding="{Binding Path=Client.TitleCompany}"/>
+                <DataGridTextColumn Header="Дата" Width="*" Binding="{Binding Path=DateRequest}"/>
+                <DataGridTextColumn Header="Сумма" Width="*" Binding="{Binding Path=Sum}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid Grid.Row="1" Grid.Column="1" x:Name="DGRWay">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Предприятие" Width="*" Binding="{Binding Path=Client.TitleCompany}"/>
+                <DataGridTextColumn Header="Дата" Width="*" Binding="{Binding Path=DateRequest}"/>
+                <DataGridTextColumn Header="Сумма" Width="*" Binding="{Binding Path=Sum}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid Grid.Row="1" Grid.Column="2" x:Name="DGRCompleted">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Предприятие" Width="*" Binding="{Binding Path=Client.TitleCompany}"/>
+                <DataGridTextColumn Header="Дата" Width="*" Binding="{Binding Path=DateRequest}"/>
+                <DataGridTextColumn Header="Сумма" Width="*" Binding="{Binding Path=Sum}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

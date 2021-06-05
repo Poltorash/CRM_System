@@ -42,25 +42,25 @@
                 <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LVFunnel">
+            <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LVFunnel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>-->
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LVClients">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LVClients">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LVProduct">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LVProduct">
-                <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LVRequest">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0:9" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames x:Name="doubleAnimationUsingKeyFrames" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LVReport">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Name="storyboard" x:Key="CloseMenu">
@@ -99,126 +99,126 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid Background="#F1F4FB">
-        <StackPanel x:Name="GridMenu" Width="220" HorizontalAlignment="Left" Margin="-220 0 0 0">
-            <ListView x:Name="listView" Background="#F1F4FB" BorderBrush="#F1F4FB" RenderTransformOrigin="0.5,0.5">
-                <ListView.RenderTransform>
+            <StackPanel x:Name="GridMenu" Width="220" HorizontalAlignment="Left" Margin="-220 0 0 0">
+                <ListView x:Name="listView" Background="#F1F4FB" BorderBrush="#F1F4FB" RenderTransformOrigin="0.5,0.5">
+                    <ListView.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ListView.RenderTransform>
+                    <ListViewItem x:Name="LVCharts" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVCharts_Selected">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="Assessment" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
+                            <TextBlock Text="Аналитика" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <!--<ListViewItem x:Name="LVFunnel" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVFunnel_Selected">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="Psychology" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
+                            <TextBlock Text="Воронка продаж" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
+                        </StackPanel>
+                    </ListViewItem>-->
+                    <ListViewItem x:Name="LVClients" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVClients_Selected">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="People" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
+                            <TextBlock Text="Клиенты" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="LVProduct" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVProduct_Selected">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="Shopping" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
+                            <TextBlock Text="Товары" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="LVRequest" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVRequest_Selected">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="LocalShipping" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
+                            <TextBlock Text="Заявки" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="LVReport" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVReport_Selected">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="FileReport" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
+                            <TextBlock Text="Отчет" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+            <Grid x:Name="GridMain" Background="White" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
                         <SkewTransform/>
                         <RotateTransform/>
                         <TranslateTransform/>
                     </TransformGroup>
-                </ListView.RenderTransform>
-                <ListViewItem x:Name="LVCharts" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVCharts_Selected">
-                    <ListViewItem.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </ListViewItem.RenderTransform>
-                    <StackPanel Orientation="Horizontal" Margin="10 0">
-                        <materialDesign:PackIcon Kind="Assessment" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
-                        <TextBlock Text="Аналитика" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem x:Name="LVFunnel" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVFunnel_Selected">
-                    <ListViewItem.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </ListViewItem.RenderTransform>
-                    <StackPanel Orientation="Horizontal" Margin="10 0">
-                        <materialDesign:PackIcon Kind="Psychology" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
-                        <TextBlock Text="Воронка продаж" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem x:Name="LVClients" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVClients_Selected">
-                    <ListViewItem.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </ListViewItem.RenderTransform>
-                    <StackPanel Orientation="Horizontal" Margin="10 0">
-                        <materialDesign:PackIcon Kind="People" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
-                        <TextBlock Text="Клиенты" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem x:Name="LVProduct" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVProduct_Selected">
-                    <ListViewItem.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </ListViewItem.RenderTransform>
-                    <StackPanel Orientation="Horizontal" Margin="10 0">
-                        <materialDesign:PackIcon Kind="Shopping" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
-                        <TextBlock Text="Товары" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem x:Name="LVRequest" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVRequest_Selected">
-                    <ListViewItem.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </ListViewItem.RenderTransform>
-                    <StackPanel Orientation="Horizontal" Margin="10 0">
-                        <materialDesign:PackIcon Kind="LocalShipping" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
-                        <TextBlock Text="Заявки" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem x:Name="LVReport" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVReport_Selected">
-                    <ListViewItem.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </ListViewItem.RenderTransform>
-                    <StackPanel Orientation="Horizontal" Margin="10 0">
-                        <materialDesign:PackIcon Kind="FileReport" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
-                        <TextBlock Text="Отчет" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
-                    </StackPanel>
-                </ListViewItem>
-            </ListView>
-        </StackPanel>
-        <Grid x:Name="GridMain" Background="White" RenderTransformOrigin="0.5,0.5">
-            <Grid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Grid.RenderTransform>
-            <Button x:Name="BtnOpenMenu" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left" Click="BtnOpenMenu_Click">
-                <materialDesign:PackIcon Kind="Menu" Foreground="#FFCEA345"/>
-            </Button>
-            <Button x:Name="BtnCloseMenu" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left" Click="BtnCloseMenu_Click" Visibility="Collapsed">
-                <materialDesign:PackIcon Kind="Menu" Foreground="#FFCEA345"/>
-            </Button>
-            <Frame NavigationUIVisibility="Hidden" Name="MainFrame" ContentRendered="MainFrame_ContentRendered" Margin="0 40 0 0"/>
+                </Grid.RenderTransform>
+                <Button x:Name="BtnOpenMenu" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left" Click="BtnOpenMenu_Click">
+                    <materialDesign:PackIcon Kind="Menu" Foreground="#FFCEA345"/>
+                </Button>
+                <Button x:Name="BtnCloseMenu" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left" Click="BtnCloseMenu_Click" Visibility="Collapsed">
+                    <materialDesign:PackIcon Kind="Menu" Foreground="#FFCEA345"/>
+                </Button>
+                <Frame NavigationUIVisibility="Hidden" Name="MainFrame" ContentRendered="MainFrame_ContentRendered" Margin="0 40 0 0"/>
+            </Grid>
+            <StackPanel VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Orientation="Horizontal" Grid.ColumnSpan="2">
+                <Button x:Name="BtnBack" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Hidden" Click="BtnBack_Click">
+                    <materialDesign:PackIcon Kind="ArrowBack" Foreground="#FFCEA345"/>
+                </Button>
+                <Button x:Name="BtnClose" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Click="BtnClose_Click">
+                    <materialDesign:PackIcon Kind="Power" Foreground="#FFCEA345"/>
+                </Button>
+            </StackPanel>
         </Grid>
-        <StackPanel VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Orientation="Horizontal" Grid.ColumnSpan="2">
-            <Button x:Name="BtnBack" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Hidden" Click="BtnBack_Click">
-                <materialDesign:PackIcon Kind="ArrowBack" Foreground="#FFCEA345"/>
-            </Button>
-            <Button x:Name="BtnClose" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Click="BtnClose_Click">
-                <materialDesign:PackIcon Kind="Power" Foreground="#FFCEA345"/>
-            </Button>
-        </StackPanel>
-    </Grid>
 </Window>

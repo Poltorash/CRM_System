@@ -33,7 +33,8 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid>
+    <Viewbox Stretch="Uniform" StretchDirection="Both">
+        <Grid Height="550" Width="1000">
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
@@ -52,4 +53,5 @@
         <Button x:Name="Btn_Registration" Foreground="White" Content="Зарегистрироваться" Grid.Row="2" HorizontalAlignment="Left" Click="Btn_Registration_Click"/>
         <Button x:Name="Btn_Autorization" Foreground="White" Content="Войти" Grid.Row="2" HorizontalAlignment="Right" Click="Btn_Autorization_Click"/>
     </Grid>
+    </Viewbox>
 </Window>

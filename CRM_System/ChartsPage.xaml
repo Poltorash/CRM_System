@@ -63,7 +63,7 @@
             </DVC:Chart.Series>
         </DVC:Chart>
         <DVC:Chart Grid.Column="1" Grid.Row="2" Canvas.Top="80" Canvas.Left="10" Name="LineChart"
-           Background="LightSteelBlue">
+           Background="#F1F4FB">
             <DVC:Chart.Series>
                 <DVC:LineSeries Title="Новые клиенты" 
     		IndependentValueBinding="{Binding Path=Key}"

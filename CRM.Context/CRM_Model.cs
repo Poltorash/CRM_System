@@ -7,6 +7,7 @@
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
+    using Word = Microsoft.Office.Interop.Word;
 
     public class CRM_Model : DbContext
     {
@@ -679,14 +680,42 @@
                     worksheet.Cell("H" + row).Value = order.Client.Phone;
                     row++;
                 }
+                worksheet.Cell("H" + 7).Value = DateTime.Now;
                 worksheet.Columns().AdjustToContents();
-                System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"SkladApplication.dll", "");
+                System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM.Context.dll", "");
                 fileName = $@"{dir}\Отчет\Отчет.xlsx";
                 workbook.SaveAs(fileName);
                 return "Отчет создался";
             }
             catch (Exception ex) { return ex.Message; }
         }
+
+        //договор, нужно заполнить и сохранять отдельно, как отчет
+
+        //public string Contract()
+        //{
+        //    try
+        //    {
+        //        string titleCompany = ;
+        //        string fio = ;
+        //        string dir = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM.Context.dll", "");
+        //        var word = new Word.Application();
+        //        word.Visible = true;
+        //        var docx = word.Documents.Open($@"{dir}\ШаблонДоговораПоставки.docx");
+        //        ReplaceText(docx, "@@DD/MM/YY", DateTime.Now);
+        //        ReplaceText(docx, "@TitleCompany", );
+        //        ReplaceText(docx, "@FIO", );
+        //    }
+        //    catch (Exception ex) { return ex.Message; }
+        //}
+
+        //private void ReplaceText(Word.Document doc, object find, object replace)
+        //{
+        //    while (doc.Content.Find.Execute(FindText: find, ReplaceWith: replace, Replace: true))
+        //    {
+
+        //    }
+        //}
 
         public List<ProductCountsParam> CountProductInMonth()
         {

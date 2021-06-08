@@ -698,11 +698,10 @@
                 fileName = $@"{dir}\Отчет\Отчет.xlsx";
                 workbook.SaveAs(fileName);
                 return "Отчет создался";
+                System.Diagnostics.Process.Start(fileName);
             }
             catch (Exception ex) { return ex.Message; }
         }
-
-        //договор, нужно заполнить и сохранять отдельно, как отчет
 
         public string Contract(string FIO,string title)
         {

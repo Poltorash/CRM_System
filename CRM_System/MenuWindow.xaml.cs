@@ -76,11 +76,6 @@ namespace CRM_System
             MainFrame.Navigate(new ChartsPage());
         }
 
-        private void LVFunnel_Selected(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new FunnelPage());
-        }
-
         private void LVClients_Selected(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new ClientListPage(this));
@@ -99,6 +94,11 @@ namespace CRM_System
         private void LVReport_Selected(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new ReportPage(this));
+        }
+
+        private void LVStatusRequestl_Selected(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new StatusRequestPage());
         }
     }
 }

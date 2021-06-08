@@ -42,7 +42,7 @@
                 <materialDesign:PackIcon Kind="Done" Foreground="#FFCEA345"/>
             </Button>
             <Button x:Name="BtnStandart" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="10 0 10 0" VerticalAlignment="Center" Click="BtnStandart_Click">
-                <materialDesign:PackIcon Kind="Settings" Foreground="#FFCEA345"/>
+                <materialDesign:PackIcon Kind="Autorenew" Foreground="#FFCEA345"/>
             </Button>
         </StackPanel>
         <DVC:Chart Grid.Column="0" Grid.Row="1" Name="ColumnChart" Background="#F1F4FB">

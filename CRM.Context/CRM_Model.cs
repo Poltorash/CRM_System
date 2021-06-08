@@ -652,9 +652,9 @@
         public List<Product_Of_Request> GetProducts(int id) => Product_Of_Requests.Where(i => i.RequestID == id).Include(i => i.Request).Include(i => i.Product).ToList();
         public double Sum(int id, int quantity) => Products.FirstOrDefault(i => i.ProductID == id).Price * quantity;
 
-        public List<Request> GetRequestOb() => Requests.Where(i=>i.StatusRequest == StatusRequest.Обработан).ToList();
-        public List<Request> GetRequestOt() => Requests.Where(i=>i.StatusRequest == StatusRequest.Отправлен).ToList();
-        public List<Request> GetRequestCom() => Requests.Where(i=>i.StatusRequest == StatusRequest.Выполнен).ToList();
+        public List<Request> GetRequestOb() => Requests.Where(i=>i.StatusRequest == StatusRequest.Обработан).Include(i=>i.Client).ToList();
+        public List<Request> GetRequestOt() => Requests.Where(i=>i.StatusRequest == StatusRequest.Отправлен).Include(i => i.Client).ToList();
+        public List<Request> GetRequestCom() => Requests.Where(i=>i.StatusRequest == StatusRequest.Выполнен).Include(i => i.Client).ToList();
 
         public int Authorization(string login, string password)
         {
@@ -697,8 +697,8 @@
                 System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM.Context.dll", "");
                 fileName = $@"{dir}\Отчет\Отчет.xlsx";
                 workbook.SaveAs(fileName);
-                return "Отчет создался";
                 System.Diagnostics.Process.Start(fileName);
+                return "Отчет создался";
             }
             catch (Exception ex) { return ex.Message; }
         }

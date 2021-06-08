@@ -654,7 +654,10 @@
 
         public List<Request> GetRequestOb() => Requests.Where(i=>i.StatusRequest == StatusRequest.Обработан).Include(i=>i.Client).ToList();
         public List<Request> GetRequestOt() => Requests.Where(i=>i.StatusRequest == StatusRequest.Отправлен).Include(i => i.Client).ToList();
-        public List<Request> GetRequestCom() => Requests.Where(i=>i.StatusRequest == StatusRequest.Выполнен).Include(i => i.Client).ToList();
+        public List<Request> GetRequestCom() => Requests.Where(i=>i.StatusRequest == StatusRequest.Выполнен).Include(i => i.Client).ToList(); 
+        public int GetRequestObCount() => Requests.Where(i=>i.StatusRequest == StatusRequest.Обработан).Include(i=>i.Client).Count();
+        public int GetRequestOtCount() => Requests.Where(i=>i.StatusRequest == StatusRequest.Отправлен).Include(i => i.Client).Count();
+        public int GetRequestComCount() => Requests.Where(i=>i.StatusRequest == StatusRequest.Выполнен).Include(i => i.Client).Count();
 
         public int Authorization(string login, string password)
         {

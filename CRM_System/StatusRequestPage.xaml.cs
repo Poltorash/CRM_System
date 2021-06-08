@@ -31,12 +31,18 @@ namespace CRM_System
             DGRWay.ItemsSource = null;
             DGRProcessed.ItemsSource = null;
             DGRCompleted.ItemsSource = null;
+            TBlCompletedSum.Text = "";
+            TBlProcessedSum.Text = "";
+            TBlWaySum.Text = "";
             using (var db = new CRM_Model()) 
             {
 
                 DGRWay.ItemsSource = db.GetRequestOt();
                 DGRProcessed.ItemsSource = db.GetRequestOb();
                 DGRCompleted.ItemsSource = db.GetRequestCom();
+                TBlCompletedSum.Text = Convert.ToString(db.GetRequestComCount());
+                TBlProcessedSum.Text = Convert.ToString(db.GetRequestObCount());
+                TBlWaySum.Text = Convert.ToString(db.GetRequestOtCount());
             }
         }
     }

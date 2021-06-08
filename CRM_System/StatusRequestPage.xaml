@@ -33,21 +33,18 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Предприятие" Width="*" Binding="{Binding Path=Client.TitleCompany}"/>
                 <DataGridTextColumn Header="Дата" Width="*" Binding="{Binding Path=DateRequest}"/>
-                <DataGridTextColumn Header="Сумма" Width="*" Binding="{Binding Path=Sum}"/>
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid  AutoGenerateColumns="False" Grid.Row="1" Grid.Column="1" x:Name="DGRWay">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Предприятие" Width="*" Binding="{Binding Path=Client.TitleCompany}"/>
                 <DataGridTextColumn Header="Дата" Width="*" Binding="{Binding Path=DateRequest}"/>
-                <DataGridTextColumn Header="Сумма" Width="*" Binding="{Binding Path=Sum}"/>
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid  AutoGenerateColumns="False" Grid.Row="1" Grid.Column="2" x:Name="DGRCompleted" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Предприятие" Width="*" Binding="{Binding Path=Client.TitleCompany}"/>
                 <DataGridTextColumn Header="Дата" Width="*" Binding="{Binding Path=DateRequest}"/>
-                <DataGridTextColumn Header="Сумма" Width="*" Binding="{Binding Path=Sum}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

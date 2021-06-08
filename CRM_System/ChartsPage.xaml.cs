@@ -66,16 +66,13 @@ namespace CRM_System
             using (var db = new CRM_Model())
             {
                 var count = new List<TicketOrClientrParam>();
-                for (int i = 12; i > 0; i--)
-                {
-                    count.Add(db.CountClient(i-1));
-                }
+                    count = db.CountClient();
                 var key = new Dictionary<string, double>();
                 foreach (var ticket in count)
                 {
-                    key.Add(ticket.Month, ticket.Quantity);
+                    key.Add(ticket.TitleStatus, ticket.Quantity);
                 }
-               ((LineSeries)LineChart.Series[0]).ItemsSource = key;
+               ((PieSeries)LineChart.Series[0]).ItemsSource = key;
             }
         }
         private void LoadColumnChartDataClient()
@@ -141,7 +138,7 @@ namespace CRM_System
 
                 ((ColumnSeries)ColumnChart.Series[0]).ItemsSource = sumInYearkey;
                 ((PieSeries)PieChart.Series[0]).ItemsSource = key;
-                ((LineSeries)LineChart.Series[0]).ItemsSource = ticketkey;
+                //((LineSeries)LineChart.Series[0]).ItemsSource = ticketkey;
                 ((ColumnSeries)ColumnChartClient.Series[0]).ItemsSource = clientrkey;
             }
         }

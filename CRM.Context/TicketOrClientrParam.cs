@@ -8,6 +8,7 @@ namespace CRM.Context
 {
     public class TicketOrClientrParam
     {
+        public string TitleStatus { get; set; }
         public string Month { get; set; }
         public int Quantity { get; set; }
     }

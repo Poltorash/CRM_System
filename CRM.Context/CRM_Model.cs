@@ -28,10 +28,12 @@
                     UserPassword = "1",
                     UserStatus = UserStatus.Администратор
                 });
+                
                 SaveChanges();
             }
         }
         int ID = 0;
+        
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Position> Positions { get; set; }
@@ -403,7 +405,13 @@
             {
                 var status = Requests.FirstOrDefault(i => i.RequestID == id);
                 if (status.StatusRequest == StatusRequest.Выполнен) return "Заявка уже выполнена";
-                else status.StatusRequest++;
+                else 
+                {
+                    if (status.StatusRequest == StatusRequest.Обработан)
+                        status.StatusRequest = StatusRequest.Отправлен;
+                    else
+                        status.StatusRequest = StatusRequest.Выполнен;
+                }
                 SaveChanges();
                 return "Статус изменен!";
             }
@@ -643,7 +651,11 @@
         }
         public List<Product_Of_Request> GetProducts(int id) => Product_Of_Requests.Where(i => i.RequestID == id).Include(i => i.Request).Include(i => i.Product).ToList();
         public double Sum(int id, int quantity) => Products.FirstOrDefault(i => i.ProductID == id).Price * quantity;
-       
+
+        public List<Request> GetRequestOb() => Requests.Where(i=>i.StatusRequest == StatusRequest.Обработан).ToList();
+        public List<Request> GetRequestOt() => Requests.Where(i=>i.StatusRequest == StatusRequest.Отправлен).ToList();
+        public List<Request> GetRequestCom() => Requests.Where(i=>i.StatusRequest == StatusRequest.Выполнен).ToList();
+
         public int Authorization(string login, string password)
         {
             var user = Users.FirstOrDefault(u => u.UserLogin == login && u.UserPassword == password);
@@ -692,30 +704,32 @@
 
         //договор, нужно заполнить и сохранять отдельно, как отчет
 
-        //public string Contract()
-        //{
-        //    try
-        //    {
-        //        string titleCompany = ;
-        //        string fio = ;
-        //        string dir = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM.Context.dll", "");
-        //        var word = new Word.Application();
-        //        word.Visible = true;
-        //        var docx = word.Documents.Open($@"{dir}\ШаблонДоговораПоставки.docx");
-        //        ReplaceText(docx, "@@DD/MM/YY", DateTime.Now);
-        //        ReplaceText(docx, "@TitleCompany", );
-        //        ReplaceText(docx, "@FIO", );
-        //    }
-        //    catch (Exception ex) { return ex.Message; }
-        //}
+        public string Contract(string FIO,string title)
+        {
+            try
+            {
+                string titleCompany = title;
+                string fio = FIO;
+                string dir = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM.Context.dll", "");
+                var word = new Word.Application();
+                word.Visible = true;
+                var docx = word.Documents.Open($@"{dir}\ШаблонДоговораПоставки.docx");
+                ReplaceText(docx, "@@DD/MM/YY", DateTime.Now);
+                ReplaceText(docx, "@TitleCompany",titleCompany );
+                ReplaceText(docx, "@FIO", fio);
+                docx.SaveAs($@"{dir}\Договоры\{fio}");
+                return $@"{dir}\Договоры\{fio}";
+            }
+            catch (Exception ex) { return ex.Message; }
+        }
 
-        //private void ReplaceText(Word.Document doc, object find, object replace)
-        //{
-        //    while (doc.Content.Find.Execute(FindText: find, ReplaceWith: replace, Replace: true))
-        //    {
+        private void ReplaceText(Word.Document doc, object find, object replace)
+        {
+            while (doc.Content.Find.Execute(FindText: find, ReplaceWith: replace, Replace: true))
+            {
 
-        //    }
-        //}
+            }
+        }
 
         public List<ProductCountsParam> CountProductInMonth()
         {
@@ -787,21 +801,26 @@
             SumInYear.Quantity = quantity;
             return SumInYear;
         }
-        public TicketOrClientrParam CountClient(int month) 
+        public List<TicketOrClientrParam> CountClient() 
         {
-            var today = DateTime.Now;
-            var Month = new DateTime(today.Year, today.Month, 1);
-            Month = Month.AddMonths(-month);
-            string returns = Month.ToString("MMMM");
-            var last = Month.AddMonths(1);
-            var first = Month;
-            var countClietn = new TicketOrClientrParam();
-            var clients = Clients.Where(i => i.RegistrationDate >= first && i.RegistrationDate < last);
+            
+            var countClietn = new List<TicketOrClientrParam>();
+            var clients = Clients.ToList();
             int quantity = 0;
-            if (clients.Count() != 0)
-                quantity = clients.Count();
-            countClietn.Month = returns;
-            countClietn.Quantity = quantity;
+            foreach (var client in clients) 
+            {
+                var item = countClietn.FirstOrDefault(i=>i.TitleStatus == Clients.FirstOrDefault(c=>c.ClientID == client.ClientID).ClientStatus.ToString());
+                if (item != null)
+                {
+                    item.Quantity = item.Quantity + 1;
+                }
+                else
+                    countClietn.Add(new TicketOrClientrParam()
+                    {
+                        TitleStatus = client.ClientStatus.ToString(),
+                        Quantity = 1
+                    });
+            }
             return countClietn;
         }
 

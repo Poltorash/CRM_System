@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRM.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,20 @@ namespace CRM_System
         public StatusRequestPage()
         {
             InitializeComponent();
+            Update();
+        }
+        public void Update() 
+        {
+            DGRWay.ItemsSource = null;
+            DGRProcessed.ItemsSource = null;
+            DGRCompleted.ItemsSource = null;
+            using (var db = new CRM_Model()) 
+            {
+
+                DGRWay.ItemsSource = db.GetRequestOt();
+                DGRProcessed.ItemsSource = db.GetRequestOb();
+                DGRCompleted.ItemsSource = db.GetRequestCom();
+            }
         }
     }
 }

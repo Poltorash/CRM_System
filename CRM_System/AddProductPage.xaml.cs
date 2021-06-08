@@ -24,7 +24,7 @@ namespace CRM_System
     {
         MenuWindow MenuWindow;      
         int ID = -1;
-        string FilePath;
+        string FilePath = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM_System.exe", "NoProduct.PNG") ;
         public AddProductPage(MenuWindow menu)
         {
             InitializeComponent();

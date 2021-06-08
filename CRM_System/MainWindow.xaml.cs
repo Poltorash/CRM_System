@@ -23,7 +23,7 @@ namespace CRM_System
     {
         public MainWindow()
         {
-            InitializeComponent();           
+            InitializeComponent();          
         }
 
         private void Btn_Registration_Click(object sender, RoutedEventArgs e)

@@ -84,7 +84,7 @@
         <TextBlock x:Name="TB_Phone" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
         <TextBlock x:Name="TB_Address" Grid.Column="2" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
         <TextBlock x:Name="TB_Status" Grid.Column="2" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Century Gothic"/>
-        <Button x:Name="BT_Contract" Grid.Column="2" Grid.Row="7" Content="Открыть договор"/> <!--если в бд есть договор, то в кнопке будет написано "Открыть договор", если нет, то добавить-->
+        <Button x:Name="BT_Contract" Grid.Column="2" Grid.Row="7" Content="Открыть договор" Click="BT_Contract_Click"/> <!--если в бд есть договор, то в кнопке будет написано "Открыть договор", если нет, то добавить-->
         <StackPanel Grid.ColumnSpan="3" Grid.Row="8" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="205,0" Width="400">
             <Button x:Name="BtnEdit" Content="Редактировать" Click="BtnEdit_Click"/>
             <Button x:Name="BtnDelete" Content="Удалить" Click="BtnDelete_Click"/>

@@ -27,17 +27,19 @@ namespace CRM_System
         bool Edit = false;
         int ID = -1;
         string FilePath;
+        string Contract = "";
         public AddClientPage(MenuWindow menuWindow)
         {
             InitializeComponent();
             MenuWindow = menuWindow;
         }
-        public AddClientPage(MenuWindow menuWindow,int id)
+        public AddClientPage(MenuWindow menuWindow,int id,string contract)
         {
             InitializeComponent();
             MenuWindow = menuWindow;
             Edit = true;
             ID = id;
+            Contract = contract;
             AddOrEditButtonC.Content = "Редактировать клиента";
             using (var db = new CRM_Model()) 
             {
@@ -83,11 +85,11 @@ namespace CRM_System
             {
                 if (!Edit)
                 {
-                    MessageBox.Show(db.AddClient(TB_TitleC.Text, TB_LastName.Text, TB_FirstName.Text, TB_Patronymic.Text, TB_Phone.Text, TB_Address.Text, FilePath));
+                    MessageBox.Show(db.AddClient(TB_TitleC.Text, TB_LastName.Text, TB_FirstName.Text, TB_Patronymic.Text, TB_Phone.Text, Contract, TB_Address.Text, FilePath));
                 }
                 else
                 {
-                    MessageBox.Show(db.EditClient(ID, TB_TitleC.Text, TB_LastName.Text, TB_FirstName.Text, TB_Patronymic.Text, TB_Phone.Text, "", TB_Address.Text, FilePath));
+                        MessageBox.Show(db.EditClient(ID, TB_TitleC.Text, TB_LastName.Text, TB_FirstName.Text, TB_Patronymic.Text, TB_Phone.Text, Contract, TB_Address.Text, FilePath));
                 }
                 MenuWindow.MainFrame.Navigate(new ClientListPage(MenuWindow));
             }

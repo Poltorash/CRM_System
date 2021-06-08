@@ -25,6 +25,8 @@ namespace CRM_System
         int ID = 0;
         MenuWindow MenuWindow;
         string FilePath;
+        bool Open = false;
+        string Contract = "";
         public ProfilePage(MenuWindow menu, int id)
         {
             InitializeComponent();
@@ -40,8 +42,11 @@ namespace CRM_System
                 TB_Phone.Text = item.Phone;
                 TB_Address.Text = item.AddressCompany;
                 TB_Status.Text = item.ClientStatus.ToString();
+                Contract = item.ContractPath;
                 if (db.StringIsEmpty(item.ContractPath))
                     BT_Contract.Content = "Добавить договор";
+                else
+                    Open = true;
                 string dir = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM_System.exe", "");
                 BitmapImage bm = new BitmapImage();
                 bm.BeginInit();
@@ -57,7 +62,7 @@ namespace CRM_System
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            MenuWindow.MainFrame.Navigate(new AddClientPage(MenuWindow, ID));
+            MenuWindow.MainFrame.Navigate(new AddClientPage(MenuWindow, ID,Contract));
         }
 
 
@@ -93,6 +98,21 @@ namespace CRM_System
                MenuWindow.MainFrame.Navigate(new ClientListPage(MenuWindow));
             }
 
+        }
+
+        private void BT_Contract_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Open)
+            {
+                using (var db = new CRM_Model())
+                {
+                    Contract = db.Contract($"{TB_LastName.Text}" + $"{TB_FirstName.Text[0]}" + "." + $"{TB_Patronymic.Text[0]}" + ".", TB_Title.Text);
+                }
+            }
+            else
+            {
+
+            }
         }
     }
 }

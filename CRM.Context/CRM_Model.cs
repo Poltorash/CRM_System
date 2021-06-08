@@ -48,7 +48,7 @@
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Product_Of_Request> Product_Of_Requests { get; set; }
 
-        public string AddClient(string title, string lastName, string firstName, string patronymic, string phone, string addressCompany, string photo)
+        public string AddClient(string title, string lastName, string firstName, string patronymic, string phone,string conrtact, string addressCompany, string photo)
         {
             try
             {
@@ -62,7 +62,7 @@
                     Phone = phone,
                     AddressCompany = addressCompany,
                     ClientStatus = Tag.Заинтересованы,
-                    ContractPath = "",
+                    ContractPath =conrtact,
                     Photo = photo
                 });
                 SaveChanges();

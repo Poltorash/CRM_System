@@ -17,34 +17,37 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="В обработке" FontSize="26"/>
-            <TextBlock x:Name="TBlProcessedSum"  FontSize="20"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="В обработке: " FontSize="26"/>
+            <TextBlock x:Name="TBlProcessedSum"  FontSize="26"/>
         </StackPanel>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
-            <TextBlock Text="Отправлен" FontSize="26"/>
-            <TextBlock x:Name="TBlWaySum"  FontSize="20"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
+            <TextBlock Text="Отправлен: " FontSize="26"/>
+            <TextBlock x:Name="TBlWaySum"  FontSize="26"/>
         </StackPanel>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2">
-            <TextBlock Text="Выполнен" FontSize="26"/>
-            <TextBlock x:Name="TBlCompletedSum"  FontSize="20"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2">
+            <TextBlock Text="Выполнен: " FontSize="26"/>
+            <TextBlock x:Name="TBlCompletedSum"  FontSize="26"/>
         </StackPanel>
         <DataGrid AutoGenerateColumns="False" Grid.Row="1" x:Name="DGRProcessed">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Предприятие" Width="*" Binding="{Binding Path=Client.TitleCompany}"/>
                 <DataGridTextColumn Header="Дата" Width="*" Binding="{Binding Path=DateRequest}"/>
+                <DataGridTextColumn Header="Сумма" Width="*" Binding="{Binding Path=Sum}"/>
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid  AutoGenerateColumns="False" Grid.Row="1" Grid.Column="1" x:Name="DGRWay">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Предприятие" Width="*" Binding="{Binding Path=Client.TitleCompany}"/>
                 <DataGridTextColumn Header="Дата" Width="*" Binding="{Binding Path=DateRequest}"/>
+                <DataGridTextColumn Header="Сумма" Width="*" Binding="{Binding Path=Sum}"/>
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid  AutoGenerateColumns="False" Grid.Row="1" Grid.Column="2" x:Name="DGRCompleted" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Предприятие" Width="*" Binding="{Binding Path=Client.TitleCompany}"/>
                 <DataGridTextColumn Header="Дата" Width="*" Binding="{Binding Path=DateRequest}"/>
+                <DataGridTextColumn Header="Сумма" Width="*" Binding="{Binding Path=Sum}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

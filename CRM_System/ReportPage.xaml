@@ -65,7 +65,7 @@
                         </Grid.RowDefinitions>
                         <Image Width="400" Grid.Row="1" Stretch="UniformToFill" HorizontalAlignment="Center" Margin="5">
                             <Image.Source>
-                                <Binding Path="Photo">
+                                <Binding Path="Client.Photo">
                                     <Binding.TargetNullValue>
                                         <ImageSource>Resources/NoPhoto.png</ImageSource>
                                     </Binding.TargetNullValue>
@@ -73,7 +73,7 @@
                             </Image.Source>
                         </Image>
                         <TextBlock Text="{Binding Path=Client.TitleCompany}" VerticalAlignment="Center" TextAlignment="Center" Width="300" TextWrapping="Wrap"
-                                   HorizontalAlignment="Center" Margin="5 5" FontSize="26" Grid.Row="1" FontFamily="Century Gothic"></TextBlock>
+                                   HorizontalAlignment="Center" Margin="5 5" FontSize="26" FontFamily="Century Gothic"></TextBlock>
                         <TextBlock Text="{Binding Path=Client.Phone}" Grid.Row="2" Margin="5 5 5 15" HorizontalAlignment="Center" FontSize="26" FontFamily="Century Gothic" FontWeight="Bold"></TextBlock>
                         <TextBlock Text="{Binding Path=Client.ClientStatus}" Grid.Row="3" FontSize="14" FontFamily="Century Gothic" HorizontalAlignment="Center"></TextBlock>
                     </Grid>

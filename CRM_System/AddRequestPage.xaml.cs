@@ -48,7 +48,7 @@ namespace CRM_System
                 {
                     id = Convert.ToInt32(CB_Product.SelectedValue),
                     quantity = Convert.ToInt32(TB_Quantity.Text),
-                    sum = db.Sum(Convert.ToInt32(CB_Product.SelectedValue), Convert.ToInt32(TB_Quantity.Text))
+                    sum = db.Sum(Convert.ToInt32(CB_Product.SelectedValue), Convert.ToInt32(TB_Quantity.Text)) * 6
                 });    
                 MessageBox.Show("Продукция добавлена");
                 TB_Quantity.Text = "";
@@ -65,8 +65,9 @@ namespace CRM_System
             {
                 date= Convert.ToDateTime(DP_Date.SelectedDate);
                 id= Convert.ToInt32(CB_Client.SelectedValue);
-                message = db.AddRequest(date, id);               
-                db.AddProduct_Of_Request(db.GetRequestIDInLast(),Params);
+                message = db.AddRequest(date, id,Params); 
+                if(message != "Оформите договор на поставку товара для дальнейшей работы")
+                    db.AddProduct_Of_Request(db.GetRequestIDInLast(),Params);
             }
             MessageBox.Show(message);
             MenuWindow.MainFrame.Navigate(new RequestPage(MenuWindow));

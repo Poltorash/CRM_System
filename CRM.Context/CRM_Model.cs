@@ -188,19 +188,25 @@
             }
             catch (Exception ex) { return ex.Message; }
         }
-        public string AddRequest(DateTime dateRequest, int clientID)
+        public string AddRequest(DateTime dateRequest, int clientID, List<RequestParams> requests)
         {
             try
             {
                 var client = Clients.FirstOrDefault(i => i.ClientID == clientID);
+                double sum = 0;
                 if (client.Request.Count == 1) client.ClientStatus = Tag.Дегустация;
                 else if (client.Request.Count == 5 && client.ClientStatus != Tag.Договор)
                     return "Оформите договор на поставку товара для дальнейшей работы";
+                foreach (var i in requests) 
+                {
+                    sum += i.sum;
+                }
                 Request request = new Request()
                 {
                     DateRequest = dateRequest,
                     StatusRequest = StatusRequest.Обработан,
-                    ClientID = clientID
+                    ClientID = clientID,
+                    Sum = sum
                 };
                 Requests.Add(request);
                 client.Request.Add(request);
@@ -646,8 +652,20 @@
         public int GetRequestIDInLast() => Requests.FirstOrDefault(i => i.RequestID == ID).RequestID;
         public List<Request> GetRequests()
         {
+            var client = new List<Client>();
+            var request = new List<Request>();
             DateTime date = DateTime.Now.AddDays(-20);
-            return Requests.Where(r => r.DateRequest < date).Include(u => u.Client).ToList();
+            var report = Requests.Where(i => i.DateRequest < date).Include(i => i.Client).ToList();
+            foreach (var order in report)
+            {
+                var item = client.FirstOrDefault(i => i.ClientID == order.ClientID);
+                if (item == null) 
+                {
+                    request.Add(order);
+                    client.Add(order.Client);
+                }
+            }
+            return request;
         }
         public List<Product_Of_Request> GetProducts(int id) => Product_Of_Requests.Where(i => i.RequestID == id).Include(i => i.Request).Include(i => i.Product).ToList();
         public double Sum(int id, int quantity) => Products.FirstOrDefault(i => i.ProductID == id).Price * quantity;
@@ -678,6 +696,7 @@
         {
             try
             {
+                var client = new List<Client>();
                 string dir = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM.Context.dll", "");
                 string fileName = $@"{dir}\выгрузка.xlsx";
                 var workbook = new XLWorkbook(fileName);
@@ -685,15 +704,20 @@
                 var worksheet = workbook.Worksheet(1);
                 int row = 10;
                 DateTime date = DateTime.Now.AddDays(-20);
-                var report = Requests.Where(i => i.DateRequest < date).Include(i => i.Client).ToList();
+                var report = Requests.Where(i => i.DateRequest < date).Include(i => i.Client).ToList(); 
                 foreach (var order in report)
                 {
-                    worksheet.Cell("D" + row).Value = order.Client.TitleCompany;
-                    worksheet.Cell("E" + row).Value = order.Client.LastName;
-                    worksheet.Cell("F" + row).Value = order.Client.FirstName;
-                    worksheet.Cell("G" + row).Value = order.Client.Patronymic;
-                    worksheet.Cell("H" + row).Value = order.Client.Phone;
-                    row++;
+                    var item = client.FirstOrDefault(i => i.ClientID == order.ClientID);
+                    if (item == null)
+                    {
+                        worksheet.Cell("D" + row).Value = order.Client.TitleCompany;
+                        worksheet.Cell("E" + row).Value = order.Client.LastName;
+                        worksheet.Cell("F" + row).Value = order.Client.FirstName;
+                        worksheet.Cell("G" + row).Value = order.Client.Patronymic;
+                        worksheet.Cell("H" + row).Value = order.Client.Phone;
+                        row++;
+                        client.Add(order.Client);
+                    }
                 }
                 worksheet.Cell("H" + 7).Value = DateTime.Now;
                 worksheet.Columns().AdjustToContents();
@@ -716,10 +740,10 @@
                 var word = new Word.Application();
                 word.Visible = true;
                 var docx = word.Documents.Open($@"{dir}\ШаблонДоговораПоставки.docx");
-                ReplaceText(docx, "@@DD/MM/YY", DateTime.Now);
+                ReplaceText(docx, "@@DDMMYY", DateTime.Now);
                 ReplaceText(docx, "@TitleCompany",titleCompany );
                 ReplaceText(docx, "@FIO", fio);
-                docx.SaveAs($@"{dir}\Договоры\{fio}");
+                docx.SaveAs2($@"{dir}\Договоры\{fio}");
                 return $@"{dir}\Договоры\{fio}";
             }
             catch (Exception ex) { return ex.Message; }

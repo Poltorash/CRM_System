@@ -743,8 +743,8 @@
                 ReplaceText(docx, "@@DDMMYY", DateTime.Now);
                 ReplaceText(docx, "@TitleCompany",titleCompany );
                 ReplaceText(docx, "@FIO", fio);
-                docx.SaveAs2($@"{dir}\Договоры\{fio}");
-                return $@"{dir}\Договоры\{fio}";
+                docx.SaveAs2($@"{dir}\Договоры\{fio}.docx");
+                return $@"{dir}\Договоры\{fio}.docx";
             }
             catch (Exception ex) { return ex.Message; }
         }

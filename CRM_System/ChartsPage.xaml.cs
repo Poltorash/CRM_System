@@ -150,5 +150,10 @@ namespace CRM_System
             LoadLineChartData();
             LoadColumnChartDataClient();
         }
+
+        private void BtnPrint_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

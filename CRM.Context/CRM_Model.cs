@@ -654,7 +654,7 @@
         public List<Product> GetAllProduct() => Products.ToList();
         public List<Client> GetAllClient() => Clients.ToList();
         public List<Request> GetAllRequest() => Requests.Include(i => i.Client).ToList();
-
+        public List<User> GetUsers() => Users.ToList();
         public int GetRequestIDInLast() => Requests.FirstOrDefault(i => i.RequestID == ID).RequestID;
         public List<Request> GetRequests()
         {

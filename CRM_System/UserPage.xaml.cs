@@ -34,7 +34,7 @@ namespace CRM_System
             DGR_User.ItemsSource = null;
             using (var db = new CRM_Model())
             {
-                DGR_User.ItemsSource = db.GetAllRequest();
+                DGR_User.ItemsSource = db.GetUsers();
             }
         }
 

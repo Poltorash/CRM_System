@@ -754,7 +754,7 @@
                 var word = new Word.Application();
                 word.Visible = true;
                 var docx = word.Documents.Open($@"{dir}\ШаблонДоговораПоставки.docx");
-                ReplaceText(docx, "@@DDMMYY", DateTime.Now);
+                ReplaceText(docx, "@@Dmy", DateTime.Now);
                 ReplaceText(docx, "@TitleCompany",titleCompany );
                 ReplaceText(docx, "@FIO", fio);
                 docx.SaveAs2($@"{dir}\Договоры\{fio}.docx");

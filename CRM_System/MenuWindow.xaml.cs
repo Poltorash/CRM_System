@@ -100,5 +100,10 @@ namespace CRM_System
         {
             MainFrame.Navigate(new StatusRequestPage());
         }
+
+        private void LVUser_Selected(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new UserPage());
+        }
     }
 }

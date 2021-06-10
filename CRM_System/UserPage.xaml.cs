@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRM.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,21 @@ namespace CRM_System
     /// </summary>
     public partial class UserPage : Page
     {
-        public UserPage()
+        MenuWindow MenuWindow;
+        public UserPage(MenuWindow menu)
         {
             InitializeComponent();
+            MenuWindow = menu;
+            UpdateDataGrid();
+        }
+
+        private void UpdateDataGrid()
+        {
+            DGR_User.ItemsSource = null;
+            using (var db = new CRM_Model())
+            {
+                DGR_User.ItemsSource = db.GetAllRequest();
+            }
         }
 
         private void BtnAddUser_Click(object sender, RoutedEventArgs e)

@@ -62,6 +62,10 @@
                 <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LVUser">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-220"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Name="storyboard" x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMain">
@@ -193,7 +197,21 @@
                             <TextBlock Text="Отчет" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
                         </StackPanel>
                     </ListViewItem>
-                </ListView>
+                <ListViewItem x:Name="LVUser" Height="60" RenderTransformOrigin="0.5,0.5" Selected="LVUser_Selected">
+                    <ListViewItem.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ListViewItem.RenderTransform>
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <materialDesign:PackIcon Kind="User" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFCEA345"/>
+                        <TextBlock Text="Пользователи" Margin="10" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="15" Foreground="#FFCEA345"/>
+                    </StackPanel>
+                </ListViewItem>
+            </ListView>
             </StackPanel>
             <Grid x:Name="GridMain" Background="White" RenderTransformOrigin="0.5,0.5">
                 <Grid.RenderTransform>

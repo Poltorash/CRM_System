@@ -62,7 +62,7 @@ namespace CRM_System
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            MenuWindow.MainFrame.Navigate(new AddClientPage(MenuWindow, ID,Contract));
+            MenuWindow.MainFrame.Navigate(new AddClientPage(MenuWindow, ID));
         }
 
 
@@ -107,11 +107,16 @@ namespace CRM_System
                 using (var db = new CRM_Model())
                 {
                     Contract = db.Contract($"{TB_LastName.Text}" + $"{TB_FirstName.Text[0]}" + "." + $"{TB_Patronymic.Text[0]}" + ".", TB_Title.Text);
+                    db.EditContract(ID, Contract);
+                    BT_Contract.Content = "Открыть договор";
                 }
             }
             else
             {
-
+                using (var db = new CRM_Model())
+                {
+                    db.OpenContract(Contract);
+                }
             }
         }
     }

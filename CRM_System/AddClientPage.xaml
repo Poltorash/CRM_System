@@ -108,7 +108,7 @@
         </StackPanel>
         </Border>
         <StackPanel Grid.ColumnSpan="3" Grid.Row="7" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="400">
-            <Button x:Name="AddContract" Content="Добавить договор" Click="AddContract_Click"/>
+            <Button x:Name="AddContract" Content="Добавить договор"/>
             <Button Name="AddOrEditButtonC" Content="Добавить клиента" Click="AddOrEditButtonC_Click"/>
         </StackPanel>
     </Grid>

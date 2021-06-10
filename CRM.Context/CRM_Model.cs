@@ -295,14 +295,13 @@
             try
             {
                 var item = Clients.FirstOrDefault(i => i.ClientID == id);
-                if (contract != "" && item.ClientStatus != Tag.Постоянный_клиент) item.ClientStatus = Tag.Договор;
+                if (item.ContractPath != "" && item.ClientStatus != Tag.Постоянный_клиент) item.ClientStatus = Tag.Договор;
                 item.TitleCompany = title;
                 item.LastName = lastName;
                 item.FirstName = firstName;
                 item.Patronymic = patronymic;
                 item.Phone = phone;
                 item.AddressCompany = addressCompany;
-                item.ContractPath = contract;
                 item.Photo = photo;
                 SaveChanges();
                 return "Запись отредактирована!";
@@ -644,6 +643,13 @@
             catch (Exception ex) { return ex.Message; }
         }
 
+        public void EditContract(int id,string contract) 
+        {
+            var item = Clients.FirstOrDefault(i=>i.ClientID == id);
+            if (item != null)
+                item.ContractPath = contract;
+        }
+
         public Client GetClient(int id) => Clients.FirstOrDefault(i => i.ClientID == id);
         public List<Product> GetAllProduct() => Products.ToList();
         public List<Client> GetAllClient() => Clients.ToList();
@@ -729,6 +735,14 @@
             }
             catch (Exception ex) { return ex.Message; }
         }
+
+        public void OpenContract(string filePath)  
+        {
+            var word = new Word.Application();
+            word.Visible = true;
+            var docx = word.Documents.Open($@"{filePath}");
+        }
+
 
         public string Contract(string FIO,string title)
         {

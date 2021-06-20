@@ -35,10 +35,10 @@ namespace CRM_System
                 {
                     if (PasswordB.Password == PasswordB2.Password)
                     {
-                        MessageBox.Show(db.AddUser(TB_Login.Text, PasswordB.Password));
-                        MenuWindow menu = new MenuWindow();
-                        menu.Show();
-                        this.Close();
+                        //MessageBox.Show(db.AddUser(TB_Login.Text, PasswordB.Password));
+                        //MenuWindow menu = new MenuWindow();
+                        //menu.Show();
+                        //this.Close();
                     }
                     else MessageBox.Show("Пароли не совпадают");
                 }

@@ -151,20 +151,20 @@ namespace CRM_System
             LoadLineChartData();
             LoadColumnChartDataClient();
         }
-        public void RenderLine()
-        {
-            string dir = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM_System.exe", "");
-            var renderBitmap = new RenderTargetBitmap((int)LineChart.ActualWidth, (int)LineChart.ActualHeight, 96, 96, PixelFormats.Default);
-            renderBitmap.Render(LineChart);
-            BitmapEncoder encoder = new JpegBitmapEncoder();
-            string filename = $@"{dir}\Grafics\Line.jpg";
-            // pop up save file dialog, get file name & encoder type (jpg, bmp, png, etc.)
-            encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
-            FileStream fs = new FileStream(filename, FileMode.Create);
-            encoder.Save(fs);
-            fs.Flush();
-            fs.Close();
-        }
+        //public void RenderLine()
+        //{
+        //    string dir = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM_System.exe", "");
+        //    var renderBitmap = new RenderTargetBitmap((int)LineChart.ActualWidth, (int)LineChart.ActualHeight, 96, 96, PixelFormats.Default);
+        //    renderBitmap.Render(LineChart);
+        //    BitmapEncoder encoder = new JpegBitmapEncoder();
+        //    string filename = $@"{dir}\Grafics\Line.jpg";
+        //    // pop up save file dialog, get file name & encoder type (jpg, bmp, png, etc.)
+        //    encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+        //    FileStream fs = new FileStream(filename, FileMode.Create);
+        //    encoder.Save(fs);
+        //    fs.Flush();
+        //    fs.Close();
+        //}
         public void RenderColumn()
         {
             string dir = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM_System.exe", "");
@@ -179,40 +179,40 @@ namespace CRM_System
             fs.Flush();
             fs.Close();
         }
-        public void RenderPie()
-        {
-            string dir = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM_System.exe", "");
-            var renderBitmap = new RenderTargetBitmap((int)PieChart.ActualWidth, (int)PieChart.ActualHeight, 100, 100, PixelFormats.Default);
-            renderBitmap.Render(PieChart);
-            BitmapEncoder encoder = new JpegBitmapEncoder();
-            string filename = $@"{dir}\Grafics\Pie.png";
-            // pop up save file dialog, get file name & encoder type (jpg, bmp, png, etc.)
-            encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
-            FileStream fs = new FileStream(filename, FileMode.Create);
-            encoder.Save(fs);
-            fs.Flush();
-            fs.Close();
-        }
-        public void RenderColumnChartClient()
-        {
-            string dir = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM_System.exe", "");
-            var renderBitmap = new RenderTargetBitmap((int)ColumnChartClient.ActualWidth, (int)ColumnChartClient.ActualHeight, 96, 96, PixelFormats.Default);
-            renderBitmap.Render(ColumnChartClient);
-            BitmapEncoder encoder = new JpegBitmapEncoder();
-            string filename = $@"{dir}\Grafics\ColumnChartClient.jpg";
-            // pop up save file dialog, get file name & encoder type (jpg, bmp, png, etc.)
-            encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
-            FileStream fs = new FileStream(filename, FileMode.Create);
-            encoder.Save(fs);
-            fs.Flush();
-            fs.Close();
-        }
+        //public void RenderPie()
+        //{
+        //    string dir = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM_System.exe", "");
+        //    var renderBitmap = new RenderTargetBitmap((int)PieChart.ActualWidth, (int)PieChart.ActualHeight, 100, 100, PixelFormats.Default);
+        //    renderBitmap.Render(PieChart);
+        //    BitmapEncoder encoder = new JpegBitmapEncoder();
+        //    string filename = $@"{dir}\Grafics\Pie.png";
+        //    // pop up save file dialog, get file name & encoder type (jpg, bmp, png, etc.)
+        //    encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+        //    FileStream fs = new FileStream(filename, FileMode.Create);
+        //    encoder.Save(fs);
+        //    fs.Flush();
+        //    fs.Close();
+        //}
+        //public void RenderColumnChartClient()
+        //{
+        //    string dir = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(@"CRM_System.exe", "");
+        //    var renderBitmap = new RenderTargetBitmap((int)ColumnChartClient.ActualWidth, (int)ColumnChartClient.ActualHeight, 96, 96, PixelFormats.Default);
+        //    renderBitmap.Render(ColumnChartClient);
+        //    BitmapEncoder encoder = new JpegBitmapEncoder();
+        //    string filename = $@"{dir}\Grafics\ColumnChartClient.jpg";
+        //    // pop up save file dialog, get file name & encoder type (jpg, bmp, png, etc.)
+        //    encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+        //    FileStream fs = new FileStream(filename, FileMode.Create);
+        //    encoder.Save(fs);
+        //    fs.Flush();
+        //    fs.Close();
+        //}
         private void BtnPrint_Click(object sender, RoutedEventArgs e)
         {
-            RenderLine();
+            //RenderLine();
             RenderColumn();
-            RenderPie();
-            RenderColumnChartClient();
+            //RenderPie();
+            //RenderColumnChartClient();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CRM.Context;
+using CRM.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +22,45 @@ namespace CRM_System
     /// </summary>
     public partial class AddUserPage : Page
     {
-        public AddUserPage()
+        MenuWindow MenuWindow;
+        int ID = -1;
+        public AddUserPage(MenuWindow menu)
         {
             InitializeComponent();
+            MenuWindow = menu;
+            CB();
         }
 
+        public AddUserPage(MenuWindow menu, int id)
+        {
+            InitializeComponent();
+            BtnAdd.Content = "Редактировать пользователя";
+            MenuWindow = menu;
+            ID = id;
+            CB();
+        }
+
+        public void CB() 
+        {
+            Cb_Status.Items.Add("Администратор");
+            Cb_Status.Items.Add("Пользователь");
+        }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            UserStatus userStatus = UserStatus.Администратор;
+            using (var db = new CRM_Model())
+            {
+                if (ID == -1)
+                    MessageBox.Show(db.AddUser(TB_Login.Text, TB_Password.Text));
+                else
+                {
+                    if (Cb_Status.Text != userStatus.ToString())
+                        userStatus = UserStatus.Пользователь;
+                    MessageBox.Show(db.EditUser(ID, TB_Login.Text, TB_Password.Text,userStatus));
+                   
+                }
+            }
+            MenuWindow.MainFrame.Navigate(new UserPage(MenuWindow));
         }
     }
 }

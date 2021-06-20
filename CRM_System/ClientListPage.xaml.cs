@@ -22,6 +22,7 @@ namespace CRM_System
     public partial class ClientListPage : Page
     {
         MenuWindow MenuWindow;
+        int ID = 0;
         public ClientListPage(MenuWindow menuWindow)
         {
             InitializeComponent();

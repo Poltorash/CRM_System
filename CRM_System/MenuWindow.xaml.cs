@@ -20,10 +20,19 @@ namespace CRM_System
     /// </summary>
     public partial class MenuWindow : Window
     {
-        public MenuWindow()
+        int ID = 0;
+        public MenuWindow(int id)
         {
             InitializeComponent();
             MainFrame.Navigate(new ClientListPage(this));
+            ID = id;
+            using (var db = new CRM_Model()) 
+            {
+                if (!db.StatusAdmin(id)) 
+                {
+                    LVUser.Visibility = Visibility.Hidden;
+                } 
+            }
             //using (var db = new CRM_Model())
             //{
             //    db.AddProduct_Type("Квас");
@@ -103,7 +112,7 @@ namespace CRM_System
 
         private void LVUser_Selected(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new UserPage());
+            MainFrame.Navigate(new UserPage(this));
         }
     }
 }

@@ -40,7 +40,7 @@ namespace CRM_System
                 int user = db.Authorization(TB_Login.Text,PasswordB.Password);
                 if (user != 0)
                 {
-                    MenuWindow menu = new MenuWindow();
+                    MenuWindow menu = new MenuWindow(user);
                     menu.Show();
                     this.Close();
                 }

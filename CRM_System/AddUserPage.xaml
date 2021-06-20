@@ -68,7 +68,7 @@
             <TextBox Name="TB_Password" BorderThickness="1" BorderBrush="#FFCEA345"/>
         </Border>
         <Border Grid.Column="1" Grid.Row="2" Width="auto" Height="30" Background="White" VerticalAlignment="Center">
-            <ComboBox x:Name="Cb_Status" SelectedValuePath="Product_TypeID" BorderThickness="1" BorderBrush="#FFCEA345"  SelectedItem="{Binding Path=Title}" DisplayMemberPath="Title"/>
+            <ComboBox x:Name="Cb_Status" BorderThickness="1" BorderBrush="#FFCEA345" />
         </Border>
         <StackPanel Grid.ColumnSpan="3" Grid.Row="7" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="205,0">
             <Button x:Name="BtnAdd"  Content="Добавить пользователя" Click="BtnAdd_Click"/>

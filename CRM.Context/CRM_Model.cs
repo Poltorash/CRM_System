@@ -25,7 +25,7 @@
                 Users.Add(new User()
                 {
                     UserLogin = "admin",
-                    UserPassword = "1",
+                    UserPassword = EncryptionPas.Encrypt("admin"),
                     UserStatus = UserStatus.Администратор
                 });
                 
@@ -281,11 +281,11 @@
                 Users.Add(new User()
                 {
                     UserLogin = userLogin,
-                    UserPassword = userPassword,
+                    UserPassword = EncryptionPas.Encrypt(userPassword),
                     UserStatus = UserStatus.Пользователь
                 });
                 SaveChanges();
-                return "Регистрация прошла успешно!";
+                return "Пользователь добавлен";
             }
             catch (Exception ex) { return ex.Message; }
         }
@@ -483,7 +483,7 @@
             {
                 var item = Users.FirstOrDefault(i => i.UserID == id);
                 item.UserLogin = userLogin;
-                item.UserPassword = userPassword;
+                item.UserPassword =EncryptionPas.Encrypt(userPassword);
                 item.UserStatus = userStatus;
                 SaveChanges();
                 return "Запись отредактирована!";
@@ -629,13 +629,16 @@
             }
             catch (Exception ex) { return ex.Message; }
         }
-        public string RemoceUser(int id)
+        public string RemoveUser(int id)
         {
             try
             {
                 var item = Users.FirstOrDefault(i => i.UserID == id);
                 int count = Users.Where(i => i.UserStatus == UserStatus.Администратор).Count();
-                if (item.UserStatus == UserStatus.Администратор && count == 1) return "Нельзя удалить последнего администратора";
+                if (item.UserID == id)
+                    return "Нельзя удалить самого себя";
+                if (item.UserStatus == UserStatus.Администратор && count == 1) 
+                    return "Нельзя удалить последнего администратора";
                 Users.Remove(item);
                 SaveChanges();
                 return "Запись удалена!";
@@ -647,7 +650,11 @@
         {
             var item = Clients.FirstOrDefault(i=>i.ClientID == id);
             if (item != null)
+            {
                 item.ContractPath = contract;
+                item.ClientStatus = Tag.Договор;
+            }
+            SaveChanges();
         }
 
         public Client GetClient(int id) => Clients.FirstOrDefault(i => i.ClientID == id);
@@ -685,9 +692,19 @@
 
         public int Authorization(string login, string password)
         {
-            var user = Users.FirstOrDefault(u => u.UserLogin == login && u.UserPassword == password);
-            if (user != null) return user.UserID;
+            string pass = EncryptionPas.Encrypt(password);
+            var user = Users.FirstOrDefault(u => u.UserLogin == login && u.UserPassword == pass);
+            if (user != null)
+                return user.UserID;
             else return 0;
+        }
+        public bool StatusAdmin(int id) 
+        {
+            var item = Users.FirstOrDefault(i=>i.UserID == id).UserStatus;
+            if (item == UserStatus.Администратор)
+                return true;
+            else
+                return false;
         }
         public bool StringIsEmpty(string text)
         {
@@ -754,7 +771,7 @@
                 var word = new Word.Application();
                 word.Visible = true;
                 var docx = word.Documents.Open($@"{dir}\ШаблонДоговораПоставки.docx");
-                ReplaceText(docx, "@@Dmy", DateTime.Now);
+                ReplaceText(docx, "@DATE",DateTime.Now.ToString("dd.MM.yyyy"));
                 ReplaceText(docx, "@TitleCompany",titleCompany );
                 ReplaceText(docx, "@FIO", fio);
                 docx.SaveAs2($@"{dir}\Договоры\{fio}.docx");

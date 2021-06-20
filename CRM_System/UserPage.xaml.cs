@@ -40,17 +40,22 @@ namespace CRM_System
 
         private void BtnAddUser_Click(object sender, RoutedEventArgs e)
         {
+            MenuWindow.MainFrame.Navigate(new AddUserPage(MenuWindow));
 
         }
 
         private void BtnEditUser_Click(object sender, RoutedEventArgs e)
         {
-
+            MenuWindow.MainFrame.Navigate(new AddUserPage(MenuWindow, Convert.ToInt32(DGR_User.SelectedValue)));
         }
 
         private void BtnDeleteUser_Click(object sender, RoutedEventArgs e)
         {
-
+            using (var db = new CRM_Model())
+            {
+                MessageBox.Show(db.RemoveUser(Convert.ToInt32(DGR_User.SelectedValue)));
+                UpdateDataGrid();
+            }
         }
     }
 }

@@ -106,9 +106,10 @@ namespace CRM_System
             {
                 using (var db = new CRM_Model())
                 {
-                    Contract = db.Contract($"{TB_LastName.Text}" + $"{TB_FirstName.Text[0]}" + "." + $"{TB_Patronymic.Text[0]}" + ".", TB_Title.Text);
+                    Contract = db.Contract($"{TB_LastName.Text}" + " " + $"{TB_FirstName.Text[0]}" + "." + $"{TB_Patronymic.Text[0]}" + ".", TB_Title.Text);
                     db.EditContract(ID, Contract);
                     BT_Contract.Content = "Открыть договор";
+                    TB_Status.Text = "Договор";
                 }
             }
             else

@@ -662,6 +662,7 @@
         public List<Client> GetAllClient() => Clients.ToList();
         public List<Request> GetAllRequest() => Requests.Include(i => i.Client).ToList();
         public List<User> GetUsers() => Users.ToList();
+        public User GetUsersInID(int id) => Users.FirstOrDefault(i=>i.UserID == id);
         public int GetRequestIDInLast() => Requests.FirstOrDefault(i => i.RequestID == ID).RequestID;
         public List<Request> GetRequests()
         {

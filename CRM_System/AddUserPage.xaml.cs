@@ -38,6 +38,16 @@ namespace CRM_System
             MenuWindow = menu;
             ID = id;
             CB();
+            using (var db = new CRM_Model()) 
+            {
+                var item = db.GetUsersInID(ID);
+                TB_Login.Text = item.UserLogin;
+                TB_Password.Text = item.UserPassword;
+                if (item.UserStatus == UserStatus.Администратор)
+                    Cb_Status.SelectedIndex = 0;
+                else
+                    Cb_Status.SelectedIndex = 1;
+            }
         }
 
         public void CB() 

@@ -79,7 +79,7 @@ namespace CRM_System
             using (var db = new CRM_Model())
             {
                 if(!db.StringIsEmpty(CB_Product.SelectedValue.ToString()) && !db.StringIsEmpty(TB_Quantity.Text))
-                    TB_Result.Text = db.Sum(Convert.ToInt32(CB_Product.SelectedValue), Convert.ToInt32(TB_Quantity.Text)).ToString();
+                    TB_Result.Text = (db.Sum(Convert.ToInt32(CB_Product.SelectedValue), Convert.ToInt32(TB_Quantity.Text))*6).ToString();
             }
           
         }

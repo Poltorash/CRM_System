@@ -84,7 +84,7 @@
         <TextBlock Text="Количесвто:" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3" Margin="10"/>
         <TextBlock Text="Сумма:" FontSize="15" FontFamily="Century Gothic" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="4" Margin="10"/> <!--это поле должно автоматически считаться-->
         <Border Grid.Column="1" Width="auto" Height="30" Background="White" VerticalAlignment="Center">
-            <ComboBox Name="CB_Client" SelectedValuePath="ClientID" BorderThickness="1" BorderBrush="#FFCEA345" DisplayMemberPath="LastName"/>
+            <ComboBox Name="CB_Client" SelectedValuePath="ClientID" BorderThickness="1" BorderBrush="#FFCEA345" DisplayMemberPath="TitleCompany"/>
         </Border>
         <Border Grid.Column="1" Grid.Row="1" Width="auto" Height="30" Background="White" VerticalAlignment="Center">
             <DatePicker Name="DP_Date" BorderThickness="1" BorderBrush="#FFCEA345"/>

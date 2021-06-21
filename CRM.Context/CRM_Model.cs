@@ -194,7 +194,7 @@
             {
                 var client = Clients.FirstOrDefault(i => i.ClientID == clientID);
                 double sum = 0;
-                if (client.Request.Count == 1) client.ClientStatus = Tag.Дегустация;
+                if (client.Request.Count == 0) client.ClientStatus = Tag.Дегустация;
                 else if (client.Request.Count == 5 && client.ClientStatus != Tag.Договор)
                     return "Оформите договор на поставку товара для дальнейшей работы";
                 foreach (var i in requests) 
